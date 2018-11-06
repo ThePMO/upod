@@ -7,7 +7,7 @@ import android.view.View
 import android.webkit.WebView
 import mobi.upod.app.R
 
-class ShowLicensesDialog extends DialogFragment {
+class ShowLicensesDialog(val url: String) extends DialogFragment {
 
   override def onCreateDialog(savedInstanceState: Bundle): Dialog = {
     val context = getActivity
@@ -21,7 +21,7 @@ class ShowLicensesDialog extends DialogFragment {
   private def createContentView: View = {
     // GoogleApiAvailability.getInstance().getOpenSourceSoftwareLicenseInfo(getActivity) + licenses
     val webView = new WebView(getActivity)
-    webView.loadUrl("file:///android_asset/licenses.html")
+    webView.loadUrl(url)
     webView
   }
 }
@@ -29,8 +29,8 @@ class ShowLicensesDialog extends DialogFragment {
 object ShowLicensesDialog {
   private val tag = "LicensesDialog"
 
-  def show(activity: Activity): Unit = {
-    val fragment = new ShowLicensesDialog
+  def show(activity: Activity, url: String): Unit = {
+    val fragment = new ShowLicensesDialog(url)
     fragment.show(activity.getFragmentManager, tag)
   }
 }

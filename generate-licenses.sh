@@ -18,7 +18,7 @@ cat << EOF
 <pre>
 EOF
 
-for file in third-party-licenses/*; do
+for file in app/assets/original_license.txt third-party-licenses/*; do
   echo "${LINE}"
   if [[ "${file}" =~ .*\.sh$ ]]; then
     source ${file}
@@ -49,5 +49,7 @@ else
 fi
 
 rm -f "${TEMP}"
+
+cp COPYING app/assets/license.txt
 
 exit ${RET}

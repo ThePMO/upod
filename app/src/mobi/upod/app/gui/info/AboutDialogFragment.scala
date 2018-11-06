@@ -52,7 +52,7 @@ class AboutDialogFragment extends DialogFragment {
       val flags = spannable.getSpanFlags(span)
       val clickableSpan = new ClickableSpan {
         override def onClick(widget: View): Unit =
-          showLicenses()
+          showLicenseDialog(span.getURL)
       }
       spannable.setSpan(clickableSpan, start, end, flags)
       spannable.removeSpan(span)
@@ -67,8 +67,13 @@ class AboutDialogFragment extends DialogFragment {
     spannable
   }
 
-  private def showLicenses(): Unit =
-    ShowLicensesDialog.show(getActivity)
+  private def showLicenseDialog(url: String): Unit = {
+    url match {
+      case "#license" => ShowLicensesDialog.show(getActivity, "file:///android_asset/license.txt")
+      case "#original" => ShowLicensesDialog.show(getActivity, "file:///android_asset/original_license.txt")
+      case _ => ShowLicensesDialog.show(getActivity, "file:///android_asset/licenses.html")
+    }
+  }
 }
 
 object AboutDialogFragment {
