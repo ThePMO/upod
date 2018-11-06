@@ -150,8 +150,6 @@ val app = project.in(file("app")).
       "com.github.tony19" % "logback-android-classic" % "1.1.1-4" exclude("com.google.android", "android"),
       "org.slf4j" % "slf4j-api" % "1.7.6",
 
-      aar("com.crashlytics.sdk.android" % "crashlytics" % "2.5.2"),
-
       aar("com.google.android.gms" % "play-services-cast" % "10.2.0"),
       aar("com.google.android.gms" % "play-services-auth" % "10.2.0"),
       aar("com.google.android.gms" % "play-services-drive" % "10.2.0"),

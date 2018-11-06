@@ -3,8 +3,6 @@ package mobi.upod.app
 import android.app.{NotificationManager, PendingIntent}
 import android.content.{Context, Intent}
 import android.support.multidex.MultiDexApplication
-import com.crashlytics.android.Crashlytics
-import com.crashlytics.android.core.CrashlyticsCore
 import io.fabric.sdk.android.Fabric
 import mobi.upod.android.app.{AppException, AppNotificationBuilder}
 import mobi.upod.android.logging.{LogConfiguration, Logging}
@@ -30,7 +28,7 @@ final class App extends MultiDexApplication with Logging {
 
     App.app = Some(this)
     UncaughtExceptionHandler.install(this)
-    Fabric.`with`(this, new Crashlytics.Builder().core(new CrashlyticsCore.Builder().disabled(BuildConfig.DEBUG).build).build)
+    Fabric.`with`(this)
 
     LogConfiguration.configureLogging(this, new SupportPreferences(this).enhancedLogging)
 
