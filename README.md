@@ -51,5 +51,4 @@ Unfortunately I never managed it to create release builds using sbt-android. Thu
 # Suggestions for first Tasks
 Here are some suggestions of what you should change first about uPod:
 
-- **Remove license check:** The official uPod version contained a license check. Some of the more enhanced features were only available when uPod premium was installed. uPod premium was a payed app on the app store and it is also contained in this repository. But as you might see, it doesn't contain any code -- it's existance alone was the indicator for uPod to unleash its premium features. Start in the `LicenseService` to remove the license check.
 - **uPod Services:** Originally uPod implemented the sync using its own web services. Some time ago I've switchted to Google Drive for synchronizing data. The uPod web services were still there, but mainly for maintenance tasks. You should remove the access to these services as they are no longer available and required.
