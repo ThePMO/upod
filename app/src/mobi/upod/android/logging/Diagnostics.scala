@@ -113,7 +113,6 @@ object Diagnostics {
         !fileName.startsWith("io.fabric") &&
         !fileName.startsWith("WebView") &&
         !fileName.startsWith("TwitterAdvertising") &&
-        !fileName.startsWith("com.crashlytics") &&
         !fileName.startsWith("evernote_jobs.xml")
     }
 

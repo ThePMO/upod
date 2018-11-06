@@ -4,7 +4,6 @@ import android.app.{AlarmManager, NotificationManager}
 import android.content.Context
 import android.content.pm.PackageManager
 import android.media.AudioManager
-import com.crashlytics.android.answers.Answers
 import com.escalatesoft.subcut.inject.NewBindingModule
 import com.evernote.android.job.JobManager
 import mobi.upod.android.app.{DelayedAlarmManager, NavigationSettings}
@@ -77,7 +76,6 @@ class AppBindingModule(app: App) extends NewBindingModule(
     bind [MediaRouteService] toSingle new MediaRouteService
     bind [SyncService] toSingle new SyncService(app)
     bind [AnnouncementService] toSingle new AnnouncementService
-    bind [Answers] toProvider Answers.getInstance()
 
     // GUI layer
     bind [CoverartLoader] toSingle new CoverartLoader

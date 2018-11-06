@@ -134,10 +134,6 @@ dependencies {
     compile 'com.github.tony19:logback-android-classic:1.1.1-4'
     compile 'org.slf4j:slf4j-api:1.7.6'
 
-    compile('com.crashlytics.sdk.android:crashlytics:2.5.2@aar') {
-        transitive = true;
-    }
-
     compile 'com.google.android.gms:play-services-auth:10.2.0'
     compile 'com.google.android.gms:play-services-cast:10.2.0'
     compile 'com.google.android.gms:play-services-drive:10.2.0'

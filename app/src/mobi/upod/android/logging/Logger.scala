@@ -1,6 +1,5 @@
 package mobi.upod.android.logging
 
-import com.crashlytics.android.Crashlytics
 import org.slf4j.LoggerFactory
 
 class Logger(val cls: Class[_]) extends mobi.upod.logging.Logger {
@@ -40,31 +39,19 @@ class Logger(val cls: Class[_]) extends mobi.upod.logging.Logger {
   def crashLogInfo(msg: => Any, exception: Throwable): Unit = if (isInfoEnabled) {
     val m = msg.toString
     log.info(m, exception)
-    crashlyticsLogMsg(m, exception)
   }
 
   def crashLogWarn(msg: => Any, exception: Throwable): Unit = if (isWarnEnabled) {
     val m = msg.toString
     log.warn(m, exception)
-    crashlyticsLogMsg(m, exception)
   }
 
   def crashLogError(msg: => Any, exception: Throwable): Unit = if (isErrorEnabled) {
     val m = msg.toString
     log.error(m, exception)
-    crashlyticsLogMsg(m, exception)
   }
 
-  private def crashlyticsLogMsg(msg: String, exception: Throwable): Unit = {
-    val message = exception match {
-      case null => msg
-      case ex => s"$msg (${ex.getMessage})"
-    }
-    Crashlytics.log(message)
-  }
-
-  override def crashLogSend(exception: Throwable): Unit =
-    Crashlytics.logException(exception)
+  override def crashLogSend(exception: Throwable): Unit = {}
 
   def measure[A](name: => Any, operation: => A): A = {
     if (isTraceEnabled) {

@@ -1,7 +1,6 @@
 package mobi.upod.app.gui.announcement
 
 import android.content.Context
-import com.crashlytics.android.answers.{CustomEvent, Answers}
 import com.escalatesoft.subcut.inject.{BindingModule, Injectable}
 import mobi.upod.android.app.action.{Action, BrowseAction}
 import mobi.upod.android.view.cards.CardHeader
@@ -50,15 +49,9 @@ class AnnouncementCardHeader(implicit val bindingModule: BindingModule)
     }
 
     private def logShowEvent(): Unit = {
-      inject[Answers].logCustom(new CustomEvent(s"Announcement $id").putCustomAttribute("announcement", id).putCustomAttribute("title", title))
     }
 
     private def logButtonEvent(btnIndex: Int): Unit = {
-      inject[Answers].logCustom(new CustomEvent(s"Announcement $id Button $btnIndex")
-        .putCustomAttribute("announcement", id)
-        .putCustomAttribute("title", title)
-        .putCustomAttribute("button", btnIndex)
-        .putCustomAttribute("action", buttons(btnIndex).text))
     }
   }
 }

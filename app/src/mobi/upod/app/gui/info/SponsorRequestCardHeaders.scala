@@ -1,7 +1,6 @@
 package mobi.upod.app.gui.info
 
 import android.content.Context
-import com.crashlytics.android.answers.{CustomEvent, Answers}
 import com.escalatesoft.subcut.inject.{BindingModule, Injectable}
 import com.github.nscala_time.time.Imports._
 import mobi.upod.android.app.action.Action
@@ -83,7 +82,6 @@ trait SponsorRequestCardHeaders extends CardHeaders with Injectable {
 
     override def onFired(context: Context): Unit = {
       super.onFired(context)
-      inject[Answers].logCustom(new CustomEvent("Rate App"))
       dismissPermanent(prefs.mayShowRateRequest, prefs.lastRateRequest)
     }
   }
