@@ -1,0 +1,4 @@
+
+This product includes SubCut from Dick Wall
+
+The SubCut library is available as open source under the Apache v2 license.
