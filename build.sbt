@@ -183,27 +183,3 @@ val app = project.in(file("app")).
       )
     )
   )
-
-val license = project.in(file("license")).
-  settings(androidBuild).
-  settings(
-    versionCode in Android := Some(5),
-    versionName in Android := Some("4.0.1"),
-    buildToolsVersion in Android := androidBuildToolsVersion,
-    platformTarget in Android := androidPlatformTarget,
-    minSdkVersion in Android := androidMinSdkVersion,
-
-    apkDebugSigningConfig in Android := DebugSigningConfig(
-      keystore = new File("keystore-debug.jks")
-    ),
-    apkSigningConfig in Android := Option(
-      PlainSigningConfig(
-        keystore = new File("keystore.jks"),
-        storePass = "???",
-        alias = "???",
-        keyPass = Some("???")
-      )
-    ),
-
-    antLayoutDetector in Android := ()
-  )
