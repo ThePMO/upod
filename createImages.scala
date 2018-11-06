@@ -176,5 +176,9 @@ object ImageConverter {
   }
 }
 
-ImageConverter.processImages()
+object Main {
+  def main(args: Array[String]) {
+    ImageConverter.processImages()
+  }
+}
 
