@@ -46,7 +46,7 @@ private[mp3] class Mp3File(f: File) extends IsoMediaFile(f) {
     }
 
     readRemainingFrames()
-    frames.toSeq
+    frames
   }
 
   def readFrames(): Seq[Frame] =
