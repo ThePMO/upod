@@ -1,10 +1,8 @@
 package mobi.upod.app.storage
 
 import android.app.Application
-import com.github.nscala_time.time.Imports._
 import mobi.upod.android.content.preferences._
 import mobi.upod.app.AppUpgradeListener
-import mobi.upod.app.gui.info.SponsorRequestCardHeaders
 import org.joda.time.DateTime
 
 class InternalAppPreferences(app: Application) extends DevicePreferences(app) with AppUpgradeListener {
@@ -32,9 +30,6 @@ class InternalAppPreferences(app: Application) extends DevicePreferences(app) wi
   lazy val showStartupWizard = new BooleanPreference("show_startup_wizard", true) with Setter[Boolean]
   lazy val showUpdateWizard = new BooleanPreference("show_update_wizard", false) with Setter[Boolean]
   lazy val showTrialExpiredMessage = new BooleanPreference("show_trial_expired_message", true) with Setter[Boolean]
-
-  lazy val mayShowRateRequest = new BooleanPreference("may_show_rate_request", true) with Setter[Boolean]
-  lazy val lastRateRequest = new DateTimePreference("last_rate_request", Some(installationDate + SponsorRequestCardHeaders.RequestGap)) with Setter[DateTime]
 
   lazy val mayShowPurchaseRequest = new BooleanPreference("may_show_purchase_request", true) with Setter[Boolean]
   lazy val lastPurchaseRequest = new DateTimePreference("last_purchase_request", Some(installationDate)) with Setter[DateTime]

@@ -28,17 +28,9 @@
             android:title="@string/pref_purchase"
             android:summary="@string/pref_purchase_summary"/>
         <Preference
-            android:key="pref_rate"
-            android:title="@string/pref_rate"
-            android:summary="@string/pref_rate_summary"/>
-        <Preference
             android:key="pref_share_upod"
             android:title="@string/pref_share_upod"
             android:summary="@string/pref_share_upod_summary"/>
-        <Preference
-            android:key="pref_beta"
-            android:title="@string/pref_beta"
-            android:summary="@string/pref_beta_summary"/>
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/pref_category_support">

@@ -5,7 +5,7 @@ import mobi.upod.android.app.action.BrowseAction
 import mobi.upod.android.logging.{LogConfiguration, SendDiagnosticsAction}
 import mobi.upod.android.preference.{PreferenceChangeListener, SimplePreferenceFragment}
 import mobi.upod.app.R
-import mobi.upod.app.gui.info.{RateAction, ResetTipsAction, ShareUpodAction, ShowAboutDialogAction}
+import mobi.upod.app.gui.info.{ResetTipsAction, ShareUpodAction, ShowAboutDialogAction}
 
 
 class SupportFragment extends SimplePreferenceFragment(R.xml.pref_support) {
@@ -26,9 +26,7 @@ class SupportFragment extends SimplePreferenceFragment(R.xml.pref_support) {
     "pref_support_site" -> new BrowseAction("http://upod.uservoice.com"),
     "pref_send_diagnostics" -> new SendDiagnosticsAction(),
 
-    "pref_rate" -> new RateAction(true),
-    "pref_share_upod" -> new ShareUpodAction,
-    "pref_beta" -> new BrowseAction("https://plus.google.com/communities/113638659568530595051")
+    "pref_share_upod" -> new ShareUpodAction
   )
 
   private def onEnhancedLoggingChanged(preference: Preference, newValue: AnyRef): Boolean = {

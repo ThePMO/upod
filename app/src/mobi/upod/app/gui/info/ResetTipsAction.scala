@@ -11,7 +11,6 @@ class ResetTipsAction(implicit val bindingModule: BindingModule) extends Action 
 
   override def onFired(context: Context): Unit = {
     TipCardHeader.resetTipStatus()
-    SponsorRequestCardHeaders.reset()
     Toast.show(context, R.string.pref_reset_tips_confirmation)
   }
 }

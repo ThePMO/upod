@@ -284,10 +284,6 @@ Erfahre mehr auf der <a href="http://upod.uservoice.com/knowledgebase/articles/2
     <string name="tip_automatic_download_start_title">Automatischer Download</string>
     <string name="tip_automatic_download_start_details">Mit der Premimu-Version kannst Du den Download automatisch starten, sobald eine WLAN-Verbindung besteht.</string>
 
-    <string name="rate_request_title">uPod bewerten</string>
-    <string name="rate_request_details">Gefällt Dir uPod? Großartig, dann nimm Dir doch bitte eine Minute Zeit um uPod zu bewerten.</string>
-    <string name="action_rate">Bewerten</string>
-
     <string name="purchase_request_title">Premium-Version</string>
     <string name="purchase_request_details">Gönne Dir die Permium-Version und erhalte zusätzliche Features wie den automatischen Download, die geräteübergreifende Synchronisierung und Chromecast-Support. Außerdem unterstützt Du mit Deiner Zahlung mich und die Weiterentwicklung von uPod.</string>
     <string name="purchase_request_more">Erzähl mir mehr</string>
@@ -642,13 +638,8 @@ Erfahre mehr auf der <a href="http://upod.uservoice.com/knowledgebase/articles/2
     <string name="pref_purchase">Premium-Lizenz erwerben</string>
     <string name="pref_purchase_summary">Schalte uPods Premium-Features frei und hilf uns uPod weiter zu verbessern</string>
 
-    <string name="pref_rate">Bewerte uPod auf Google play!</string>
-    <string name="pref_rate_summary">Hilf uns uPod noch erfolgreicher zu machen und bewerte es auf Google play!</string>
-
     <string name="pref_share_upod">Erzähle deinen Freunden von uPod</string>
     <string name="pref_share_upod_summary">Hilf uns uPod bekannter zu machen und erzähle deinen Freunden von uPod</string>
-    <string name="pref_beta">uPod Beta-Kanal</string>
-    <string name="pref_beta_summary">Werde uPod-Beta-Tester</string>
     <string name="pref_category_info">Info</string>
     <string name="pref_about">Über uPod</string>
     <string name="pref_about_summary">Versionsnummer und Lizenzen</string>
