@@ -54,7 +54,6 @@
     <string name="view_mode_podcasts">Podcasts</string>
     <string name="view_mode_episodes">Episoden</string>
     <string name="view_mode_grouped_episodes">Gruppierte Episoden</string>
-    <string name="action_purchase">Premium…</string>
     <string name="action_open_drawer">Navigation öffnen</string>
     <string name="action_close_drawer">Navigation schließen</string>
     <string name="action_add_to_library">Zu meinen Episoden hinzufügen</string>
@@ -212,8 +211,6 @@ Erfahre mehr auf der <a href="http://upod.uservoice.com/knowledgebase/articles/2
 
     <string name="chapter_image_load_error">Laden des Bildes fehlgeschlagen.</string>
 
-    <string name="chapter_premium_hint">Hol Dir uPod Premium oder starte den Testzeitraum (Einstellungen &gt; Lizenz) um hier die vollständige Kapitelliste zu sehen und über die Benutzeroberfläche oder Deine Headset-Controls Kapitel direkt anzuspringen.</string>
-
     <!-- sleep timer -->
     <string name="sleep_timer">Sleeptimer</string>
 
@@ -224,25 +221,6 @@ Erfahre mehr auf der <a href="http://upod.uservoice.com/knowledgebase/articles/2
 
     <string name="sleep_timer_mode_chapter">Kapitel</string>
     <string name="sleep_timer_mode_episode">Episode</string>
-
-    <!-- licensing -->
-    <string name="premium_feature">Premium-Feature</string>
-    <string name="premium_feature_details">Du benötigst die Premium-Version um dieses Feature zu nutzen.</string>
-    <string name="premium_feature_details_with_trial_option">Du benötigst die Premium-Version um dieses Feature zu nutzen. Alternativ kannst Du jetzt den Testzeitraum starten, um alle Premium-Features für 7 Tage zu nutzen.</string>
-
-    <string name="checking_license">Überprüfung der Lizenz&#8230;</string>
-
-    <string name="trial_start_title">Testzeitraum starten</string>
-    <string name="trial_start_details">Während des Testzeitraums kannst Du all Premium-Features kostenlos ausprobieren. Möchtest Du jetzt Deinen 7-tägigen Testzeitraum starten?</string>
-
-    <string name="trial_started">Testzeitraum gestartet</string>
-    <string name="trial_expired">Testzeitraum abgelaufen</string>
-    <string name="trial_expired_dialog">Der Testzeitraum für die Premium-Version ist abgelaufen. Du kannst uPod weiterhin ohne die Premium-Funktionen nutzen oder die Premium-Version kaufen.</string>
-    <string name="trial_period_remaining">Noch %d Tag(e) Premium-Test verbleibend</string>
-    <string name="trial_period_expires_soon">Dein Premium-Test endet innerhalb der nächsten %d Stunde(n)!</string>
-    <string name="license_purchase">Premium-Version…</string>
-    <string name="action_start_trial">Ausprobieren</string>
-    <string name="disabled_premium_preferences">Premium-Settings deaktiviert</string>
 
     <!-- support -->
     <string name="collecting_diagnostics">Sammle Diagnosedaten&#8230;</string>
@@ -283,13 +261,6 @@ Erfahre mehr auf der <a href="http://upod.uservoice.com/knowledgebase/articles/2
 
     <string name="tip_automatic_download_start_title">Automatischer Download</string>
     <string name="tip_automatic_download_start_details">Mit der Premimu-Version kannst Du den Download automatisch starten, sobald eine WLAN-Verbindung besteht.</string>
-
-    <string name="purchase_request_title">Premium-Version</string>
-    <string name="purchase_request_details">Gönne Dir die Permium-Version und erhalte zusätzliche Features wie den automatischen Download, die geräteübergreifende Synchronisierung und Chromecast-Support. Außerdem unterstützt Du mit Deiner Zahlung mich und die Weiterentwicklung von uPod.</string>
-    <string name="purchase_request_more">Erzähl mir mehr</string>
-
-    <string name="sponsor_request_dismiss_temporary">Später</string>
-    <string name="sponsor_request_dismiss_permanent">Nein danke</string>
 
     <string name="share_upod_title">Erzähle deinen Freunden von uPod</string>
     <string name="share_upod_subject">Schau Dir uPod an — ein großartiger Podcast-Player für Android</string>
@@ -602,25 +573,6 @@ Erfahre mehr auf der <a href="http://upod.uservoice.com/knowledgebase/articles/2
     <string name="pref_storage_space_minimum">Speicherplatz freihalten</string>
     <string name="pref_storage_space_minimum_summary">Halte mindestens %,d MB Speicherplatz frei. Downloads werden angehalten, wenn kein Platz mehr verfügbar ist.</string>
 
-    <!-- license -->
-    <string name="pref_category_license">Lizenz</string>
-    <string name="pref_license_none">Keine Lizenz</string>
-    <string name="pref_license_none_summary">Du hast keine Lizenz. Tippe hier, um die Lizenz zu überprüfen.</string>
-    <string name="pref_license_google">Google play! Lizenz</string>
-    <string name="pref_license_google_summary">Du hast eine gültige Google play! Lizenz</string>
-    <string name="pref_license_giveaway">Geschenkte Lizenz</string>
-    <string name="pref_license_giveaway_summary">Du hast eine gültige geschenkte Lizenz</string>
-    <string name="pref_license_purchase">Premium-Version kaufen</string>
-    <string name="pref_license_purchase_summary">Öffnet die uPod-Premium-Lizenz in Google play!</string>
-
-    <string name="pref_license_start_trial">Testzeitraum starten</string>
-    <string name="pref_license_start_trial_summary">Teste alle Premium-Features für 7 Tage</string>
-
-    <string name="pref_license_trial_period">Testzeitraum</string>
-    <string name="pref_license_trial_period_summary">noch %d Tag(e) verbleibend</string>
-    <string name="pref_license_trial_period_summary_epxires_soon">Endet innerhalb der nächsten %d Stunde(n)!</string>
-    <string name="pref_license_trial_period_summary_expired">Abgelaufen!</string>
-
     <string name="pref_category_support">Feedback &amp; Support</string>
 
     <string name="pref_reset_tips">Tipps nochmal zeigen</string>
@@ -634,9 +586,6 @@ Erfahre mehr auf der <a href="http://upod.uservoice.com/knowledgebase/articles/2
     <string name="pref_send_diagnostics">Sende Diagnose-Daten</string>
     <string name="pref_send_diagnostics_summary">Sende Logs und andere Diagnose-Daten zum Support mit deiner E-Mail-App</string>
     <string name="pref_category_contribute">Mitwirken</string>
-
-    <string name="pref_purchase">Premium-Lizenz erwerben</string>
-    <string name="pref_purchase_summary">Schalte uPods Premium-Features frei und hilf uns uPod weiter zu verbessern</string>
 
     <string name="pref_share_upod">Erzähle deinen Freunden von uPod</string>
     <string name="pref_share_upod_summary">Hilf uns uPod bekannter zu machen und erzähle deinen Freunden von uPod</string>

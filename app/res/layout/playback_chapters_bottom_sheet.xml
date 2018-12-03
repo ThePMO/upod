@@ -103,31 +103,6 @@
             android:layout_height="match_parent"
             android:layout_below="@id/chapterBar"
             android:divider="@color/transparent"/>
-        <RelativeLayout
-            android:id="@+id/premiumHint"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/chapterBar"
-            android:padding="@dimen/space_block">
-            <TextView
-                android:id="@+id/premiumHintText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:gravity="center"
-                android:textAppearance="@style/TextAppearance.Body1"
-                android:textColor="@color/text_primary_dark"
-                android:text="@string/chapter_premium_hint"/>
-            <Button
-                android:id="@+id/action_purchase"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/premiumHintText"
-                android:layout_centerHorizontal="true"
-                style="@style/CardButton"
-                android:textColor="@color/white"
-                android:text="@string/purchase_request_more"/>
-        </RelativeLayout>
         <include
             layout="@layout/shadow_inner_top_4"
             android:layout_width="match_parent"

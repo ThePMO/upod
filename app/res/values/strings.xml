@@ -147,9 +147,6 @@
             >Grouped episodes</string>
 
     <!-- actions -->
-    <string name="action_purchase"
-            comment="action item"
-            >Premium…</string>
     <string name="action_open_drawer"
             comment="action item"
             >Open navigation drawer</string>
@@ -480,8 +477,6 @@
 
     <string name="chapter_image_load_error">Failed to load the image.</string>
 
-    <string name="chapter_premium_hint">Upgrade to the Premium version or start the trial period (Settings &gt; License) to see the full chapter list here and navigate to chapters using the user interface or your headset controls.</string>
-
     <!-- sleep timer -->
     <string name="sleep_timer">Sleep timer</string>
 
@@ -492,39 +487,6 @@
 
     <string name="sleep_timer_mode_chapter">Chapter</string>
     <string name="sleep_timer_mode_episode">Episode</string>
-
-    <!-- licensing -->
-    <string name="premium_feature">Premium feature</string>
-    <string name="premium_feature_details">You need the premium version to use this feature.</string>
-    <string name="premium_feature_details_with_trial_option">You need to purchase the premium version to use this feature or you can start the trial period to test all premium features for 7 days.</string>
-
-    <string name="checking_license"
-            comment="wait dialog text shown when tapping the license status entry in the license settings while the license is checked"
-            >Checking license…</string>
-
-    <string name="trial_start_title">Start trial period</string>
-    <string name="trial_start_details">During the trial period you can test all premium features for free. Do you want to start your 7 day trial now?</string>
-
-    <string name="trial_started">Trial period started</string>
-    <string name="trial_expired"
-            comment="dialog/notification title shown when the trial period has expired"
-            >Trial period expired</string>
-    <string name="trial_expired_dialog"
-            comment="content of the 'Trial period expired' dialog"
-            >Your premium trial period has expired. You can go on using uPod without the premium features or purchase the premium version.</string>
-
-    <string name="trial_period_remaining"
-            comment="toast showing the remaining trial period"
-            >%d day(s) left for premium trial period</string>
-    <string name="trial_period_expires_soon"
-            comment="toast showing the remaining trial period when it expires within the next 24 hours"
-            >Your premium trial will expire within the next %d hour(s)!</string>
-
-    <string name="license_purchase"
-            comment="button of the 'Tiral period expired' dialog that opens the uPod license app in the Google play app"
-            >Premium version…</string>
-    <string name="action_start_trial">Start trial</string>
-    <string name="disabled_premium_preferences">Disabled premium settings</string>
 
     <!-- support -->
     <string name="collecting_diagnostics"
@@ -594,13 +556,6 @@
 
     <string name="tip_automatic_download_start_title">Automatic Download</string>
     <string name="tip_automatic_download_start_details">Upgrade to the premium version to automatically start the download as soon as a Wi-FI connection becomes available.</string>
-
-    <string name="purchase_request_title">Go Premium</string>
-    <string name="purchase_request_details">Upgrade to the premium version and get additional features like automatic downloads, cross device synchronization and Chromecast support. With your payment you support me and the further development of uPod.</string>
-    <string name="purchase_request_more">Tell me more</string>
-
-    <string name="sponsor_request_dismiss_temporary">Later</string>
-    <string name="sponsor_request_dismiss_permanent">No, thanks</string>
 
     <string name="share_upod_title">Tell your friends about uPod</string>
     <string name="share_upod_subject">Checkout uPod — A great Podcast Player for Android</string>
@@ -1271,55 +1226,6 @@
     <string name="pref_storage_space_minimum">Minimum space</string>
     <string name="pref_storage_space_minimum_summary">Keep a minimum of %,d MB of free space. Downloads will be stopped when no further space is available.</string>
     <string name="megabytes">MB</string>
-
-    <!-- license -->
-    <string name="pref_category_license"
-            comment="top level settings category"
-            >License</string>
-
-    <string name="pref_license_none"
-            comment="settings title shown for the first setting in the 'License' settings screen when the user does not have a license"
-            >No license</string>
-    <string name="pref_license_none_summary"
-            comment="settings summary shown for the first setting in the 'License' settings screen when the user does not have a license"
-            >You do not have a license. Tap to check for license.</string>
-
-    <string name="pref_license_google"
-            comment="settings title shown for the first setting in the 'License' settings screen when the user has purchased a license at Google play!"
-            >Google play! license</string>
-    <string name="pref_license_google_summary"
-            comment="settings summary shown for the first setting in the 'License' settings screen when the user has purchased a license at Google play!"
-            >You have a valid Google play! license</string>
-
-    <string name="pref_license_giveaway"
-            comment="settings title shown for the first setting in the 'License' settings screen when the user has got a give-away license from the uPod team"
-            >Give-away license</string>
-    <string name="pref_license_giveaway_summary"
-            comment="settings summary shown for the first setting in the 'License' settings screen when the user has got a give-away license from the uPod team"
-            >You have a valid give-away license</string>
-
-    <string name="pref_license_purchase"
-            comment="setting title"
-            >Purchase premium version</string>
-    <string name="pref_license_purchase_summary"
-            comment="setting summary"
-            >Opens the uPod premium license in Google play!</string>
-
-    <string name="pref_license_start_trial">Start trial period</string>
-    <string name="pref_license_start_trial_summary">Test all premium features for 7 days</string>
-
-    <string name="pref_license_trial_period"
-            comment="setting title"
-            >Trial period</string>
-    <string name="pref_license_trial_period_summary"
-            comment="setting summary shown when the user does not have a license and the trial period has not expired yet"
-            >%d day(s) remaining</string>
-    <string name="pref_license_trial_period_summary_epxires_soon"
-            comment="setting summary shown when the user does not have a license and the trial period will expire within the next 24 hours"
-            >Expires within the next %d hour(s)!</string>
-    <string name="pref_license_trial_period_summary_expired"
-            comment="setting summary shown when the user does not have a license and the trial period has expired"
-            >Expired!</string>
 
     <!-- support -->
     <string name="pref_category_support"
