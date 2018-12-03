@@ -6,6 +6,8 @@ val androidBuildToolsVersion = Some("26.0.1")
 val androidPlatformTarget = "android-25"
 val androidMinSdkVersion = "21" // should be 14 (21 for debug because of multi dex support)
 
+resolvers in ThisBuild += Resolver.jcenterRepo
+
 //
 // android libraries
 //
