@@ -167,7 +167,7 @@ private[episode] trait EpisodeListItemView
   protected def onEpisodeDownloadInfoUpdate(episode: EpisodeListItem, stateUpdate: Boolean): Unit = ()
 
   private def updateEpisodeDownloadInfo(episode: EpisodeBaseWithDownloadInfo, stateUpdate: Boolean) {
-    if (_episode.map(_.id) == Some(episode.id)) {
+    if (_episode.map(_.id).contains(episode.id)) {
       _episode = _episode.map(e => e.copy(
         media = e.media.copy(length = episode.media.length), downloadInfo = episode.downloadInfo))
       _episode.foreach { e =>
@@ -199,7 +199,7 @@ private[episode] trait EpisodeListItemView
   protected def onEpisodePlaybackInfoUpdate(episode: EpisodeListItem, stateUpdate: Boolean): Unit = ()
 
   private def updateEpisodePlaybackInfo(episode: EpisodeBaseWithPlaybackInfo, stateUpdate: Boolean) {
-    if (_episode.map(_.id) == Some(episode.id)) {
+    if (_episode.map(_.id).contains(episode.id)) {
       _episode = _episode.map(e => e.copy(
         media = e.media.copy(duration = episode.media.duration), playbackInfo = episode.playbackInfo))
       _episode.foreach { e =>
