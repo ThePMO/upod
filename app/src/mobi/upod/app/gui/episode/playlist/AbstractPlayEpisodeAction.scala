@@ -4,14 +4,12 @@ import android.content.Context
 import com.escalatesoft.subcut.inject.BindingModule
 import mobi.upod.app.data.EpisodeListItem
 import mobi.upod.app.gui.episode.AsyncEpisodeAction
-import mobi.upod.app.services.cast.MediaRouteService
 import mobi.upod.app.services.playback.PlaybackService
 
 private[episode] abstract class AbstractPlayEpisodeAction(episode: => Option[EpisodeListItem])(implicit bindings: BindingModule)
   extends AsyncEpisodeAction(episode) {
 
   protected lazy val playbackService = inject[PlaybackService]
-  protected lazy val mediaRouteService = inject[MediaRouteService]
 
   private def thisEpisodeIsPlaying =
     playbackService.playingEpisode.map(_.id) == this.episode.map(_.id) && playbackService.isPlaying

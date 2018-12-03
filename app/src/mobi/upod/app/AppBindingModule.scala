@@ -11,9 +11,6 @@ import mobi.upod.android.os.PowerManager
 import mobi.upod.android.view.DisplayMetrics
 import mobi.upod.app.gui.CoverartLoader
 import mobi.upod.app.services._
-import mobi.upod.app.services.auth.AuthService
-import mobi.upod.app.services.cast.MediaRouteService
-import mobi.upod.app.services.cloudmessaging.CloudMessagingService
 import mobi.upod.app.services.device.{DeviceIdService, DeviceIdServiceImpl}
 import mobi.upod.app.services.download.DownloadService
 import mobi.upod.app.services.licensing.LicenseService
@@ -57,8 +54,6 @@ class AppBindingModule(app: App) extends NewBindingModule(
     bind [CoverartProvider] toSingle new CoverartProvider(app)
 
     // service layer
-    bind [AuthService] toSingle new AuthService
-    bind [CloudMessagingService] toSingle new CloudMessagingService
     bind [DeviceIdService] toSingle new DeviceIdServiceImpl(app)
     bind [ConnectionStateRetriever] toSingle new ConnectionStateRetriever(app)
     bind [StorageService] toSingle new StorageService
@@ -73,7 +68,6 @@ class AppBindingModule(app: App) extends NewBindingModule(
     bind [NavigationSettings] toSingle new NavigationSettingsService(app)
     bind [OnlinePodcastService] toProvider new OnlinePodcastService
     bind [LicenseService] toSingle new LicenseService
-    bind [MediaRouteService] toSingle new MediaRouteService
     bind [SyncService] toSingle new SyncService(app)
     bind [AnnouncementService] toSingle new AnnouncementService
 
@@ -95,9 +89,7 @@ class AppBindingModule(app: App) extends NewBindingModule(
       inject[A](None)
 
     def initServices(): Unit = {
-      initService[MediaRouteService]().registerRouteChangeCallbacks()
       initService[AnnouncementService]().init()
-      initService[CloudMessagingService]().init()
       initService[LicenseService]()
       initService[SyncService]()
       initService[DownloadService]()
@@ -121,7 +113,6 @@ class AppBindingModule(app: App) extends NewBindingModule(
   }
 
   override def onAppTerminate(): Unit = {
-    inject[MediaRouteService](None).unregisterRouteChangeCallbacks()
     inject[DatabaseHelper](None).close()
   }
 }

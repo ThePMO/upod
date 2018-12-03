@@ -13,8 +13,7 @@ import mobi.upod.android.content.preferences.PreferenceChangeListener
 import mobi.upod.android.logging.Logging
 import mobi.upod.android.view.ChildViews
 import mobi.upod.app.gui.episode.FullFeaturedEpisodeListHolderActivity
-import mobi.upod.app.gui.auth.SignInActivity
-import mobi.upod.app.gui.preference.{StartupWizardActivity, StoragePermissionRequestActivity, UpdateWizardActivity}
+import mobi.upod.app.gui.preference.{StartupWizardActivity, StoragePermissionRequestActivity}
 import mobi.upod.app.services.{EpisodeListener, EpisodeService}
 import mobi.upod.app.storage.{InternalAppPreferences, UiPreferences}
 
@@ -27,7 +26,6 @@ final class MainActivity
   with ListenerActivity
   with EpisodeListener
   with LicenseUi
-  with SignInActivity
   with LoaderCallbacks[Option[EpisodeCounterItem]]
   with ChildViews
   with AppInjection
@@ -65,10 +63,6 @@ final class MainActivity
       log.trace("showing startup wizard instead of main activity")
       StartupWizardActivity.startInsteadOf(this)
       super.onCreate(savedInstanceState)
-    } else if (UpdateWizardActivity.shouldBeShown) {
-      log.trace("showing update wizard instead of main activity")
-      UpdateWizardActivity.startInsteadOf(this)
-      super.onCreate(savedInstanceState)
     } else {
       super.onCreate(savedInstanceState)
       setContentView(R.layout.main)
@@ -97,7 +91,6 @@ final class MainActivity
       invalidateNavigationItems()
     }
 
-    signInIfNecessary()
     syncService.ensureAutomaticSyncIsScheduled()
   }
 

@@ -11,7 +11,6 @@ import mobi.upod.app.App
 import mobi.upod.app.data._
 import mobi.upod.app.gui.playback.{PlaybackActivity, PlaybackErrorActivity}
 import mobi.upod.app.services.EpisodeService
-import mobi.upod.app.services.cast.{MediaRouteDevice, MediaRouteListener, MediaRouteService}
 import mobi.upod.app.services.download.DownloadService
 import mobi.upod.app.services.net.ConnectionStateRetriever
 import mobi.upod.app.services.playback.player.AudioFxAvailability
@@ -26,7 +25,6 @@ class PlaybackService(implicit val bindingModule: BindingModule)
   with AsyncObservable[PlaybackListener]
   with AsyncExecution
   with PlaybackListener
-  with MediaRouteListener
   with Injectable
   with Logging {
 
@@ -35,7 +33,6 @@ class PlaybackService(implicit val bindingModule: BindingModule)
   private lazy val episodeService = inject[EpisodeService]
   private lazy val syncService = inject[SyncService]
   private lazy val downloadService = inject[DownloadService]
-  private lazy val mediaRouteService = inject[MediaRouteService]
   private lazy val connectionService = inject[ConnectionStateRetriever]
   private lazy val downloadPreferences = inject[DownloadPreferences]
   private lazy val playbackPreferences = inject[PlaybackPreferences]
@@ -52,7 +49,6 @@ class PlaybackService(implicit val bindingModule: BindingModule)
   //
 
   asyncUpdatePlayingOrNextEpisodeId()
-  mediaRouteService.addWeakListener(this)
 
   def playingOrNextEpisodeId: Option[Long] = _playingOrNextEpisodeId
 
@@ -290,7 +286,7 @@ class PlaybackService(implicit val bindingModule: BindingModule)
     episode match {
       case Some(e) =>
         context match {
-          case Some(activity: Activity) if !mediaRouteService.currentDevice.exists(_.isInternetStreamingDevice) =>
+          case Some(activity: Activity) =>
             val storageProvider = storagePreferences.storageProvider
             val playbackError = storageProvider.whenReadable(s => e.mediaFile(s)) match {
               case None =>
@@ -475,9 +471,6 @@ class PlaybackService(implicit val bindingModule: BindingModule)
     fire(_.onPlaybackPaused(episode))
 
   override def onPlaybackStopped(): Unit = {
-    if (mediaRouteService.currentDevice.isEmpty) {
-      unbindService()
-    }
     fire(_.onPlaybackStopped())
   }
 
@@ -511,16 +504,4 @@ class PlaybackService(implicit val bindingModule: BindingModule)
 
   override def onVolumeGainChanged(gain: Float): Unit =
     fire(_.onVolumeGainChanged(gain))
-
-  override def onMediaRouteDeviceConnected(device: MediaRouteDevice): Unit = {
-    device.currentMediaUrl match {
-      case Some(mediaUrl) =>
-        callService(_.joinRemoteSession(mediaUrl, device.currentPlaybackState))
-      case _ =>
-        stop()
-    }
-  }
-
-  override def onMediaRouteDeviceDisconnected(device: MediaRouteDevice): Unit =
-    stop()
 }

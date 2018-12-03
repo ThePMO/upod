@@ -5,7 +5,6 @@ import android.graphics.SurfaceTexture
 import com.escalatesoft.subcut.inject.{BindingModule, Injectable}
 import mobi.upod.android.logging.Logging
 import mobi.upod.app.data.EpisodeListItem
-import mobi.upod.app.services.cast.MediaRouteService
 import mobi.upod.app.storage.AudioPlayerType.AudioPlayerType
 import mobi.upod.app.storage.{AudioPlayerType, PlaybackPreferences, StorageProvider}
 
@@ -16,7 +15,6 @@ class SwitchableMediaPlayer(context: Context)(implicit val bindingModule: Bindin
 
   import MediaPlayer._
 
-  private lazy val mediaRouteService = inject[MediaRouteService]
   private lazy val audioPlayerPreference = inject[PlaybackPreferences].audioPlayerType
   private var player: Option[MediaPlayer] = None
 
@@ -49,13 +47,7 @@ class SwitchableMediaPlayer(context: Context)(implicit val bindingModule: Bindin
       }
     }
 
-    mediaRouteService.mediaPlayer match {
-      case Some(remotePlayer) =>
-        log.crashLogInfo("switching to remote player")
-        player = Some(remotePlayer)
-      case None =>
-        ensureAdequateLocalPlayer()
-    }
+    ensureAdequateLocalPlayer()
   }
 
   def isPlayerSet: Boolean = player.isDefined

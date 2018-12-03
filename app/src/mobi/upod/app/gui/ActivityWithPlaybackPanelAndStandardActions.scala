@@ -10,8 +10,7 @@ import mobi.upod.app.services.licensing.OpenGooglePlayLicenseAction
 trait ActivityWithPlaybackPanelAndStandardActions
   extends ActionBarActivity
   with PlaybackPanel
-  with ActivityActions
-  with MediaRouteUi {
+  with ActivityActions {
 
   protected val optionsMenuResourceId = R.menu.standard_activity_actions
 

@@ -13,11 +13,4 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:textAppearance="@style/TextAppearance.Wizard"/>
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/signIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/introduction"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/space_large"/>
 </RelativeLayout>

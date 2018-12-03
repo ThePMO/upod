@@ -13,7 +13,6 @@ import mobi.upod.android.widget.{PrimaryActionChooser, TintableProgressBar}
 import mobi.upod.app.R
 import mobi.upod.app.data.{EpisodeBaseWithDownloadInfo, EpisodeBaseWithPlaybackInfo, EpisodeListItem}
 import mobi.upod.app.gui._
-import mobi.upod.app.services.cast.{MediaRouteDevice, MediaRouteListener, MediaRouteService}
 import mobi.upod.app.services.download.{DownloadListener, DownloadService}
 import mobi.upod.app.services.playback.{PlaybackListener, PlaybackService}
 import mobi.upod.app.storage.{ImageSize, PlaybackPreferences, UiPreferences}
@@ -26,13 +25,11 @@ private[episode] trait EpisodeListItemView
   with ContextMenuActions
   with DownloadListener
   with PlaybackListener
-  with MediaRouteListener
   with Injectable {
 
   protected lazy val coverartLoader = inject[CoverartLoader]
   protected lazy val downloadService = inject[DownloadService]
   protected lazy val playbackService = inject[PlaybackService]
-  protected lazy val mediaRouteService = inject[MediaRouteService]
   protected lazy val playbackPreferences = inject[PlaybackPreferences]
   protected lazy val uiPreferences = inject[UiPreferences]
 
@@ -59,7 +56,6 @@ private[episode] trait EpisodeListItemView
   protected def createListItemView(): Unit = {
     downloadService.addWeakListener(this, false)
     playbackService.addWeakListener(this, false)
-    mediaRouteService.addWeakListener(this, false)
   }
 
   protected def setEpisode(item: EpisodeListItem) {
@@ -229,16 +225,6 @@ private[episode] trait EpisodeListItemView
     invalidateMenu()
   }
 
-  //
-  // media route listener
-  //
-
-  override def onMediaRouteDeviceDisconnected(device: MediaRouteDevice): Unit =
-    invalidateMenu()
-
-  override def onMediaRouteDeviceConnected(device: MediaRouteDevice): Unit =
-    invalidateMenu()
-
   override def onPlaybackPositionChanged(episode: EpisodeBaseWithPlaybackInfo): Unit = {
     updateEpisodePlaybackInfo(episode, false)
   }
@@ -250,14 +236,12 @@ private[episode] trait EpisodeListItemView
   override def onActivityStart() {
     downloadService.addWeakListener(this)
     playbackService.addWeakListener(this)
-    mediaRouteService.addWeakListener(this)
     invalidateMenu()
   }
 
   override def onActivityStop() {
     downloadService.removeListener(this)
     playbackService.removeListener(this)
-    mediaRouteService.removeListener(this)
   }
 
   //
@@ -288,8 +272,6 @@ private[episode] trait EpisodeListItemView
         if (episode.downloadInfo.complete) addForDownloadedNew else addForDownloadableNew
 
       case id if id == R.id.action_pause =>
-        true
-      case id if id == R.id.action_cast =>
         true
       case id if id == R.id.action_stream =>
         primaryDownloadAction == Stream

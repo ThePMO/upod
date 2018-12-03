@@ -142,7 +142,6 @@ val app = project.in(file("app")).
       "com.evernote" % "android-job" % "1.1.2",
       "com.google.http-client" % "google-http-client-android" % "1.20.0",
       "com.google.api-client" % "google-api-client-android" % "1.22.0",
-      "com.google.apis" % "google-api-services-drive" % "v3-rev78-1.22.0",
       "com.google.code.gson" % "gson" % "2.3.1",
       "com.googlecode.mp4parser" % "isoparser" % "1.1.17",
       "com.github.nscala-time" % "nscala-time_2.11" % "2.0.0",
@@ -152,10 +151,6 @@ val app = project.in(file("app")).
       "com.github.tony19" % "logback-android-classic" % "1.1.1-4" exclude("com.google.android", "android"),
       "org.slf4j" % "slf4j-api" % "1.7.6",
 
-      aar("com.google.android.gms" % "play-services-cast" % "10.2.0"),
-      aar("com.google.android.gms" % "play-services-auth" % "10.2.0"),
-      aar("com.google.android.gms" % "play-services-drive" % "10.2.0"),
-      aar("com.google.firebase" % "firebase-messaging" % "10.2.0"),
       aar("com.android.support" % "support-v13" % "25.3.1"),
       aar("com.android.support" % "design" % "25.3.1"),
       aar("com.android.support" % "cardview-v7" % "25.3.1"),
@@ -163,8 +158,6 @@ val app = project.in(file("app")).
       aar("com.android.support" % "appcompat-v7" % "25.3.1"),
       "com.android.support" % "multidex" % "1.0.1"
     ),
-
-    googleServicesSettings,
 
     useProguardInDebug in Android := false,
 

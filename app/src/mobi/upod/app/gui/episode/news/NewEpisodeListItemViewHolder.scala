@@ -24,7 +24,6 @@ class NewEpisodeListItemViewHolder
     R.id.action_add_download -> new AddEpisodeToDownloadListAction(episodeListItem) with EpisodeAdapterUpdate with ViewDismissAction with DismissActionInfo,
     R.id.action_delete_download -> new DeleteEpisodeDownloadAction(episodeListItem) with EpisodeAdapterUpdate,
     R.id.action_pause -> new PauseEpisodeAction(episodeListItem),
-    R.id.action_cast -> new CastEpisodeAction(episodeListItem) with ViewDismissAction with DismissActionInfo,
     R.id.action_stream -> new StreamEpisodeAction(episodeListItem) with ViewDismissAction with DismissActionInfo,
     R.id.action_play -> new PlayEpisodeAction(episodeListItem) with ViewDismissAction with DismissActionInfo,
     R.id.action_play_next -> new PlayEpisodeNextAction(episodeListItem) with EpisodeAdapterUpdate with ViewDismissAction with DismissActionInfo,

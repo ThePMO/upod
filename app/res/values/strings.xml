@@ -184,9 +184,6 @@
     <string name="action_stream"
             comment="action item: starts playback for an episode which has not been downloaded"
             >Stream</string>
-    <string name="action_cast"
-            comment="action item: starts playback of an episode on a remote device (e.g. chromecast)"
-            >Cast</string>
     <string name="action_pause"
             comment="action item: pause playback"
             >Pause</string>
@@ -285,10 +282,6 @@
     <string name="action_open_episode_link"
             comment="action item: open the episode's link in the browser"
             >Open in browser</string>
-
-    <!-- GDrive -->
-    <string name="gdrive_connection_failed">Failed to connect to Google Drive</string>
-    <string name="gdrive_disabled">Disabled cloud sync</string>
 
     <!-- synchronization -->
     <string name="sync_started"

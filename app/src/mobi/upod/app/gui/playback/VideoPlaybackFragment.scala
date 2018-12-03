@@ -89,9 +89,7 @@ final class VideoPlaybackFragment extends PlaybackFragment with FragmentStateHol
       val newSize = playbackService.videoSize.forBoundingBox(currentSize)
       val layoutParams = new LayoutParams(newSize.width, newSize.height, Gravity.CENTER)
       videoView.setLayoutParams(layoutParams)
-      if (!isRemotePlayback) {
-        playbackPanel.setKeepScreenOn(true)
-      }
+      playbackPanel.setKeepScreenOn(true)
       hideOverlays(false)
       surfaceController.initVideoSurface()
     }
@@ -107,9 +105,7 @@ final class VideoPlaybackFragment extends PlaybackFragment with FragmentStateHol
   private def scheduleOverlayHide(): Unit = {
     val handler = playbackPanel.getHandler
     handler.removeCallbacks(DelayedOverlayHider)
-    if (!isRemotePlayback) {
-      handler.postDelayed(DelayedOverlayHider, HideDelay)
-    }
+    handler.postDelayed(DelayedOverlayHider, HideDelay)
   }
 
   private def showOverlays(): Unit = {
@@ -120,7 +116,7 @@ final class VideoPlaybackFragment extends PlaybackFragment with FragmentStateHol
   }
 
   private def hideOverlays(manual: Boolean): Unit = {
-    if (manual || !isRemotePlayback) {
+    if (manual) {
       overlayController.showOverlays(false)
     }
   }
@@ -161,7 +157,7 @@ final class VideoPlaybackFragment extends PlaybackFragment with FragmentStateHol
       e.podcastInfo.imageUrl.flatMap(coverartProvider.getImageBitmap(_, ImageSize.full))
     }
 
-    if (playbackService.isIdle || isRemotePlayback) {
+    if (playbackService.isIdle) {
       AsyncTask.execute {
         Try(loadPreviewImage) match {
           case Success(Some(img)) =>
@@ -172,7 +168,7 @@ final class VideoPlaybackFragment extends PlaybackFragment with FragmentStateHol
       } { image =>
         image match {
           case Some(img) =>
-            if (state.started && (playbackService.isIdle || isRemotePlayback)) {
+            if (state.started && (playbackService.isIdle)) {
               previewImageView.show(true)
               previewImageView.setImageDrawable(new BitmapDrawable(getActivity.getResources, img))
             } else {
@@ -189,9 +185,7 @@ final class VideoPlaybackFragment extends PlaybackFragment with FragmentStateHol
   }
 
   def hidePreviewImageOnPlaybackIfApplicable(): Unit = {
-    if (!isRemotePlayback) {
-      previewImageView.hide()
-    }
+    previewImageView.hide()
   }
 
   //
