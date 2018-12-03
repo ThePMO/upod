@@ -84,7 +84,7 @@ trait NavigationDrawer
 
   protected def onCreateDrawerOptionsMenu(menu: Menu): Boolean = false
 
-  def isDrawerOpen = drawerLayout.map(_.isDrawerOpen(Gravity.LEFT)).getOrElse(true)
+  def isDrawerOpen = drawerLayout.forall(_.isDrawerOpen(Gravity.LEFT))
 
   def openDrawer() {
     drawerLayout.foreach(_.openDrawer(Gravity.LEFT))

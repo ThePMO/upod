@@ -6,7 +6,7 @@ trait MinIntervalEventFilter[A] { self: Observable[A] =>
 
   def fireNonIntrusive(event: A => Unit) {
     val currentTime = System.currentTimeMillis()
-    val allowed = latestEventTime.map(_ + minIntervalMillis < currentTime).getOrElse(true)
+    val allowed = latestEventTime.forall(_ + minIntervalMillis < currentTime)
     if (allowed) {
       latestEventTime = Some(currentTime)
       fire(event)
