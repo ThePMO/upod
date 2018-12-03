@@ -121,7 +121,7 @@ class Color(val argb: Int) extends AnyVal with Serializable {
   }
 
   def css: String =
-    s"rgba($redFloat, $greenFloat, $blueFloat, $alphaFloat)"
+    "#%02x%02x%02x%02x".format(red, green, blue, alpha)
 
   def withAlpha(opacity: Int): Color =
     Color(opacity << 24 | (argb & 0x00ffffff))
