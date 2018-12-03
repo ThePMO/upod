@@ -81,7 +81,7 @@ private[mp4] object SampleInfo {
     }
 
     val sampleTimes = {
-      val timeToSampleEntries = sampleTable.getTimeToSampleBox.getEntries.asScala.toSeq
+      val timeToSampleEntries = sampleTable.getTimeToSampleBox.getEntries.asScala
       val sampleDeltas = timeToSampleEntries.
         flatMap(e => Seq.fill(e.getCount.toInt)(e.getDelta)).
         map(_ / (timeScale / 1000.0) toLong)
