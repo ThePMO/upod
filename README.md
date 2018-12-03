@@ -1,4 +1,5 @@
-# About uPod
+# uPod OSS
+## About
 uPod is a full blown podcast player for Android. It's key features are:
 
 - Audio playback with speed control and volume gain
@@ -20,30 +21,47 @@ uPod is a full blown podcast player for Android. It's key features are:
 - Responsive layout (looking great on phone and tablet support)
 - Material design (Lollipop/Android 5)
 - English and German translations
-
-Originally uPod was separated into a free and a premium version. The code provided here contains all the features. To enable them all you should at first disable the premium check. The premium features are:
-
-- Cloud backup and cross device sync of playback positions, playlist and episode states tied to your Google account
-- Chromecast support
 - Chapter navigation (MP3 and M4A)
 - Sleep timer (stop and end of chapter, episode or after some time)
 - Podcast specific settings (e.g. auto add to playlist, only keep _x_ latest episodes)
 - up to two specific sync times per day
 
-# Why now at github?
-I have no longer time to maintain uPod. Further on I've switched over to the dark side and am using iOS devices now. uPod contains to much know-how to get lost. That's why I publish the code here.
+## Development
 
-# Building uPod
-uPod has been developed using Scala which has proven to be a bad choice for Android development. Though I love Scala, the Scala support on the build site for Android projects is bad and lots of the projects which where dedicated to solving this problem are no longer maintained -- especially since Kotlin has been announced as an officially supported, modern language for Android. So building uPod is an adventure -- unfortunately.
+### Current state
+After uPod was open-sourced my first goal was to get a working build, to be able to continue using uPod as long as possible.
 
-## Missing information
-Some of the information in some of the build and source files is information related to private API accounts and thus has been removed by me. You can find all the missing stuff by searching for the string `???`.
+The easiest way to achieve this was to get rid of some features that needed these services. This is why this Open Source version does not support neither cloud sync nor Chromecast at the moment. I don't don't have need for those features myself, but feel free to bring then back in a way that can be easily configured at build-time, the removal commits 6706ecfa1c4fe583b77592d92be69464930d873e and 6d860823cbbd70501a719e5f984db9795e93824a should be a good start.
 
-## 3rd party Dependencies
-Unfortunately I needed to put some of the 3rd party dependencies into the project structure to make the whole application build.
+Currently the application is building and seems to work fine, except for the missing features. The TODOs that Sven added in the initial release are done. This means that the license check is removed, giving everyone all available features. All call's of Sven's webservices are removed, which mainly means that the Announcement about uPods discontinuation is gone. If you were effected by the black-on-black bug in the episode descriptions, that should be fixed :)
 
-## Development Builds
-For developing uPod you can build using sbt which is fast and comfortable (when it works). uPod uses [sbt-android](https://github.com/scala-android/sbt-android) for this purpose.
+The only thing I'm currently missing to do the switch to the OSS version is to find a good way to import all my data including the lists.
 
-## Release Builds
-Unfortunately I never managed it to create release builds using sbt-android. Thus for release builds you need to use gradle. I include the `gradle-android-scala-plugin` to compile the Scala code.
+### Building upod
+
+If you have installed [sbt](https://www.scala-sbt.org/) a debug build should be as simple as running in the checkout
+```
+sbt clean android:package-debug
+```
+
+I did not try to build a release yet, but Sven mentioned it will be harder than that (see below)
+
+## History
+uPod is originally developed by [@svenwiegand](https://github.com/svenwiegand) who decided to stop developing in 2018, here is the original content of the README from the initial publication at [@svenwiegand/upod](https://github.com/svenwiegand/upod):
+
+> I have no longer time to maintain uPod. Further on I've switched over to the dark side and am using iOS devices now. uPod contains to much know-how to get lost. That's why I publish the code here.
+>
+> ##### Building uPod
+> uPod has been developed using Scala which has proven to be a bad choice for Android development. Though I love Scala, the Scala support on the build site for Android projects is bad and lots of the projects which where dedicated to solving this problem are no longer maintained -- especially since Kotlin has been announced as an officially supported, modern language for Android. So building uPod is an adventure -- unfortunately.
+>
+> ##### Missing information
+> Some of the information in some of the build and source files is information related to private API accounts and thus has been removed by me. You can find all the missing stuff by searching for the string `???`.
+>
+> ##### 3rd party Dependencies
+> Unfortunately I needed to put some of the 3rd party dependencies into the project structure to make the whole application build.
+>
+> ##### Development Builds
+> For developing uPod you can build using sbt which is fast and comfortable (when it works). uPod uses [sbt-android](https://github.com/scala-android/sbt-android) for this purpose.
+>
+> ##### Release Builds
+> Unfortunately I never managed it to create release builds using sbt-android. Thus for release builds you need to use gradle. I include the `gradle-android-scala-plugin` to compile the Scala code.
