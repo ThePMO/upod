@@ -7,14 +7,12 @@ import mobi.upod.android.view.cards.{CardHeader, CardHeaders, TipCardHeader}
 import mobi.upod.android.widget.card.{CardButton, CardView, TextCardView}
 import mobi.upod.app.R
 import mobi.upod.app.services.download.DownloadService
-import mobi.upod.app.services.licensing.{LicenseService, OpenGooglePlayLicenseAction, StartTrialConfirmationAction}
 import mobi.upod.app.storage.{AutoAddDownloadStrategy, DownloadPreferences}
 
 trait DownloadQueueTips extends CardHeaders with Injectable {
 
   override def createCardHeaders: Seq[CardHeader] = super.createCardHeaders :+
-    createAutomaticDownloadsQueueChoiceTip :+
-    AutomaticDownloadStartTip
+    createAutomaticDownloadsQueueChoiceTip
 
   private def createAutomaticDownloadsQueueChoiceTip: CardHeader = {
     val strategies = Array(
@@ -44,19 +42,10 @@ trait DownloadQueueTips extends CardHeaders with Injectable {
       R.string.tip_automatic_download_queue_option_new_and_later)
   }
 
-  private object AutomaticDownloadStartTip extends TipCardHeader("download_start", createAutomaticDownloadStartCard) {
-    private lazy val licenseService = inject[LicenseService]
-
-    override def shouldShow: Boolean =
-      super.shouldShow && !licenseService.isLicensed
-  }
-
   private def createAutomaticDownloadStartCard(context: Context): CardView = new TextCardView(
     context,
     R.string.tip_automatic_download_start_title,
     R.string.tip_automatic_download_start_details,
-    CardButton.primary(context.getString(R.string.purchase_request_more), new OpenGooglePlayLicenseAction),
-    CardButton(context.getString(R.string.action_start_trial), new StartTrialConfirmationAction),
     CardButton(context.getString(R.string.not_now))
   )
 }

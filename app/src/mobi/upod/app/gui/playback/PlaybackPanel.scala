@@ -4,20 +4,18 @@ import android.app.Activity
 import android.content.Context
 import android.support.v4.app.ActivityOptionsCompat
 import android.view.View
-import android.widget.SeekBar.OnSeekBarChangeListener
-import android.widget.{SeekBar, Button, ImageView, TextView}
+import android.widget.{Button, ImageView, TextView}
 import com.escalatesoft.subcut.inject.Injectable
 import mobi.upod.android.app.action.{Action, ActionController}
 import mobi.upod.android.app.{ActivityLifecycleListener, SimpleAlertDialogFragment}
 import mobi.upod.android.logging.Logging
 import mobi.upod.android.os.AsyncTask
 import mobi.upod.android.view.{ChildViews, Tintable}
-import mobi.upod.android.widget.{TintableSeekBar, ActionButtons, FloatingActionButton}
+import mobi.upod.android.widget.{ActionButtons, FloatingActionButton}
 import mobi.upod.app.R
 import mobi.upod.app.data._
 import mobi.upod.app.gui.{CoverartLoader, CoverartLoaderFallbackDrawable, CoverartPlaceholderDrawable, Theme}
 import mobi.upod.app.services.download.{DownloadListener, DownloadService}
-import mobi.upod.app.services.licensing.LicenseService
 import mobi.upod.app.services.playback._
 import mobi.upod.app.services.sync.{SyncListener, SyncService}
 import mobi.upod.app.services.{EpisodeListener, EpisodeService}
@@ -44,7 +42,6 @@ trait PlaybackPanel
   protected lazy val playbackService = inject[PlaybackService]
   protected lazy val episodeService = inject[EpisodeService]
   protected lazy val syncService = inject[SyncService]
-  protected lazy val licenseService = inject[LicenseService]
   protected lazy val playbackPreferences = inject[PlaybackPreferences]
   private lazy val coverartLoader = inject[CoverartLoader]
 
@@ -131,7 +128,7 @@ trait PlaybackPanel
 
     preparingPlaybackIndicator.show(!playbackService.canResume && !playbackService.canPause)
     sleepTimerIndicator foreach { sti =>
-      val visible = licenseService.isLicensed && (playbackService.isPaused || playbackService.isPlaying)
+      val visible = playbackService.isPaused || playbackService.isPlaying
       sti.makeInvisible(!visible)
     }
   }

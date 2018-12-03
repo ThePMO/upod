@@ -5,7 +5,6 @@ import android.view.KeyEvent
 import android.view.KeyEvent._
 import com.escalatesoft.subcut.inject.Injectable
 import mobi.upod.android.logging.Logging
-import mobi.upod.app.services.licensing.LicenseService
 import mobi.upod.app.storage.PlaybackPreferences
 
 trait MediaButtonProcessor extends Injectable with Logging {
@@ -13,7 +12,6 @@ trait MediaButtonProcessor extends Injectable with Logging {
 
   private lazy val playbackService = inject[PlaybackService]
   private lazy val playbackPreferences = inject[PlaybackPreferences]
-  private lazy val licenseService = inject[LicenseService]
 
   protected def processMediaButtonEvent(intent: Intent): Boolean = {
     Option(intent.getParcelableExtra(Intent.EXTRA_KEY_EVENT).asInstanceOf[KeyEvent]) exists { event =>
@@ -27,7 +25,7 @@ trait MediaButtonProcessor extends Injectable with Logging {
     }
   }
 
-  private def preferChapterNavigation: Boolean = playbackPreferences.skipBackChapter && licenseService.isLicensed
+  private def preferChapterNavigation: Boolean = playbackPreferences.skipBackChapter
 
   private def translateMediaButton(keyCode: Int): Int = {
     if (!playbackPreferences.swapJumpWindButtons) keyCode else keyCode match {

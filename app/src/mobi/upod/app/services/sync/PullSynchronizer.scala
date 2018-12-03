@@ -8,7 +8,6 @@ import mobi.upod.android.logging.Logging
 import mobi.upod.app.data._
 import mobi.upod.app.services.EpisodeService
 import mobi.upod.app.services.download.DownloadService
-import mobi.upod.app.services.licensing.LicenseService
 import mobi.upod.app.services.playback.PlaybackService
 import mobi.upod.app.storage._
 import mobi.upod.app.{App, R}
@@ -24,7 +23,6 @@ private[sync] class PullSynchronizer(syncWebService: Syncer)(implicit val bindin
   private val podcastFetchService = inject[PodcastFetchService]
   private val episodeService = inject[EpisodeService]
   private val playbackService = inject[PlaybackService]
-  private val licenseService = inject[LicenseService]
 
   private val podcastDao = inject[PodcastDao]
   private val episodeDao = inject[EpisodeDao]
@@ -178,8 +176,7 @@ private[sync] class PullSynchronizer(syncWebService: Syncer)(implicit val bindin
 
   private def findKnownFetchInfos(syncOnlyPodcastsWithNewerServerStatus: Boolean): List[PodcastFetchInfo] = {
     val allKnownFetchInfos = {
-      val originalFetchInfos = podcastDao.listFetchInfos.toListAndClose()
-      if (licenseService.isLicensed) originalFetchInfos else originalFetchInfos.map(_.copy(settings = None))
+      podcastDao.listFetchInfos.toListAndClose()
     }
     if (syncOnlyPodcastsWithNewerServerStatus) {
       val updatedPodcasts = syncWebService.getEpisodePodcasts(internalSyncPreferences.lastFullSyncTimestamp.option).toSetAndClose()

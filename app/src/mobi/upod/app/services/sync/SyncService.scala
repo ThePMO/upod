@@ -11,7 +11,6 @@ import mobi.upod.android.content.preferences.{FunctionalPreferenceChangeListener
 import mobi.upod.android.job.{ConnectedJobRequestBuilder, SimpleJob}
 import mobi.upod.android.logging.Logging
 import mobi.upod.android.os.AsyncObservable
-import mobi.upod.app.services.licensing.LicenseService
 import mobi.upod.app.storage.{InternalSyncPreferences, PlaybackPreferences, SyncPreferences, UiPreferences}
 import org.joda.time.DateTime
 
@@ -27,7 +26,6 @@ final class SyncService(context: Context)(implicit val bindingModule: BindingMod
 
   private lazy val internalSyncPreferences = inject[InternalSyncPreferences]
   private lazy val syncPreferences = inject[SyncPreferences]
-  private lazy val licenseService = inject[LicenseService]
 
   private var runningSyncType: Option[String] = None
 
@@ -79,8 +77,7 @@ final class SyncService(context: Context)(implicit val bindingModule: BindingMod
     syncPreferences.syncOnlyOnWifi.addListener(FunctionalPreferenceChangeListener(_ => scheduleAutomaticSync()))
   }
 
-  def isCloudSyncEnabled: Boolean =
-    licenseService.isLicensed && syncPreferences.cloudSyncEnabled
+  def isCloudSyncEnabled: Boolean = syncPreferences.cloudSyncEnabled
 
   def ensureAutomaticSyncIsScheduled(): Unit = {
     if (JobManager.instance.getAllJobRequestsForTag(SyncJob.TagFullSync).isEmpty) {
@@ -91,8 +88,7 @@ final class SyncService(context: Context)(implicit val bindingModule: BindingMod
   def scheduleAutomaticSync(minDelay: Long = 0): Unit = {
     val now = DateTime.now
 
-    def optionalTimeFor(pref: TimePreference): Option[DateTime] =
-      pref.getIf(licenseService.isLicensed).map(_.next)
+    def optionalTimeFor(pref: TimePreference): Option[DateTime] = pref.option.map(_.next)
 
     def scheduleFor(delay: Long): Unit = {
       if (delay <= 1000) {

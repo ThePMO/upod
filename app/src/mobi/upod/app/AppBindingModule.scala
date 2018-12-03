@@ -2,7 +2,6 @@ package mobi.upod.app
 
 import android.app.{AlarmManager, NotificationManager}
 import android.content.Context
-import android.content.pm.PackageManager
 import android.media.AudioManager
 import com.escalatesoft.subcut.inject.NewBindingModule
 import com.evernote.android.job.JobManager
@@ -13,7 +12,6 @@ import mobi.upod.app.gui.CoverartLoader
 import mobi.upod.app.services._
 import mobi.upod.app.services.device.{DeviceIdService, DeviceIdServiceImpl}
 import mobi.upod.app.services.download.DownloadService
-import mobi.upod.app.services.licensing.LicenseService
 import mobi.upod.app.services.net.ConnectionStateRetriever
 import mobi.upod.app.services.playback.PlaybackService
 import mobi.upod.app.services.storage.StorageService
@@ -64,7 +62,6 @@ class AppBindingModule(app: App) extends NewBindingModule(
     bind [PlaybackService] toSingle new PlaybackService
     bind [NavigationSettings] toSingle new NavigationSettingsService(app)
     bind [OnlinePodcastService] toProvider new OnlinePodcastService
-    bind [LicenseService] toSingle new LicenseService
     bind [SyncService] toSingle new SyncService(app)
 
     // GUI layer
@@ -85,7 +82,6 @@ class AppBindingModule(app: App) extends NewBindingModule(
       inject[A](None)
 
     def initServices(): Unit = {
-      initService[LicenseService]()
       initService[SyncService]()
       initService[DownloadService]()
     }
