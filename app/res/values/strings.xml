@@ -1395,13 +1395,6 @@
             comment="setting summary"
             >Read the latest news on the uPod website</string>
 
-    <string name="pref_gplus"
-            comment="setting title"
-            >uPod at Google+</string>
-    <string name="pref_gplus_summary"
-            comment="setting summary"
-            >Follow uPod at Google+</string>
-
     <string name="pref_twitter"
             comment="setting title"
             >uPod at Twitter</string>
