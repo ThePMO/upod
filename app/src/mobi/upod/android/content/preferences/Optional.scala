@@ -10,5 +10,5 @@ trait Optional[A <: AnyRef] extends Preference[A] {
     if (condition) option else None
 
   override protected def isNew(value: A): Boolean =
-    !option.exists(_ == value)
+    !option.contains(value)
 }

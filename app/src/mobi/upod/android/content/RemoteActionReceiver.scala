@@ -7,7 +7,7 @@ trait RemoteActionReceiver extends BroadcastReceiver with ActionController {
   val intentBuilder: RemoteActionIntent
 
   def onReceive(context: Context, intent: Intent) {
-    if (Option(intent.getAction).exists(_ == intentBuilder.IntentAction)) {
+    if (Option(intent.getAction).contains(intentBuilder.IntentAction)) {
       intentBuilder.actionId(intent).foreach(fire(_)(context))
     }
   }
