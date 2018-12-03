@@ -162,6 +162,7 @@ val app = project.in(file("app")).
     useProguardInDebug in Android := false,
 
     dexMulti in Android := true,
+    dexMaxHeap in Android :="2g",
     dexMainClassesConfig in Android := baseDirectory.value / "maindexlist.txt",
 
     packagingOptions in Android := PackagingOptions(
