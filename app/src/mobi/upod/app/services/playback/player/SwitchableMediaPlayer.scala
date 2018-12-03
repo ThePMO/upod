@@ -54,7 +54,7 @@ class SwitchableMediaPlayer(context: Context)(implicit val bindingModule: Bindin
 
   def reset() = player.foreach(_.reset())
 
-  override def playsLocalFiles: Boolean = player.map(_.playsLocalFiles).getOrElse(true)
+  override def playsLocalFiles: Boolean = player.forall(_.playsLocalFiles)
 
   def load(storageProvider: StorageProvider, episode: EpisodeListItem, msec: Int): Unit =
     forPlayerCall(_.load(storageProvider, episode, msec))
