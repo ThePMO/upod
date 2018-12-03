@@ -18,7 +18,7 @@ class ListPreferenceWithEntrySummary(context: Context, attrs: AttributeSet) exte
     results
   }
 
-  require(getEntries.size == summaries.size, s"summaries array should have ${getEntries.size} elements but has ${summaries.size} elements instead")
+  require(getEntries.length == summaries.size, s"summaries array should have $getEntries.length elements but has ${summaries.size} elements instead")
   applySelectionToSummary()
 
   def currentSummary: Option[CharSequence] = {
