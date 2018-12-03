@@ -34,10 +34,7 @@
             android:fullBackupContent="@xml/backup_rules">
 
         <!-- meta data -->
-        <!--<meta-data android:name="developmentMode" android:value="true"/>-->
-        <!--<meta-data android:name="upodServiceUrl" android:value="http://192.168.56.1:9000"/>-->
-        <meta-data android:name="upodServiceUrl" android:value="https://upod.herokuapp.com"/>
-        <meta-data android:name="supportEmail" android:value="support@upod.mobi"/>
+        <meta-data android:name="supportEmail" android:value="upod@wcht.de"/>
 
         <meta-data android:name="com.google.android.backup.api_key" android:value=""/>
 

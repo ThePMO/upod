@@ -6,7 +6,7 @@ import java.net.URI
 import mobi.upod.android.os.AsyncTask
 import mobi.upod.app.App
 import mobi.upod.app.services.sync.{SubscriptionSettings, SyncService}
-import mobi.upod.app.services.{PodcastWebService, EpisodeService}
+import mobi.upod.app.services.EpisodeService
 import mobi.upod.app.storage.{ImportedSubscriptionsDao, UiPreferences, EpisodeDao, PodcastDao}
 import mobi.upod.io
 import scala.util.{Failure, Success, Try}
@@ -17,7 +17,6 @@ class SubscriptionService(implicit val bindingModule: BindingModule) extends Inj
   private lazy val episodeDao = inject[EpisodeDao]
   private lazy val syncService = inject[SyncService]
   private lazy val episodeService = inject[EpisodeService]
-  private lazy val webService = inject[PodcastWebService]
   private lazy val uiPreferences = inject[UiPreferences]
 
   def subscribe(podcast: URI): Unit = {
