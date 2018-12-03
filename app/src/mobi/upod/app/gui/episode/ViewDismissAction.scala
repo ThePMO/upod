@@ -1,6 +1,6 @@
 package mobi.upod.app.gui.episode
 
-import mobi.upod.android.app.action.{AsyncAction}
+import mobi.upod.android.app.action.AsyncAction
 import mobi.upod.app.data.EpisodeListItem
 import android.content.Context
 
