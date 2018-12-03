@@ -47,8 +47,3 @@ For developing uPod you can build using sbt which is fast and comfortable (when 
 
 ## Release Builds
 Unfortunately I never managed it to create release builds using sbt-android. Thus for release builds you need to use gradle. I include the `gradle-android-scala-plugin` to compile the Scala code.
-
-# Suggestions for first Tasks
-Here are some suggestions of what you should change first about uPod:
-
-- **uPod Services:** Originally uPod implemented the sync using its own web services. Some time ago I've switchted to Google Drive for synchronizing data. The uPod web services were still there, but mainly for maintenance tasks. You should remove the access to these services as they are no longer available and required.

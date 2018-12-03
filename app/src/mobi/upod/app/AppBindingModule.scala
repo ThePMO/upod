@@ -27,7 +27,6 @@ class AppBindingModule(app: App) extends NewBindingModule(
 
     // basic configuration
     bind [App] toSingle app
-    bind [AppMetaData] toSingle new AppMetaData(app.getPackageManager.getApplicationInfo(app.getPackageName, PackageManager.GET_META_DATA).metaData)
     bind [DisplayMetrics] toSingle new DisplayMetrics(app)
 
     // preferences
@@ -58,9 +57,7 @@ class AppBindingModule(app: App) extends NewBindingModule(
     bind [ConnectionStateRetriever] toSingle new ConnectionStateRetriever(app)
     bind [StorageService] toSingle new StorageService
     bind [PodcastFetchService] toSingle new PodcastFetchService
-    bind [PodcastWebService] toSingle new PodcastWebService
     bind [PodcastDirectoryWebService] toSingle new PodcastDirectoryWebService
-    bind [AnnouncementWebService] toProvider new AnnouncementWebService
     bind [SubscriptionService] toSingle new SubscriptionService
     bind [EpisodeService] toSingle new EpisodeService
     bind [DownloadService] toSingle new DownloadService
@@ -69,7 +66,6 @@ class AppBindingModule(app: App) extends NewBindingModule(
     bind [OnlinePodcastService] toProvider new OnlinePodcastService
     bind [LicenseService] toSingle new LicenseService
     bind [SyncService] toSingle new SyncService(app)
-    bind [AnnouncementService] toSingle new AnnouncementService
 
     // GUI layer
     bind [CoverartLoader] toSingle new CoverartLoader
@@ -89,7 +85,6 @@ class AppBindingModule(app: App) extends NewBindingModule(
       inject[A](None)
 
     def initServices(): Unit = {
-      initService[AnnouncementService]().init()
       initService[LicenseService]()
       initService[SyncService]()
       initService[DownloadService]()

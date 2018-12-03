@@ -6,7 +6,7 @@ import com.escalatesoft.subcut.inject.{BindingModule, Injectable}
 import com.google.api.client.http.HttpResponseException
 import mobi.upod.android.logging.Logging
 import mobi.upod.app.data._
-import mobi.upod.app.services.{AnnouncementWebService, AnnouncementService, EpisodeService}
+import mobi.upod.app.services.EpisodeService
 import mobi.upod.app.services.download.DownloadService
 import mobi.upod.app.services.licensing.LicenseService
 import mobi.upod.app.services.playback.PlaybackService
@@ -70,7 +70,6 @@ private[sync] class PullSynchronizer(syncWebService: Syncer)(implicit val bindin
     }
 
     progressIndicator.initProgress(maxProgress, "")
-    pullAnnouncements()
     pullSettings(progressIndicator)
     sync(progressIndicator, doSyncAllPodcasts(syncOnlyPodcastsWithNewerServerStatus, progressIndicator))
     internalSyncPreferences.isUpgradeSync := false
@@ -140,19 +139,6 @@ private[sync] class PullSynchronizer(syncWebService: Syncer)(implicit val bindin
     internalSyncPreferences.lastFullSyncTimestamp := timestamp
     if (internalSyncPreferences.episodeUriState.get == EpisodeUriState.LocalUriUpdateRequired)
       internalSyncPreferences.episodeUriState := EpisodeUriState.UpToDate
-  }
-
-  private def pullAnnouncements(): Unit = {
-    log.info("pulling new announcements")
-    val announcements = inject[AnnouncementWebService].getAnnouncements(internalSyncPreferences.lastFullSyncTimestamp.option).toSeqAndClose()
-    database.inTransaction {
-      val dao = inject[AnnouncementDao]
-      announcements.foreach(dao.insertOrUpdate)
-      dao.deleteOldAnnouncements()
-    }
-    if (announcements.nonEmpty) {
-      inject[AnnouncementService].onNewAnnouncement()
-    }
   }
 
   private def pullSettings(progressIndicator: SyncProgressIndicator): Unit = if (cloudSyncEnabled) {
