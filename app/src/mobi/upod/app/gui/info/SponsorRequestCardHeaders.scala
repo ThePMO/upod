@@ -8,7 +8,6 @@ import mobi.upod.android.content.preferences.{BooleanPreference, DateTimePrefere
 import mobi.upod.android.view.cards.{CardHeader, CardHeaders, SimpleCardHeader}
 import mobi.upod.android.widget.card.{CardButton, CardView, TextCardView}
 import mobi.upod.app.R
-import mobi.upod.app.services.licensing.OpenGooglePlayLicenseAction
 import mobi.upod.app.storage.InternalAppPreferences
 
 trait SponsorRequestCardHeaders extends CardHeaders with Injectable {
@@ -18,8 +17,7 @@ trait SponsorRequestCardHeaders extends CardHeaders with Injectable {
   private val prefs = inject[InternalAppPreferences]
 
   override def createCardHeaders: Seq[CardHeader] = super.createCardHeaders :+
-    createCardHeader(prefs.mayShowRateRequest, prefs.lastRateRequest, R.string.rate_request_title, R.string.rate_request_details, R.string.action_rate, RateAction) :+
-    createCardHeader(prefs.mayShowPurchaseRequest, prefs.lastPurchaseRequest, R.string.purchase_request_title, R.string.purchase_request_details, R.string.purchase_request_more, new OpenGooglePlayLicenseAction)
+    createCardHeader(prefs.mayShowRateRequest, prefs.lastRateRequest, R.string.rate_request_title, R.string.rate_request_details, R.string.action_rate, RateAction)
 
   private def createCardHeader(
     mayShow: BoolPref,

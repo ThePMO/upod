@@ -25,7 +25,6 @@ final class MainActivity
   with FullFeaturedEpisodeListHolderActivity
   with ListenerActivity
   with EpisodeListener
-  with LicenseUi
   with LoaderCallbacks[Option[EpisodeCounterItem]]
   with ChildViews
   with AppInjection

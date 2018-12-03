@@ -6,14 +6,12 @@ import android.preference.{Preference, PreferenceFragment}
 import android.support.v7.app.ActionBarActivity
 import mobi.upod.android.content.IntentHelpers._
 import mobi.upod.android.os.AsyncTask
-import mobi.upod.app.gui.preference.PremiumPreferences
 import mobi.upod.app.services.subscription.SubscriptionService
 import mobi.upod.app.storage.{AsyncTransactionTask, DownloadPreferences, EpisodeDao}
 import mobi.upod.app.{AppInjection, R}
 
 private[podcast] class SubscriptionSettingsFragment
   extends PreferenceFragment
-  with PremiumPreferences
   with AppInjection {
 
   private lazy val subscriptionService = inject[SubscriptionService]
@@ -21,11 +19,6 @@ private[podcast] class SubscriptionSettingsFragment
   private lazy val episodeDao = inject[EpisodeDao]
   private lazy val podcast = getActivity.getIntent.getExtra(FullPodcastSelection).get
   private lazy val preferences = new SubscriptionSettingsPreferences(app)
-
-  override protected def premiumPreferences: Seq[CharSequence] = {
-    for (i <- 0 until getPreferenceScreen.getPreferenceCount)
-      yield getPreferenceScreen.getPreference(i).getKey
-  }
 
   override def onCreate(savedInstanceState: Bundle): Unit = {
     super.onCreate(savedInstanceState)

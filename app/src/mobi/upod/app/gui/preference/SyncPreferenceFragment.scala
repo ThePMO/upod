@@ -1,7 +1,7 @@
 package mobi.upod.app.gui.preference
 
+import android.preference.Preference
 import android.preference.Preference.OnPreferenceChangeListener
-import android.preference.{CheckBoxPreference, Preference}
 import mobi.upod.android.app.action.Action
 import mobi.upod.android.content.preferences.{OptionSetter, TimePreference}
 import mobi.upod.android.preference.{PreferenceChangeListener, SimplePreferenceFragment, TimePickerPreference}
@@ -13,8 +13,7 @@ import org.joda.time.DateTime
 
 
 class SyncPreferenceFragment
-  extends SimplePreferenceFragment(R.xml.pref_sync)
-  with PremiumPreferences {
+  extends SimplePreferenceFragment(R.xml.pref_sync) {
 
   import mobi.upod.app.gui.preference.SyncPreferenceFragment._
 
@@ -23,13 +22,6 @@ class SyncPreferenceFragment
   private lazy val timeInfoPreference = findPreference(PrefSyncTimeInfo)
 
   protected def prefs = Some(inject[SyncPreferences])
-
-  override protected val premiumPreferences: Seq[CharSequence] = Seq(
-    "pref_sync_time_1_enabled",
-    "pref_sync_time_2_enabled"
-  )
-
-  override protected val conditionalPreferences: Map[CharSequence, Boolean] = Map()
 
   override protected val clickActions: Map[CharSequence, Action] = Map()
 

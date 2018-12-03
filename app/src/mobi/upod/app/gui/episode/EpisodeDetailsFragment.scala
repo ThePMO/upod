@@ -22,7 +22,6 @@ import mobi.upod.app.gui.episode.library.StarEpisodeAction
 import mobi.upod.app.gui.episode.news.AddEpisodeToLibraryAction
 import mobi.upod.app.gui.episode.playlist._
 import mobi.upod.app.services.EpisodeService
-import mobi.upod.app.services.licensing.LicenseService
 import mobi.upod.app.storage.EpisodeDao
 import mobi.upod.app.{AppInjection, R}
 import mobi.upod.media.MediaChapterTable
@@ -40,7 +39,6 @@ class EpisodeDetailsFragment
 
   private lazy val episodeDao = inject[EpisodeDao]
   private lazy val episodeService = inject[EpisodeService]
-  private lazy val licenseService = inject[LicenseService]
   private lazy val hideActionBar = !getActivity.getResources.getBoolean(R.bool.splitScreen)
   private lazy val actionBarBackground = new ColorDrawable
   private lazy val floatingActionButton = childAs[FloatingActionButton](R.id.primaryAction)
@@ -319,7 +317,7 @@ class EpisodeDetailsFragment
   object ShowChaptersAction extends Action {
 
     override def state(context: Context): ActionState =
-      if (licenseService.isLicensed && chapterBottomSheetController.nonEmpty) ActionState.enabled else ActionState.gone
+      if (chapterBottomSheetController.nonEmpty) ActionState.enabled else ActionState.gone
 
     override def onFired(context: Context): Unit =
       chapterBottomSheetController.foreach(_.toggleBottomSheet())
