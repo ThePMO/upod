@@ -75,7 +75,6 @@
     <string name="action_mark_finished_to_here">Bis hier als beendet markieren</string>
     <string name="action_mark_unfinished">Als unbeendet markieren</string>
     <string name="action_stream">Stream</string>
-    <string name="action_cast">Übertragen</string>
     <string name="action_pause">Anhalten</string>
     <string name="action_play">Wiedergeben</string>
     <string name="action_play_next">Als nächstes wiedergeben</string>
@@ -117,10 +116,6 @@
     <string name="action_share_podcast">Podcast teilen</string>
     <string name="action_share_episode">Episode teilen</string>
     <string name="action_open_episode_link">Im Browser öffnen</string>
-
-    <!-- GDrive -->
-    <string name="gdrive_connection_failed">Verbindung zu Google Drive fehlgeschlagen</string>
-    <string name="gdrive_disabled">Cloud-Sync deaktiviert</string>
 
     <!-- synchronization -->
     <string name="sync_started">Synchronisierung gestartet</string>

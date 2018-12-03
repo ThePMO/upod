@@ -15,7 +15,6 @@ import mobi.upod.android.os.{BundleEnumValue, BundleSerializableValue, PowerMana
 import mobi.upod.app._
 import mobi.upod.app.gui.MainActivity
 import mobi.upod.app.gui.sync.SyncConflictActivity
-import mobi.upod.app.services.sync.gdrive.{GDriveClient, GDriveSyncer}
 import mobi.upod.app.storage.{EpisodeUriState, InternalSyncPreferences, SyncPreferences}
 import org.joda.time.DateTime
 
@@ -150,15 +149,7 @@ class SyncServiceImpl
 
   private def withSyncer(f: Syncer => Unit): Unit = {
     ProgressIndicator.updateProgress(getString(R.string.sync_notification_sync))
-    if (syncService.isCloudSyncEnabled) {
-      val client = GDriveClient(this)
-      val connectionResult = client.blockingConnect()
-      if (connectionResult.isSuccess)
-        try mobi.upod.io.forCloseable(new GDriveSyncer(client))(f) finally client.disconnect()
-      else
-        throw new IOException(s"Failed to connect to GDrive: ${connectionResult.getErrorMessage}")
-    } else
-      f(null)
+    f(null)
   }
 
   private object ProgressIndicator extends SyncProgressIndicator {

@@ -3,7 +3,6 @@ package mobi.upod.app.services.sync
 import android.content.{BroadcastReceiver, Context, Intent}
 import mobi.upod.android.logging.Logging
 import mobi.upod.app.AppInjection
-import mobi.upod.app.services.sync.gdrive.GDriveSyncer
 
 class BootCompletedReceiver extends BroadcastReceiver with AppInjection with Logging {
 

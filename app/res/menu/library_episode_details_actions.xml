@@ -15,10 +15,6 @@
           android:icon="@drawable/ic_action_pause_simple"
           android:title="@string/action_pause"
           support:showAsAction="ifRoom"/>
-    <item android:id="@+id/action_cast"
-          android:icon="@drawable/ic_action_cast"
-          android:title="@string/action_cast"
-          support:showAsAction="ifRoom"/>
 
     <item android:id="@+id/action_download_error"
           android:icon="@drawable/ic_action_download_error"

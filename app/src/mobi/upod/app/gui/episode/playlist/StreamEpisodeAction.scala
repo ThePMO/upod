@@ -10,6 +10,5 @@ import mobi.upod.app.services.licensing.LicenseService
 private[episode] class StreamEpisodeAction(episode: => Option[EpisodeListItem])(implicit bindings: BindingModule)
   extends AbstractPlayEpisodeAction(episode) {
 
-  override protected def isAdequatePlaybackAction(episode: EpisodeListItem): Boolean =
-    !episode.downloadInfo.complete && !mediaRouteService.currentDevice.exists(_.isInternetStreamingDevice)
+  override protected def isAdequatePlaybackAction(episode: EpisodeListItem): Boolean = !episode.downloadInfo.complete
 }

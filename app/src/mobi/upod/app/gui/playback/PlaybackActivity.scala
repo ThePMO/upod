@@ -9,9 +9,10 @@ import android.view.Menu
 import mobi.upod.android.app.FragmentTransactions.RichFragmentManager
 import mobi.upod.android.app.{ActivityStateHolder, ListenerActivity, UpNavigation}
 import mobi.upod.android.content.IntentHelpers._
+import mobi.upod.android.logging.Logging
 import mobi.upod.app.data.{EpisodeBaseWithPlaybackInfo, EpisodeListItem}
 import mobi.upod.app.gui.episode.PlayingEpisodeExtra
-import mobi.upod.app.gui.{MainActivity, MainNavigation, MediaRouteUi}
+import mobi.upod.app.gui.{MainActivity, MainNavigation}
 import mobi.upod.app.services.playback.{PlaybackListener, PlaybackService}
 import mobi.upod.app.{AppInjection, R}
 import mobi.upod.util.ExceptionUtil
@@ -21,7 +22,7 @@ final class PlaybackActivity
   with PlaybackListener
   with ListenerActivity
   with ActivityStateHolder
-  with MediaRouteUi
+  with Logging
   with UpNavigation
   with AppInjection {
 

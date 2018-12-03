@@ -26,7 +26,6 @@ class PlaylistEpisodeListItemViewHolder
     R.id.action_add_download -> new AddEpisodeToDownloadListAction(episodeListItem) with EpisodeAdapterUpdate,
     R.id.action_delete_download -> new DeleteEpisodeDownloadAction(episodeListItem) with EpisodeAdapterUpdate,
     R.id.action_pause -> new PauseEpisodeAction(episodeListItem),
-    R.id.action_cast -> new CastEpisodeAction(episodeListItem),
     R.id.action_stream -> new StreamEpisodeAction(episodeListItem),
     R.id.action_play -> new PlayEpisodeAction(episodeListItem),
     R.id.action_star -> new StarEpisodeAction(episodeListItem, true) with EpisodeAdapterUpdate,

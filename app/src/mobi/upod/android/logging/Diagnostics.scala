@@ -110,7 +110,6 @@ object Diagnostics {
     def shouldInclude(fileName: String): Boolean = {
       !fileName.startsWith("_") &&
         !fileName.startsWith("com.google") &&
-        !fileName.startsWith("io.fabric") &&
         !fileName.startsWith("WebView") &&
         !fileName.startsWith("TwitterAdvertising") &&
         !fileName.startsWith("evernote_jobs.xml")

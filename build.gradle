@@ -22,8 +22,3 @@ task release(dependsOn: 'app:assembleProdRelease') {
     group = 'publishing'
     description = 'Build production release'
 }
-
-task publishNightly(dependsOn: ['app:assembleNightlyRelease', 'app:crashlyticsUploadDistributionNightlyRelease']) {
-    group = 'publishing'
-    description = 'Create nightly build and distribute it to crashlytics nightly testers'
-}

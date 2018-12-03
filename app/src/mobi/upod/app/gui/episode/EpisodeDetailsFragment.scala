@@ -81,7 +81,6 @@ class EpisodeDetailsFragment
     R.id.action_delete_download -> new DeleteEpisodeDownloadAction(episodeListItem) with UpdateAction,
     R.id.action_remove_from_download_list -> new RemoveEpisodeFromDownloadListAction(episodeListItem) with UpdateAction with DownloadListRemovalAction,
 
-    R.id.action_cast -> new CastEpisodeAction(episodeListItem) with UpdateAction,
     R.id.action_stream -> new StreamEpisodeAction(episodeListItem) with UpdateAction,
     R.id.action_play -> new PlayEpisodeAction(episodeListItem) with UpdateAction,
     R.id.action_pause -> new PauseEpisodeAction(episodeListItem),

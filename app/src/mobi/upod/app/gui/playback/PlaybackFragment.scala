@@ -19,7 +19,6 @@ import mobi.upod.app.data.{EpisodeBaseWithPlaybackInfo, EpisodeListItem}
 import mobi.upod.app.gui.episode._
 import mobi.upod.app.gui.episode.library.StarEpisodeAction
 import mobi.upod.app.gui.{MainActivity, MainNavigation}
-import mobi.upod.app.services.cast.MediaRouteService
 import mobi.upod.app.{AppInjection, R}
 import mobi.upod.media.MediaChapterTable
 
@@ -44,8 +43,6 @@ private[playback] abstract class PlaybackFragment
     R.id.action_unstar -> new StarEpisodeAction(episode, false) with UpdateAction,
     R.id.action_share -> new ShareEpisodeAction(episode)
   )
-
-  private lazy val mediaRouteService = inject[MediaRouteService]
 
   private lazy val playlistEmptyMessageView = playbackPanel.childTextView(R.id.playlistEmptyMessage)
   private lazy val playlistButton = optionalChildAs[Button](R.id.playlistButton)
@@ -158,8 +155,6 @@ private[playback] abstract class PlaybackFragment
   private def showEpisodeDetails(episode: EpisodeListItem) {
     EpisodeDetailsActivity.start(getActivity, episode, MainNavigation.playlist, MainNavigation.viewModeIdEpisodes, _ => ())
   }
-
-  protected def isRemotePlayback: Boolean = mediaRouteService.currentDevice.isDefined
 
   override protected def tintViews(episode: EpisodeListItem): Unit = {
     super.tintViews(episode)
