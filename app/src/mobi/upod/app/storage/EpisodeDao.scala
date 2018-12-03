@@ -541,7 +541,7 @@ class EpisodeDao(dbHelper: DatabaseHelper)(implicit bindingModule: BindingModule
     } catch {
       case ex: SQLiteConstraintException =>
         val mediaFileUrl = findOne(sql"SELECT $mediaUrl FROM $episode WHERE $eid=${e.episodeId}", Mapping.simpleMapping(mediaUrl.name, Mapping.url))
-        val updatedEpisode = if (Some(e.media.url) == mediaFileUrl) {
+        val updatedEpisode = if (mediaFileUrl.contains(e.media.url)) {
           val downloadInfo = findOne(
             sql"""SELECT
               $downloadListPosition listPosition,
