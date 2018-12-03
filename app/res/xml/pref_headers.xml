@@ -22,8 +22,4 @@
         android:fragment="mobi.upod.app.gui.preference.StoragePreferenceFragment"
         android:title="@string/pref_category_storage"
         android:icon="@drawable/ic_pref_storage_light"/>
-    <header
-        android:fragment="mobi.upod.app.gui.preference.LicensePreferenceFragment"
-        android:title="@string/pref_category_license"
-        android:icon="@drawable/ic_pref_license_light"/>
 </preference-headers>
