@@ -18,11 +18,11 @@ class SupportFragment extends SimplePreferenceFragment(R.xml.pref_support) {
 
   override protected def clickActions = Map(
     "pref_about" -> new ShowAboutDialogAction,
-    "pref_website" -> new BrowseAction("http://upod.mobi/blog"),
+    "pref_website" -> new BrowseAction("https://upod.wcht.de/"),
     "pref_twitter" -> new BrowseAction("https://twitter.com/uPodMobi"),
 
     "pref_reset_tips" -> new ResetTipsAction,
-    "pref_support_site" -> new BrowseAction("http://upod.uservoice.com"),
+    "pref_support_site" -> new BrowseAction("https://github.com/Boris-de/upod/issues"),
     "pref_send_diagnostics" -> new SendDiagnosticsAction(),
 
     "pref_share_upod" -> new ShareUpodAction
