@@ -603,10 +603,6 @@
     <string name="tip_automatic_download_start_title">Automatic Download</string>
     <string name="tip_automatic_download_start_details">Upgrade to the premium version to automatically start the download as soon as a Wi-FI connection becomes available.</string>
 
-    <string name="rate_request_title">Rate uPod</string>
-    <string name="rate_request_details">Do you like uPod? Great, then please take a minute to rate uPod and tell others how much you like it.</string>
-    <string name="action_rate">Rate</string>
-
     <string name="purchase_request_title">Go Premium</string>
     <string name="purchase_request_details">Upgrade to the premium version and get additional features like automatic downloads, cross device synchronization and Chromecast support. With your payment you support me and the further development of uPod.</string>
     <string name="purchase_request_more">Tell me more</string>
@@ -1374,26 +1370,12 @@
             comment="setting summary"
             >Unlock uPod\'s premium features and help us to further improve uPod</string>
 
-    <string name="pref_rate"
-            comment="setting title"
-            >Rate uPod at Google play!</string>
-    <string name="pref_rate_summary"
-            comment="setting summary"
-            >Help us to make uPod more successful and rate it at Google play!</string>
-
     <string name="pref_share_upod"
             comment="setting title"
             >Tell your friends about uPod</string>
     <string name="pref_share_upod_summary"
             comment="setting summary"
             >Help us to make uPod more famous by telling your friends about uPod</string>
-
-    <string name="pref_beta"
-            comment="setting title"
-            >uPod beta channel</string>
-    <string name="pref_beta_summary"
-            comment="setting summary"
-            >Become a uPod beta tester</string>
 
     <string name="pref_category_info"
             comment="setting category"

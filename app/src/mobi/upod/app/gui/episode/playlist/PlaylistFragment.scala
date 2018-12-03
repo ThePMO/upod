@@ -10,7 +10,6 @@ import mobi.upod.app.gui.episode._
 import mobi.upod.app.gui.episode.download.AddEpisodesToDownloadListAction
 import mobi.upod.app.gui.episode.library.{SortableLibraryEpisodeListFragment, StarEpisodesAction}
 import mobi.upod.app.gui.episode.news.AddEpisodesToLibraryAction
-import mobi.upod.app.gui.info.SponsorRequestCardHeaders
 import mobi.upod.app.services.playback.{PlaybackListener, PlaybackService}
 import mobi.upod.app.storage.EpisodeDao
 
@@ -19,8 +18,7 @@ class PlaylistFragment
   with SimpleFragmentActions
   with ConfirmedActionProviderFragment
   with PlaybackListener
-  with ListenerFragment
-  with SponsorRequestCardHeaders {
+  with ListenerFragment {
 
   private val ActionTagClearList = "clearList"
 
