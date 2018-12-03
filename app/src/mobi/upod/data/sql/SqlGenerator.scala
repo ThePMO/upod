@@ -39,8 +39,8 @@ class SqlGenerator[A] private (mapping: Mapping[A]) {
 
   def generateInsertValues(data: A, additionalValues: A => Seq[(String, String)]): Sql = {
     val namedValues = expand(data).toMap ++ additionalValues(data)
-    val names = namedValues.map(_._1).mkString(", ")
-    val values = namedValues.map(_._2).mkString(", ")
+    val names = namedValues.keys.mkString(", ")
+    val values = namedValues.values.mkString(", ")
     Sql(s"($names) VALUES ($values)")
   }
 
@@ -50,7 +50,7 @@ class SqlGenerator[A] private (mapping: Mapping[A]) {
     if (data.tail.isEmpty)
       first
     else
-      Sql(first.sql + data.tail.map(d => (expand(d).toMap ++ additionalValues(d)).map(_._2).mkString("(", ", ", ")")).mkString(", ", ", ", ""))
+      Sql(first.sql + data.tail.map(d => (expand(d).toMap ++ additionalValues(d)).values.mkString("(", ", ", ")")).mkString(", ", ", ", ""))
   }
 
   def generateUpdateValues(
