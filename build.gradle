@@ -12,6 +12,10 @@ buildscript {
     }
 }
 
+if (!(gradle.gradleVersion ==~ /^(3\.[3-9]|4\.[01])(|\..*)$/)) {
+  throw new IllegalStateException("Building with $gradle.gradleVersion will not work, try using gradle 4.1")
+}
+
 allprojects {
     repositories {
         jcenter()

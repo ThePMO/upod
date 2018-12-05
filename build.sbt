@@ -124,14 +124,14 @@ val app = project.in(file("app")).
     resConfigs in Android := Seq("en", "de"),
 
     apkDebugSigningConfig in Android := DebugSigningConfig(
-      keystore = new File("keystore-debug.jks")
+      keystore = new File(sys.env.get("UPOD_DEBUG_KEYSTORE_LOCATION").getOrElse("keystore-debug.jks"))
     ),
     apkSigningConfig in Android := Option(
       PlainSigningConfig(
-        keystore = new File("keystore.jks"),
-        storePass = "???",
-        alias = "???",
-        keyPass = Some("???")
+        keystore = new File(sys.env.get("UPOD_RELEASE_KEYSTORE_LOCATION").getOrElse("/no-default-value-for-release-keystore")),
+        storePass = sys.env.get("UPOD_RELEASE_KEYSTORE_PASSWORD").getOrElse(""),
+        alias = sys.env.get("UPOD_RELEASE_KEYSTORE_KEY_ALIAS").getOrElse(""),
+        keyPass = sys.env.get("UPOD_RELEASE_KEYSTORE_KEY_PASSWORD")
       )
     ),
 
