@@ -41,10 +41,12 @@ The only thing I'm currently missing to do the switch to the OSS version is to f
 
 #### Debug build
 
-If you have installed [sbt](https://www.scala-sbt.org/) a debug build should be as simple as running in the checkout
+If you have installed a Java 8 JDK and [sbt](https://www.scala-sbt.org/) a debug build should be as simple as running this in the checkout
 ```
 sbt clean android:package-debug
 ```
+
+Building with a Java 11 JDK does not work at the moment, because some plugins/buildtools rely on Java 8 Features like JAXB being available.
 
 #### Release build
 
