@@ -32,14 +32,14 @@ android {
 
     signingConfigs {
         debug {
-            storeFile file("../keystore-debug.jks")
+            storeFile file(System.env.UPOD_DEBUG_KEYSTORE_LOCATION ?: "../keystore-debug.jks")
         }
 
         release {
-            storeFile file("../keystore.jks")
-            storePassword "???"
-            keyAlias "???"
-            keyPassword "???"
+            storeFile file(System.env.UPOD_RELEASE_KEYSTORE_LOCATION ?: "/no-default-value-for-release-keystore")
+            storePassword System.env.UPOD_RELEASE_KEYSTORE_PASSWORD ?: ""
+            keyAlias System.env.UPOD_RELEASE_KEYSTORE_KEY_ALIAS ?: ""
+            keyPassword System.env.UPOD_RELEASE_KEYSTORE_KEY_PASSWORD ?: ""
         }
     }
 

@@ -39,12 +39,20 @@ The only thing I'm currently missing to do the switch to the OSS version is to f
 
 ### Building upod
 
+#### Debug build
+
 If you have installed [sbt](https://www.scala-sbt.org/) a debug build should be as simple as running in the checkout
 ```
 sbt clean android:package-debug
 ```
 
-I did not try to build a release yet, but Sven mentioned it will be harder than that (see below)
+#### Release build
+
+The release build requires gradle at the moment (see "History" section), specifically gradle >= 3.3 and <=4.1 is needed, the used scala-gradle-plugin is not not compatible with recent gradle versions:
+
+```
+./release.sh /path/to/keystore.jks keystore_key_alias /path/to/gradle-4.1/bin/gradle
+```
 
 ## History
 uPod is originally developed by [@svenwiegand](https://github.com/svenwiegand) who decided to stop developing in 2018, here is the original content of the README from the initial publication at [@svenwiegand/upod](https://github.com/svenwiegand/upod):
