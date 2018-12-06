@@ -258,13 +258,6 @@
                 <action android:name="android.media.AUDIO_BECOMING_NOISY"/>
             </intent-filter>
         </receiver>
-        <receiver android:name=".services.licensing.LicensePackageInstallReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_ADDED"/>
-                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
-                <data android:scheme="package" android:ssp="mobi.upod.app.license"/>
-            </intent-filter>
-        </receiver>
 
         <!-- providers -->
         <provider
