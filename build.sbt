@@ -1,12 +1,22 @@
 import android.Keys._
 import android.DebugSigningConfig
 import android.PlainSigningConfig
+import java.util.Properties
 
 val androidBuildToolsVersion = Some("26.0.1")
 val androidPlatformTarget = "android-25"
 val androidMinSdkVersion = "21" // should be 14 (21 for debug because of multi dex support)
 
 resolvers in ThisBuild += Resolver.jcenterRepo
+
+def appProperties(): Properties = {
+  val prop = new Properties()
+  IO.load(prop, new File("app/gradle.properties"))
+  prop
+}
+
+val gradleAppVersionCode = appProperties().getProperty("VERSION_CODE").toInt
+val gradleAppVersionName = appProperties().getProperty("VERSION_NAME")
 
 //
 // android libraries
@@ -108,8 +118,8 @@ val app = project.in(file("app")).
   androidBuildWith(dragSortListView, prestissimo, showcaseView, bottomSheet).
   //enablePlugins(AndroidProtify).
   settings(
-    versionCode in Android := Some(6100),
-    versionName in Android := Some("6.1.0"),
+    versionCode in Android := Some(gradleAppVersionCode),
+    versionName in Android := Some(gradleAppVersionName),
     buildToolsVersion in Android := androidBuildToolsVersion,
     platformTarget in Android := androidPlatformTarget,
     minSdkVersion in Android := androidMinSdkVersion,
