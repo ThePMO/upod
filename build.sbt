@@ -67,6 +67,11 @@ val prestissimo = project.in(file("prestissimo")).
 
     antLayoutDetector in Android := (),
 
+    mappings in (Compile, packageBin) ++= {
+     val jniLibs = baseDirectory.value / "jniLibs";
+     jniLibs ** "*.so" pair rebase(jniLibs, "lib")
+    },
+
     libraryDependencies ++= List(
       "com.github.tony19" % "logback-android-core" % "1.1.1-4" exclude("com.google.android", "android"),
       "com.github.tony19" % "logback-android-classic" % "1.1.1-4" exclude("com.google.android", "android"),
