@@ -258,7 +258,7 @@ final class DownloadServiceImpl
     notificationManager.cancel(R.string.download_error_title)
 
   def showErrorNotification(title: Int, content: String): Unit = {
-    val notification = new NotificationCompat.Builder(this).
+    val notification = createNotificationOnDefaultChannel(this).
       setSmallIcon(R.drawable.ic_stat_error).
       setContentTitle(getString(title)).
       setContentText(content).

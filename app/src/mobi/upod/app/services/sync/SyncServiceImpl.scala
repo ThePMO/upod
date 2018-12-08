@@ -5,7 +5,7 @@ import java.net.{SocketTimeoutException, URI}
 
 import android.app.{IntentService, PendingIntent}
 import android.content.{Context, Intent}
-import android.support.v7.app.NotificationCompat
+import android.support.v4.app.NotificationCompat
 import com.github.nscala_time.time.Imports._
 import com.google.gson.JsonIOException
 import de.wcht.upod.R
@@ -32,7 +32,7 @@ class SyncServiceImpl
   private lazy val notificationBuilder = createNotificationBuilder
 
   private def createNotificationBuilder: NotificationCompat.Builder = {
-    new NotificationCompat.Builder(this).
+    createNotificationOnDefaultChannel(this).
       setOngoing(true).
       setSmallIcon(R.drawable.ic_stat_sync).
       setContentTitle(getString(R.string.sync_notification_title)).

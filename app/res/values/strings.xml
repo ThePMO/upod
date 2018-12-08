@@ -1384,7 +1384,15 @@
 
     <!-- about uPod -->
     <string name="about"
-            comment="title of the dialog showing basic information about uPod"
-            >About uPod</string>
+      comment="title of the dialog showing basic information about uPod"
+      >About uPod</string>
+
+    <!-- notification channels-->
+    <string name="channel_name"
+      comment="Name of the default notification channel"
+      >uPod notifications</string>
+    <string name="channel_description"
+      comment="Description of the default notification channel"
+      >Default uPod notifications</string>
 
 </resources>
