@@ -109,7 +109,6 @@ dependencies {
     compile project(':prestissimo')
     compile project(':showcase-view')
     compile project(':bottom-sheet')
-    provided project(':fix-missing-mediarouter-inner-classes')
 
     compile 'mobi.upod:time-duration-picker:1.0.3'
 
