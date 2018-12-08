@@ -596,6 +596,7 @@ Erfahre mehr auf der <a href="http://upod.uservoice.com/knowledgebase/articles/2
 
     <!-- about uPod -->
     <string name="about">Über uPod</string>
+
     <string name="wizard_welcome_option_opml">Ich habe eine OPML-Datei</string>
     <string name="wizard_welcome_option_migrating">Ich möchte vom alten uPod migrieren</string>
     <string name="wizard_migration">Migration</string>
@@ -649,4 +650,17 @@ Erfahre mehr auf der <a href="http://upod.uservoice.com/knowledgebase/articles/2
       ]]></string>
 
     <string name="concurrent_list_modification">Sorry, die Liste hat sich beim verschieben verändert, bitte versuche es erneut</string>
+
+    <!-- notification channels-->
+    <string name="default_channel_name">Allgemein</string>
+    <string name="default_channel_description">Allgemeine Benachrichtungen, z.B. Fehler</string>
+    <string name="sync_channel_description">Benachrichtungen über laufende Synchronisierung</string>
+    <string name="sync_channel_name">Sync</string>
+    <string name="download_channel_description">Benachrichtungen über laufenden Download</string>
+    <string name="download_channel_name">Download</string>
+    <string name="episode_channel_name">Episoden</string>
+    <string name="episode_channel_description">Dauerhafte Benachrichtigung zur aktuellen Episode</string>
+    <string name="new_episode_channel_name">Neue Episoden</string>
+    <string name="new_episode_channel_description">Benachrichtungen über neue Episoden</string>
+
 </resources>
