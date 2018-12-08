@@ -1,10 +1,10 @@
 package mobi.upod.android.app
 
 import android.os.Bundle
-import android.support.v7.app.ActionBarActivity
+import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 
-trait UpNavigation extends ActionBarActivity {
+trait UpNavigation extends AppCompatActivity {
   override def onCreate(savedInstanceState: Bundle) {
     super.onCreate(savedInstanceState)
     getSupportActionBar.setDisplayHomeAsUpEnabled(true)

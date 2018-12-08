@@ -2,14 +2,14 @@ package mobi.upod.app.gui.opml
 
 import android.net.Uri
 import android.os.Bundle
-import android.support.v7.app.ActionBarActivity
 import de.wcht.upod.R
+import android.support.v7.app.AppCompatActivity
 import mobi.upod.android.app.SimpleAlertDialogFragment
 import mobi.upod.android.app.action.{Action, BrowseAction, FinishActivityAction}
 import mobi.upod.app.AppInjection
 import mobi.upod.app.services.subscription.OpmlException
 
-class OpmlImportActivity extends ActionBarActivity with AppInjection {
+class OpmlImportActivity extends AppCompatActivity with AppInjection {
 
   override def onCreate(savedInstanceState: Bundle) {
     super.onCreate(savedInstanceState)

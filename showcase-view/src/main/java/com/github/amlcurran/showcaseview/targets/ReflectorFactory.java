@@ -41,7 +41,7 @@ class ReflectorFactory {
             if (currentLevel.getSimpleName().equals("SherlockActivity") || currentLevel.getSimpleName().equals("SherlockFragmentActivity")) {
                 return Reflector.ActionBarType.ACTIONBAR_SHERLOCK;
             }
-            if (currentLevel.getSimpleName().equals("ActionBarActivity")) {
+            if (currentLevel.getSimpleName().equals("AppCompatActivity")) {
                 return Reflector.ActionBarType.APP_COMPAT;
             }
             currentLevel = currentLevel.getSuperclass();

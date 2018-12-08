@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.{Context, Intent}
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.support.v7.app.ActionBarActivity
+import android.support.v7.app.AppCompatActivity
 import android.webkit.WebView
 import android.widget.RelativeLayout
 import de.wcht.upod.R
@@ -18,7 +18,7 @@ import mobi.upod.app.data.{EpisodeBaseWithPlaybackInfo, EpisodeListItem}
 import mobi.upod.app.gui.episode.{BrowseEpisodeAction, EpisodeDescriptionViewController, PlayingEpisodeExtra}
 
 class PlaybackShowNotesActivity
-  extends ActionBarActivity
+  extends AppCompatActivity
   with ChildViews
   with EpisodeDescriptionViewController
   with ActivityActions

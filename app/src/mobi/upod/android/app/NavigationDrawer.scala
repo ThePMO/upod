@@ -5,7 +5,7 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.support.v4.view.{GravityCompat, KeyEventCompat}
 import android.support.v4.widget.DrawerLayout
-import android.support.v7.app.{ActionBar, ActionBarActivity, ActionBarDrawerToggle}
+import android.support.v7.app.{ActionBar, AppCompatActivity, ActionBarDrawerToggle}
 import android.view._
 import android.widget.ListView
 import com.escalatesoft.subcut.inject.Injectable
@@ -19,7 +19,7 @@ import de.wcht.upod.R
 import scala.reflect.ClassTag
 
 trait NavigationDrawer
-  extends ActionBarActivity
+  extends AppCompatActivity
   with ActivityStateHolder
   with ActionModeTracking
   with Injectable
