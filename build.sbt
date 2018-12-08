@@ -78,7 +78,7 @@ val prestissimo = project.in(file("prestissimo")).
     antLayoutDetector in Android := (),
 
     mappings in (Compile, packageBin) ++= {
-     val jniLibs = baseDirectory.value / "jniLibs";
+     val jniLibs = baseDirectory.value / "jniLibs"
      jniLibs ** "*.so" pair rebase(jniLibs, "lib")
     },
 
