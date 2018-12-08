@@ -12,4 +12,4 @@ class RemoteDownloadActionReceiver extends RemoteActionReceiver with AppInjectio
   )
 }
 
-object RemoteDownloadActionIntent extends RemoteActionIntent("REMOTE_DOWNLOAD_ACTION")
+object RemoteDownloadActionIntent extends RemoteActionIntent("REMOTE_DOWNLOAD_ACTION", classOf[RemoteDownloadActionReceiver])
