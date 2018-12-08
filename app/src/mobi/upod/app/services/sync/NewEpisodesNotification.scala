@@ -3,7 +3,7 @@ package mobi.upod.app.services.sync
 import android.app.{NotificationManager, PendingIntent}
 import android.content.Context
 import com.escalatesoft.subcut.inject.BindingModule
-import mobi.upod.android.app.AppNotificationBuilder
+import mobi.upod.android.app.{AppNotificationBuilder, UpodNotificationChannels}
 import mobi.upod.app.R
 import mobi.upod.app.gui.{MainActivity, MainNavigation}
 
@@ -15,7 +15,7 @@ object NewEpisodesNotification {
 
   def show(context: Context, count: Long)(implicit bindingModule: BindingModule): Unit = {
     val intent = MainActivity.intent(context, MainNavigation.newEpisodes)
-    val notification = new AppNotificationBuilder(context).
+    val notification = new AppNotificationBuilder(context, UpodNotificationChannels.NewEpisode).
       setSmallIcon(R.drawable.ic_stat_new).
       setContentTitle(context.getResources.getQuantityString(R.plurals.notify_new_episodes_title, count.toInt, count: java.lang.Long)).
       setContentText(context.getString(R.string.notify_new_episodes)).

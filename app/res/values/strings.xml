@@ -1352,11 +1352,39 @@
       >About uPod</string>
 
     <!-- notification channels-->
-    <string name="channel_name"
+    <string name="default_channel_name"
       comment="Name of the default notification channel"
-      >uPod notifications</string>
-    <string name="channel_description"
+      >General notifications</string>
+    <string name="default_channel_description"
       comment="Description of the default notification channel"
-      >Default uPod notifications</string>
+      >General notifications like errors</string>
+
+    <string name="sync_channel_name"
+      comment="Name of the sync notification channel"
+      >Sync notification</string>
+    <string name="sync_channel_description"
+      comment="Description of the sync notification channel"
+      >Notification while sync is ongoing</string>
+
+    <string name="download_channel_name"
+      comment="Name of the download notification channel"
+      >Download notification</string>
+    <string name="download_channel_description"
+      comment="Description of the download notification channel"
+      >Notification while download is ongoing</string>
+
+    <string name="episode_channel_name"
+      comment="Name of the download notification channel"
+      >Episode notification</string>
+    <string name="episode_channel_description"
+      comment="Description of the download notification channel"
+      >Persistent notification for playing episodes</string>
+
+    <string name="new_episode_channel_name"
+      comment="Name of the download notification channel"
+      >New episode notifications</string>
+    <string name="new_episode_channel_description"
+      comment="Description of the new episode notification channel"
+      >Notifications for new episodes</string>
 
 </resources>

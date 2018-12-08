@@ -1,10 +1,9 @@
 package mobi.upod.app
 
-import android.app.{NotificationChannel, NotificationManager, PendingIntent}
+import android.app.{NotificationManager, PendingIntent}
 import android.content.{Context, Intent}
-import android.os.Build
 import android.support.multidex.MultiDexApplication
-import mobi.upod.android.app.{AppException, AppNotificationBuilder, NotificationChannels}
+import mobi.upod.android.app._
 import mobi.upod.android.logging.{LogConfiguration, Logging}
 import mobi.upod.app.storage._
 import org.joda.time.DateTime
@@ -26,7 +25,7 @@ final class App extends MultiDexApplication with Logging {
 
     super.onCreate()
 
-    NotificationChannels.createNotificationChannel(this, notificationManager)
+    UpodNotificationChannels.initNotificationChannels(this, notificationManager)
 
     App.app = Some(this)
     UncaughtExceptionHandler.install(this)
@@ -51,7 +50,7 @@ final class App extends MultiDexApplication with Logging {
   }
 
   def notifyError(tag: String, title: CharSequence, content: CharSequence, intent: Option[PendingIntent] = None): Unit = {
-    val builder = new AppNotificationBuilder(this)
+    val builder = new AppNotificationBuilder(this, UpodNotificationChannels.Default)
     builder.
       setSmallIcon(R.drawable.ic_stat_error).
       setContentTitle(title).

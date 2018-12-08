@@ -5,7 +5,7 @@ import java.io.InterruptedIOException
 import android.app.PendingIntent
 import android.content.Intent
 import android.support.v4.app.NotificationCompat
-import mobi.upod.android.app.{AsyncBoundService, IntegratedNotificationManager, ServiceBinder}
+import mobi.upod.android.app.{AsyncBoundService, IntegratedNotificationManager, ServiceBinder, UpodNotificationChannels}
 import mobi.upod.android.logging.Logging
 import mobi.upod.android.media.MediaFileDurationRetriever
 import mobi.upod.android.os.{AsyncObservable, PowerManager}
@@ -257,10 +257,11 @@ final class DownloadServiceImpl
     notificationManager.cancel(R.string.download_error_title)
 
   def showErrorNotification(title: Int, content: String): Unit = {
-    val notification = createNotificationOnDefaultChannel(this).
+    val notification = createNotificationOnDefaultChannel(this, UpodNotificationChannels.Download).
       setSmallIcon(R.drawable.ic_stat_error).
       setContentTitle(getString(title)).
       setContentText(content).
+      setVibrate(Array[Long](0)).
       setContentIntent(PendingIntent.getActivity(this, 0, MainActivity.intent(this, MainNavigation.downloads), PendingIntent.FLAG_ONE_SHOT)).
       build()
     notificationManager.notify(R.string.download_error_title, notification)

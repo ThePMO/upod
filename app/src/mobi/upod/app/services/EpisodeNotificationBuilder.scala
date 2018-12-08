@@ -6,7 +6,7 @@ import android.graphics.Bitmap
 import android.support.v4.media.session.MediaSessionCompat
 import android.support.v4.media.app.NotificationCompat
 import com.escalatesoft.subcut.inject.{BindingModule, Injectable}
-import mobi.upod.android.app.AppNotificationBuilder
+import mobi.upod.android.app.{AppNotificationBuilder, UpodNotificationChannels}
 import mobi.upod.app.App
 import mobi.upod.app.data.EpisodeBase
 import mobi.upod.app.gui.{CoverartPlaceholderDrawable, MainActivity}
@@ -18,7 +18,7 @@ class EpisodeNotificationBuilder(context: Context, ongoing: Boolean = true)(impl
   with Injectable {
   implicit private val ctx = context
   private val coverartProvider = inject[CoverartProvider]
-  private val builder = new AppNotificationBuilder(context)
+  private val builder = new AppNotificationBuilder(context, UpodNotificationChannels.Episode)
   private val coverartPlaceholderDrawable = new CoverartPlaceholderDrawable
 
   builder.setOngoing(ongoing)

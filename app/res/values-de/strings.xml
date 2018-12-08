@@ -614,4 +614,17 @@ Erfahre mehr auf der <a href="http://upod.uservoice.com/knowledgebase/articles/2
 
     <!-- about uPod -->
     <string name="about">Über uPod</string>
+
+    <!-- notification channels-->
+    <string name="default_channel_name">Allgemein</string>
+    <string name="default_channel_description">Allgemeine Benachrichtungen, z.B. Fehler</string>
+    <string name="sync_channel_description">Benachrichtungen über laufende Synchronisierung</string>
+    <string name="sync_channel_name">Sync</string>
+    <string name="download_channel_description">Benachrichtungen über laufenden Download</string>
+    <string name="download_channel_name">Download</string>
+    <string name="episode_channel_name">Episoden</string>
+    <string name="episode_channel_description">Dauerhafte Benachrichtigung zur aktuellen Episode</string>
+    <string name="new_episode_channel_name">Neue Episoden</string>
+    <string name="new_episode_channel_description">Benachrichtungen über neue Episoden</string>
+
 </resources>

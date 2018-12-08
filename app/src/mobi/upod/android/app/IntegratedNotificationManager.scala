@@ -4,7 +4,7 @@ import android.app
 import android.app.{Notification, Service}
 import android.content.Context
 import android.support.v4.app.NotificationCompat
-import mobi.upod.android.app.NotificationChannels.DefaultChannelNotificationBuilder
+import mobi.upod.android.app.UpodNotificationChannels.DefaultChannelNotificationBuilder
 import mobi.upod.android.logging.Logging
 
 trait IntegratedNotificationManager extends Logging { self: Service =>
@@ -33,8 +33,8 @@ trait IntegratedNotificationManager extends Logging { self: Service =>
     }
   }
 
-  protected def createNotificationOnDefaultChannel(context: Context): NotificationCompat.Builder = {
-    new DefaultChannelNotificationBuilder(context)
+  protected def createNotificationOnDefaultChannel(context: Context, channel: UpodNotificationChannel): NotificationCompat.Builder = {
+    new DefaultChannelNotificationBuilder(context, channel)
   }
 
   protected def showNotification(notification: Notification) {

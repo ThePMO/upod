@@ -8,7 +8,7 @@ import android.content.{Context, Intent}
 import android.support.v4.app.NotificationCompat
 import com.github.nscala_time.time.Imports._
 import com.google.gson.JsonIOException
-import mobi.upod.android.app.{AppException, IntegratedNotificationManager}
+import mobi.upod.android.app.{AppException, IntegratedNotificationManager, UpodNotificationChannels}
 import mobi.upod.android.content.IntentHelpers._
 import mobi.upod.android.logging.Logging
 import mobi.upod.android.os.{BundleEnumValue, BundleSerializableValue, PowerManager}
@@ -32,7 +32,7 @@ class SyncServiceImpl
   private lazy val notificationBuilder = createNotificationBuilder
 
   private def createNotificationBuilder: NotificationCompat.Builder = {
-    createNotificationOnDefaultChannel(this).
+    createNotificationOnDefaultChannel(this, UpodNotificationChannels.Sync).
       setOngoing(true).
       setSmallIcon(R.drawable.ic_stat_sync).
       setContentTitle(getString(R.string.sync_notification_title)).
