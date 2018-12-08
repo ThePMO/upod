@@ -4,10 +4,13 @@ import android.PlainSigningConfig
 import java.util.Properties
 
 val androidBuildToolsVersion = Some("26.0.1")
-val androidPlatformTarget = "android-25"
+val androidPlatformTarget = "android-26"
 val androidMinSdkVersion = "21" // should be 14 (21 for debug because of multi dex support)
 
-resolvers in ThisBuild += Resolver.jcenterRepo
+resolvers in ThisBuild ++= List(
+  Resolver.jcenterRepo,
+  "Google Maven" at "https://maven.google.com/"
+)
 
 def appProperties(): Properties = {
   val prop = new Properties()
@@ -17,6 +20,17 @@ def appProperties(): Properties = {
 
 val gradleAppVersionCode = appProperties().getProperty("VERSION_CODE").toInt
 val gradleAppVersionName = appProperties().getProperty("VERSION_NAME")
+
+//
+// android support libraries versions
+//
+
+val versionAppCompatV7 = "26.0.2"
+val versionCardViewV7 = "26.0.2"
+val versionSupportV4 = "26.0.2"
+val versionSupportV13 = "26.0.2"
+val versionDesign = "26.0.2"
+val versionPaletteV7 = "26.0.2"
 
 //
 // android libraries
@@ -37,9 +51,9 @@ val bottomSheet = project.in(file("bottom-sheet")).
       "1.7"),
 
     libraryDependencies ++= List(
-      aar("com.android.support" % "appcompat-v7" % "25.3.1"),
-      aar("com.android.support" % "design" % "25.3.1"),
-      aar("com.android.support" % "support-v4" % "25.3.1")
+      aar("com.android.support" % "appcompat-v7" % versionAppCompatV7),
+      aar("com.android.support" % "design" % versionDesign),
+      aar("com.android.support" % "support-v4" % versionSupportV4)
     )
   )
 
@@ -58,8 +72,8 @@ val dragSortListView = project.in(file("drag-sort-listview")).
     antLayoutDetector in Android := (),
 
     libraryDependencies ++= List(
-      aar("com.android.support" % "appcompat-v7" % "25.3.1"),
-      aar("com.android.support" % "support-v4" % "25.3.1")
+      aar("com.android.support" % "appcompat-v7" % versionAppCompatV7),
+      aar("com.android.support" % "support-v4" % versionSupportV4)
     )
   )
 
@@ -159,11 +173,11 @@ val app = project.in(file("app")).
       "com.github.tony19" % "logback-android-classic" % "1.1.1-4" exclude("com.google.android", "android"),
       "org.slf4j" % "slf4j-api" % "1.7.6",
 
-      aar("com.android.support" % "support-v13" % "25.3.1"),
-      aar("com.android.support" % "design" % "25.3.1"),
-      aar("com.android.support" % "cardview-v7" % "25.3.1"),
-      aar("com.android.support" % "palette-v7" % "25.3.1"),
-      aar("com.android.support" % "appcompat-v7" % "25.3.1"),
+      aar("com.android.support" % "support-v13" % versionSupportV13),
+      aar("com.android.support" % "design" % versionDesign),
+      aar("com.android.support" % "cardview-v7" % versionCardViewV7),
+      aar("com.android.support" % "palette-v7" % versionPaletteV7),
+      aar("com.android.support" % "appcompat-v7" % versionAppCompatV7),
       "com.android.support" % "multidex" % "1.0.1"
     ),
 

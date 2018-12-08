@@ -4,7 +4,7 @@ import android.content.Context
 import android.view._
 import android.widget.ListView
 import com.escalatesoft.subcut.inject.{BindingModule, Injectable}
-import mobi.upod.android.view.ChildViews
+import mobi.upod.android.view.ChildViewsAware
 import mobi.upod.android.widget.bottomsheet.BottomSheet
 import mobi.upod.app.R
 import mobi.upod.app.data.EpisodeListItem
@@ -18,7 +18,7 @@ class ChapterBottomSheetController(
     bottomSheet: BottomSheet)(
     implicit val bindingModule: BindingModule)
   extends ActionMode.Callback
-  with ChildViews
+  with ChildViewsAware
   with Injectable {
 
   protected val chapterList = childAs[ListView](R.id.chapterList)
@@ -54,7 +54,7 @@ class ChapterBottomSheetController(
     bottomSheet.setActionModeCallback(null)
   }
 
-  override def findViewById(id: Int): View = bottomSheet.findViewById(id)
+  override def findViewResourceById[A <: View](id: Int): A = bottomSheet.findViewById(id)
 
   def toggleBottomSheet(): Unit = bottomSheet.getStatus match {
     case BottomSheet.STATUS_OPEN => bottomSheet.showPersistent()

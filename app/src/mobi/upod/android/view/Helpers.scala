@@ -1,6 +1,7 @@
 package mobi.upod.android.view
 
 import android.graphics.Rect
+import android.support.annotation.IdRes
 import android.view.{View, ViewGroup, ViewParent}
 import android.widget.CompoundButton
 import mobi.upod.android.app.action.Action
@@ -9,7 +10,7 @@ import mobi.upod.app.R
 
 object Helpers {
 
-  implicit class RichView(val view: View) extends AnyVal with ChildViews {
+  implicit class RichView(val view: View) extends AnyVal with ChildViewsAware {
 
     def onClick(handle: => Unit) {
       view.setOnClickListener(ClickListener(handle))
@@ -33,7 +34,7 @@ object Helpers {
       view.setOnLongClickListener(LongClickListener(handle))
     }
 
-    def findViewById(id: Int) = view.findViewById(id)
+    def findViewResourceById[A <: View](@IdRes id: Int): A = view.findViewById(id)
 
     def show(show: Boolean = true) {
       view.setVisibility(if (show) View.VISIBLE else View.GONE)

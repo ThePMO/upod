@@ -12,7 +12,7 @@ import com.escalatesoft.subcut.inject.Injectable
 import mobi.upod.android.app.FragmentTransactions._
 import mobi.upod.android.content.IntentHelpers._
 import mobi.upod.android.logging.Logging
-import mobi.upod.android.view.ChildViews
+import mobi.upod.android.view.ChildViewsAware
 import mobi.upod.android.widget.AdapterViewClickListener
 import mobi.upod.app.R
 
@@ -23,7 +23,7 @@ trait NavigationDrawer
   with ActivityStateHolder
   with ActionModeTracking
   with Injectable
-  with ChildViews
+  with ChildViewsAware
   with ActionBar.OnNavigationListener
   with Logging {
 

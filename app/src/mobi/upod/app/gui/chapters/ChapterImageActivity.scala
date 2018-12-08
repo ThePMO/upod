@@ -6,6 +6,7 @@ import android.app.Activity
 import android.content.{Context, Intent}
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import android.widget.ImageView
 import mobi.upod.android.app.UpNavigation
 import mobi.upod.android.content.IntentHelpers.RichIntent
@@ -49,7 +50,7 @@ class ChapterImageActivity extends AppCompatActivity with UpNavigation with Logg
   }
 
   private def showError(error: Throwable): Unit =
-    findViewById(R.id.errorMessage).show()
+    findViewById(R.id.errorMessage).asInstanceOf[View].show()
 }
 
 object ChapterImageActivity {

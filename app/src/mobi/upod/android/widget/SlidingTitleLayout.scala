@@ -5,11 +5,11 @@ import android.util.AttributeSet
 import android.view.{GestureDetector, MotionEvent}
 import android.widget.{FrameLayout, Scroller}
 import mobi.upod.android.logging.Logging
-import mobi.upod.android.view.ChildViews
+import mobi.upod.android.view.ChildViewsView
 
 class SlidingTitleLayout(context: Context, attrs: AttributeSet)
   extends FrameLayout(context, attrs)
-  with ChildViews
+  with ChildViewsView
   with Logging {
 
   lazy val titleView = getChildAt(0)
