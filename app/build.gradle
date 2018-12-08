@@ -117,7 +117,6 @@ dependencies {
     compile 'com.evernote:android-job:1.1.2'
     compile 'com.google.http-client:google-http-client-android:1.20.0'
     compile 'com.google.code.gson:gson:2.3.1'
-    compile 'com.google.apis:google-api-services-drive:v3-rev78-1.22.0'
 
     compile 'com.googlecode.mp4parser:isoparser:1.1.17'
     compile 'com.github.nscala-time:nscala-time_2.11:2.0.0'
