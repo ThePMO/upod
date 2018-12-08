@@ -9,20 +9,20 @@ import de.wcht.upod.R
 import mobi.upod.android.app.{ListenerFragment, NavigationItemSelection}
 import mobi.upod.android.content.AsyncCursorLoader
 import mobi.upod.android.content.IntentHelpers._
-import mobi.upod.android.util.CollectionConverters._
-import mobi.upod.android.view.{ChildViews, FragmentViewFinder}
-import mobi.upod.app.AppInjection
+import mobi.upod.android.view.{ChildViewsAware, ChildViewsFragment, FragmentViewFinder}
 import mobi.upod.app.data.PodcastListItem
 import mobi.upod.app.gui.{MainNavigation, PodcastSelection, ReloadOnEpisodeListChangedFragment}
 import mobi.upod.app.services.EpisodeService
 import mobi.upod.app.services.sync.{SyncListener, SyncService}
 import mobi.upod.app.storage.{ImageSize, PodcastDao}
+import mobi.upod.app.AppInjection
 import mobi.upod.util.Collections._
 import mobi.upod.util.Cursor
+import mobi.upod.android.util.CollectionConverters._
 
 class PodcastListFragment
   extends ListFragment
-  with ChildViews
+  with ChildViewsFragment
   with AppInjection
   with FragmentViewFinder
   with ListenerFragment

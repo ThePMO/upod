@@ -12,7 +12,7 @@ import mobi.upod.android.app.action.{Action, ActionState, AsyncAction, SimpleFra
 import mobi.upod.android.app.{FragmentStateHolder, NavigationItemSelection, SupportActionBar}
 import mobi.upod.android.content.IntentHelpers.RichIntent
 import mobi.upod.android.os.AsyncTask
-import mobi.upod.android.view.{ChildViews, FragmentViewFinder, MenuUtil, WindowCompat}
+import mobi.upod.android.view._
 import mobi.upod.android.widget.bottomsheet.BottomSheet
 import mobi.upod.android.widget.{ActionPanel, FloatingActionButton, SlidingTitleLayout}
 import mobi.upod.app.AppInjection
@@ -32,7 +32,7 @@ class EpisodeDetailsFragment
   with SimpleFragmentActions
   with EpisodeListItemView
   with EpisodeDescriptionViewController
-  with ChildViews
+  with ChildViewsFragment
   with FragmentViewFinder
   with FragmentStateHolder
   with SupportActionBar

@@ -5,12 +5,12 @@ import android.support.v7.widget.PopupMenu
 import android.util.AttributeSet
 import android.view.{Menu, MenuItem, View}
 import android.widget.LinearLayout
-import mobi.upod.android.view.ChildViews
 import de.wcht.upod.R
+import mobi.upod.android.view.ChildViewsView
 
 class ItemContextMenu(context: Context, attributes: AttributeSet)
   extends LinearLayout(context, attributes)
-  with ChildViews
+  with ChildViewsView
   with PopupMenu.OnMenuItemClickListener {
 
   setOrientation(LinearLayout.VERTICAL)

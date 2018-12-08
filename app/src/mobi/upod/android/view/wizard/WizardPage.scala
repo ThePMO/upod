@@ -4,10 +4,10 @@ import android.app.Fragment
 import android.content.Context
 import android.os.Bundle
 import android.view.{LayoutInflater, View, ViewGroup}
-import mobi.upod.android.view.{ChildViews, FragmentViewFinder}
 import de.wcht.upod.R
+import mobi.upod.android.view.{ChildViewsFragment, FragmentViewFinder}
 
-abstract class WizardPage(val key: String, val headerId: Int) extends Fragment with ChildViews with FragmentViewFinder {
+abstract class WizardPage(val key: String, val headerId: Int) extends Fragment with ChildViewsFragment with FragmentViewFinder {
 
   final override def onCreateView(inflater: LayoutInflater, container: ViewGroup, savedInstanceState: Bundle) = {
     val contentContainerRoot = inflater.inflate(R.layout.wizard_page, container, false).asInstanceOf[ViewGroup]

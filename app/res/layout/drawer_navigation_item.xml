@@ -16,7 +16,7 @@
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="32dp"
-        app:tint="@color/navigation_icon_color_selector"/>
+        app:viewTint="@color/navigation_icon_color_selector"/>
 
     <TextView
         android:id="@+id/title"

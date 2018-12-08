@@ -11,7 +11,7 @@ import de.wcht.upod.R
 import mobi.upod.android.app.StandardUpNavigation
 import mobi.upod.android.app.action.{Action, ActivityActions}
 import mobi.upod.android.content.IntentHelpers.RichIntent
-import mobi.upod.android.view.{ChildViews, WindowCompat}
+import mobi.upod.android.view.{ChildViewsActivity, WindowCompat}
 import mobi.upod.android.widget.FloatingActionButton
 import mobi.upod.app.AppInjection
 import mobi.upod.app.data.{EpisodeBaseWithPlaybackInfo, EpisodeListItem}
@@ -19,7 +19,7 @@ import mobi.upod.app.gui.episode.{BrowseEpisodeAction, EpisodeDescriptionViewCon
 
 class PlaybackShowNotesActivity
   extends AppCompatActivity
-  with ChildViews
+  with ChildViewsActivity
   with EpisodeDescriptionViewController
   with ActivityActions
   with PlaybackPanelWithSeekBar

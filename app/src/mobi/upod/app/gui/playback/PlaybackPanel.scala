@@ -10,7 +10,7 @@ import mobi.upod.android.app.action.{Action, ActionController}
 import mobi.upod.android.app.{ActivityLifecycleListener, SimpleAlertDialogFragment}
 import mobi.upod.android.logging.Logging
 import mobi.upod.android.os.AsyncTask
-import mobi.upod.android.view.{ChildViews, Tintable}
+import mobi.upod.android.view.{ChildViewsAware, Tintable}
 import mobi.upod.android.widget.{ActionButtons, FloatingActionButton}
 import de.wcht.upod.R
 import mobi.upod.app.data._
@@ -27,7 +27,7 @@ import mobi.upod.util.{MediaFormat, MediaPosition}
 
 trait PlaybackPanel
   extends ActivityLifecycleListener
-  with ChildViews
+  with ChildViewsAware
   with PlaybackListener
   with DownloadListener
   with SyncListener

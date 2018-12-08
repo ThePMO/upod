@@ -4,7 +4,7 @@ import android.PlainSigningConfig
 import java.util.Properties
 
 val androidBuildToolsVersion = Some("26.0.1")
-val androidPlatformTarget = "android-25"
+val androidPlatformTarget = "android-26"
 val androidMinSdkVersion = "21" // should be 14 (21 for debug because of multi dex support)
 
 resolvers in ThisBuild ++= List(
@@ -23,6 +23,17 @@ val gradleAppVersionName = appProperties().getProperty("VERSION_NAME")
 val javacVersionOptions = Seq("-source", "1.7", "-target", "1.7")
 
 //
+// android support libraries versions
+//
+
+val versionAppCompatV7 = "26.0.2"
+val versionCardViewV7 = "26.0.2"
+val versionSupportV4 = "26.0.2"
+val versionSupportV13 = "26.0.2"
+val versionDesign = "26.0.2"
+val versionPaletteV7 = "26.0.2"
+
+//
 // android libraries
 //
 
@@ -37,9 +48,9 @@ val bottomSheet = project.in(file("bottom-sheet")).
     javacOptions in Compile ++= javacVersionOptions,
 
     libraryDependencies ++= List(
-      aar("com.android.support" % "appcompat-v7" % "25.3.1"),
-      aar("com.android.support" % "design" % "25.3.1"),
-      aar("com.android.support" % "support-v4" % "25.3.1")
+      aar("com.android.support" % "appcompat-v7" % versionAppCompatV7),
+      aar("com.android.support" % "design" % versionDesign),
+      aar("com.android.support" % "support-v4" % versionSupportV4)
     )
   )
 
@@ -54,8 +65,8 @@ val dragSortListView = project.in(file("drag-sort-listview")).
     antLayoutDetector in Android := (),
 
     libraryDependencies ++= List(
-      aar("com.android.support" % "appcompat-v7" % "25.3.1"),
-      aar("com.android.support" % "support-v4" % "25.3.1")
+      aar("com.android.support" % "appcompat-v7" % versionAppCompatV7),
+      aar("com.android.support" % "support-v4" % versionSupportV4)
     )
   )
 
@@ -140,11 +151,11 @@ val app = project.in(file("app")).
       aar("com.github.tony19" % "logback-android" % "1.3.0-3"),
       "org.slf4j" % "slf4j-api" % "1.7.25",
 
-      aar("com.android.support" % "support-v13" % "25.3.1"),
-      aar("com.android.support" % "design" % "25.3.1"),
-      aar("com.android.support" % "cardview-v7" % "25.3.1"),
-      aar("com.android.support" % "palette-v7" % "25.3.1"),
-      aar("com.android.support" % "appcompat-v7" % "25.3.1"),
+      aar("com.android.support" % "support-v13" % versionSupportV13),
+      aar("com.android.support" % "design" % versionDesign),
+      aar("com.android.support" % "cardview-v7" % versionCardViewV7),
+      aar("com.android.support" % "palette-v7" % versionPaletteV7),
+      aar("com.android.support" % "appcompat-v7" % versionAppCompatV7),
       "com.android.support" % "multidex" % "1.0.1"
     ),
 

@@ -9,10 +9,10 @@ import de.wcht.upod.R
 import mobi.upod.android.app.FragmentTransactions._
 import mobi.upod.android.app.{NavigationItemSelection, UpNavigation, ViewModeSelection}
 import mobi.upod.android.content.IntentHelpers._
-import mobi.upod.android.view.ChildViews
-import mobi.upod.app.AppInjection
+import mobi.upod.android.view.ChildViewsActivity
 import mobi.upod.app.data.EpisodeListItem
 import mobi.upod.app.gui.{ActivityWithPlaybackPanelAndStandardActions, MainNavigation, ParentActivityIntent}
+import mobi.upod.app.AppInjection
 
 class EpisodeDetailsActivity
   extends ActivityWithPlaybackPanelAndStandardActions
@@ -20,7 +20,7 @@ class EpisodeDetailsActivity
   with EpisodeDetailsHolder
   with UpNavigation
   with AppInjection
-  with ChildViews {
+  with ChildViewsActivity {
   private lazy val detailsFragment =
     getFragmentManager.findFragmentById(R.id.episode_details).asInstanceOf[EpisodeDetailsFragment]
 

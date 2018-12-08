@@ -12,7 +12,7 @@ import mobi.upod.android.content.AsyncDaoItemLoader
 import mobi.upod.android.content.IntentHelpers._
 import mobi.upod.android.content.preferences.PreferenceChangeListener
 import mobi.upod.android.logging.Logging
-import mobi.upod.android.view.ChildViews
+import mobi.upod.android.view.ChildViewsActivity
 import mobi.upod.app.gui.episode.FullFeaturedEpisodeListHolderActivity
 import mobi.upod.app.gui.preference.{StartupWizardActivity, StoragePermissionRequestActivity}
 import mobi.upod.app.services.{EpisodeListener, EpisodeService}
@@ -27,7 +27,7 @@ final class MainActivity
   with ListenerActivity
   with EpisodeListener
   with LoaderCallbacks[Option[EpisodeCounterItem]]
-  with ChildViews
+  with ChildViewsActivity
   with AppInjection
   with Logging {
 

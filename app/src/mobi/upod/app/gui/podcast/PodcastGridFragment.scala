@@ -10,8 +10,8 @@ import mobi.upod.android.app.{FragmentStateHolder, GridFragment, InitialFragment
 import mobi.upod.android.logging.Logging
 import mobi.upod.android.view.DisplayUnits.Pixels
 import mobi.upod.android.view.cards.CardHeaders
-import mobi.upod.android.view.{ChildViews, DisplayMetrics, FragmentViewFinder}
 import mobi.upod.app.AppInjection
+import mobi.upod.android.view.{ChildViewsFragment, DisplayMetrics, FragmentViewFinder}
 import mobi.upod.app.data.PodcastListItem
 import mobi.upod.app.gui.{PodcastEpisodesActivity, ReloadOnEpisodeListChangedFragment}
 import mobi.upod.app.services.sync.SyncService
@@ -29,7 +29,7 @@ private[podcast] abstract class PodcastGridFragment(
   with FragmentStateHolder
   with ContextualActions
   with ImplicitFragmentContext
-  with ChildViews
+  with ChildViewsFragment
   with AppInjection
   with FragmentViewFinder
   with AdapterView.OnItemClickListener
