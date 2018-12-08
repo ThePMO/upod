@@ -168,7 +168,7 @@ val app = project.in(file("app")).
       aar("com.android.support" % "support-v13" % "25.3.1"),
       aar("com.android.support" % "design" % "25.3.1"),
       aar("com.android.support" % "cardview-v7" % "25.3.1"),
-      aar("com.android.support" % "mediarouter-v7" % "25.3.1"),
+      aar("com.android.support" % "palette-v7" % "25.3.1"),
       aar("com.android.support" % "appcompat-v7" % "25.3.1"),
       "com.android.support" % "multidex" % "1.0.1"
     ),
