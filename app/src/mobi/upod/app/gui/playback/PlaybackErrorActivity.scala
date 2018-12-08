@@ -3,7 +3,7 @@ package mobi.upod.app.gui.playback
 import android.content.{Context, Intent}
 import android.net.Uri
 import android.os.Bundle
-import android.support.v7.app.ActionBarActivity
+import android.support.v7.app.AppCompatActivity
 import com.escalatesoft.subcut.inject.BindingModule
 import mobi.upod.android.app.action.Action
 import mobi.upod.android.app.{SimpleAlertDialogFragment, AlertDialogListener}
@@ -15,7 +15,7 @@ import mobi.upod.app.services.playback.PlaybackError
 import mobi.upod.app.storage.StoragePreferences
 import mobi.upod.app.{AppInjection, IntentExtraKey, R}
 
-class PlaybackErrorActivity extends ActionBarActivity with AlertDialogListener with AppInjection {
+class PlaybackErrorActivity extends AppCompatActivity with AlertDialogListener with AppInjection {
 
   lazy val playbackError = getIntent.getExtra(PlaybackErrorActivity.PlaybackErrorExtra)
   lazy val mediaFile = getIntent.getExtra(PlaybackErrorActivity.MediaFileExtra)

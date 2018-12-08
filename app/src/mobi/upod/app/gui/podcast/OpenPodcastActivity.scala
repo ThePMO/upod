@@ -4,7 +4,7 @@ import java.net.URL
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.ActionBarActivity
+import android.support.v7.app.AppCompatActivity
 import mobi.upod.android.app.{ActivityStateHolder, WaitDialogFragment}
 import mobi.upod.android.logging.Logging
 import mobi.upod.android.os.AsyncTask
@@ -17,7 +17,7 @@ import mobi.upod.app.{AppInjection, R}
 import scala.util.{Failure, Success, Try}
 
 private[podcast] abstract class OpenPodcastActivity
-  extends ActionBarActivity
+  extends AppCompatActivity
   with ActivityStateHolder
   with AppInjection
   with Logging {

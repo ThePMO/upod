@@ -1,13 +1,13 @@
 package mobi.upod.app.gui
 
 import android.app.Activity
-import android.support.v7.app.ActionBarActivity
+import android.support.v7.app.AppCompatActivity
 import mobi.upod.android.app.action.ActivityActions
 import mobi.upod.app.R
 import mobi.upod.app.gui.playback.PlaybackPanel
 
 trait ActivityWithPlaybackPanelAndStandardActions
-  extends ActionBarActivity
+  extends AppCompatActivity
   with PlaybackPanel
   with ActivityActions {
 

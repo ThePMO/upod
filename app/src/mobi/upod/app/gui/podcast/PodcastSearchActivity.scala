@@ -2,11 +2,11 @@ package mobi.upod.app.gui.podcast
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.ActionBarActivity
+import android.support.v7.app.AppCompatActivity
 import mobi.upod.android.app.StandardUpNavigation
 import mobi.upod.app.R
 
-class PodcastSearchActivity extends ActionBarActivity with StandardUpNavigation {
+class PodcastSearchActivity extends AppCompatActivity with StandardUpNavigation {
 
   override def onCreate(savedInstanceState: Bundle): Unit = {
     super.onCreate(savedInstanceState)

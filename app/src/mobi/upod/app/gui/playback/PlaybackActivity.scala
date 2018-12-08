@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.{Context, Intent}
 import android.os.Bundle
 import android.support.v4.app.NavUtils
-import android.support.v7.app.ActionBarActivity
+import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import mobi.upod.android.app.FragmentTransactions.RichFragmentManager
 import mobi.upod.android.app.{ActivityStateHolder, ListenerActivity, UpNavigation}
@@ -18,7 +18,7 @@ import mobi.upod.app.{AppInjection, R}
 import mobi.upod.util.ExceptionUtil
 
 final class PlaybackActivity
-  extends ActionBarActivity
+  extends AppCompatActivity
   with PlaybackListener
   with ListenerActivity
   with ActivityStateHolder

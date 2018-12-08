@@ -3,7 +3,7 @@ package mobi.upod.app.gui.podcast
 import android.os.Bundle
 import android.preference.Preference.OnPreferenceChangeListener
 import android.preference.{Preference, PreferenceFragment}
-import android.support.v7.app.ActionBarActivity
+import android.support.v7.app.AppCompatActivity
 import mobi.upod.android.content.IntentHelpers._
 import mobi.upod.android.os.AsyncTask
 import mobi.upod.app.services.subscription.SubscriptionService
@@ -24,7 +24,7 @@ private[podcast] class SubscriptionSettingsFragment
     super.onCreate(savedInstanceState)
 
     getActivity.setTitle(podcast.title)
-    getActivity.asInstanceOf[ActionBarActivity].getSupportActionBar.setSubtitle(R.string.action_subscription_settings)
+    getActivity.asInstanceOf[AppCompatActivity].getSupportActionBar.setSubtitle(R.string.action_subscription_settings)
     loadSettings()
 
     addPreferencesFromResource(R.xml.subscription_settings)
