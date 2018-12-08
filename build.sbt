@@ -105,12 +105,6 @@ val showcaseView = project.in(file("showcase-view")).
   )
 
 //
-// libraries
-//
-
-val fixMissingMediarouterInnerClasses = project.in(file("fix-missing-mediarouter-inner-classes"))
-
-//
 // apps
 //
 
