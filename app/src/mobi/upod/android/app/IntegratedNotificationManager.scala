@@ -3,6 +3,8 @@ package mobi.upod.android.app
 import android.app
 import android.app.{Notification, Service}
 import android.content.Context
+import android.support.v4.app.NotificationCompat
+import mobi.upod.android.app.NotificationChannels.DefaultChannelNotificationBuilder
 import mobi.upod.android.logging.Logging
 
 trait IntegratedNotificationManager extends Logging { self: Service =>
@@ -29,6 +31,10 @@ trait IntegratedNotificationManager extends Logging { self: Service =>
     } finally if (show) {
       stopForeground()
     }
+  }
+
+  protected def createNotificationOnDefaultChannel(context: Context): NotificationCompat.Builder = {
+    new DefaultChannelNotificationBuilder(context)
   }
 
   protected def showNotification(notification: Notification) {

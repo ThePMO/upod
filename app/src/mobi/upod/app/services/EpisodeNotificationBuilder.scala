@@ -4,7 +4,7 @@ import android.app.{Notification, PendingIntent}
 import android.content.{Context, Intent}
 import android.graphics.Bitmap
 import android.support.v4.media.session.MediaSessionCompat
-import android.support.v7.app.NotificationCompat
+import android.support.v4.media.app.NotificationCompat
 import com.escalatesoft.subcut.inject.{BindingModule, Injectable}
 import mobi.upod.android.app.AppNotificationBuilder
 import mobi.upod.app.App
