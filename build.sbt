@@ -23,7 +23,7 @@ val gradleAppVersionName = appProperties().getProperty("VERSION_NAME")
 //
 
 val bottomSheet = project.in(file("bottom-sheet")).
-  settings(androidBuildAar: _*).
+  enablePlugins(AndroidLib).
   settings(
     name := "bottom-sheet",
 
@@ -44,7 +44,7 @@ val bottomSheet = project.in(file("bottom-sheet")).
   )
 
 val dragSortListView = project.in(file("drag-sort-listview")).
-  settings(androidBuildAar: _*).
+  enablePlugins(AndroidLib).
   settings(
     buildToolsVersion in Android := androidBuildToolsVersion,
     platformTarget in Android := androidPlatformTarget,
@@ -64,7 +64,7 @@ val dragSortListView = project.in(file("drag-sort-listview")).
   )
 
 val prestissimo = project.in(file("prestissimo")).
-  settings(androidBuildAar: _*).
+  enablePlugins(AndroidLib).
   settings(
     buildToolsVersion in Android := androidBuildToolsVersion,
     platformTarget in Android := androidPlatformTarget,
@@ -90,7 +90,7 @@ val prestissimo = project.in(file("prestissimo")).
   )
 
 val showcaseView = project.in(file("showcase-view")).
-  settings(androidBuildAar: _*).
+  enablePlugins(AndroidLib).
   settings(
     buildToolsVersion in Android := androidBuildToolsVersion,
     platformTarget in Android := androidPlatformTarget,
@@ -109,7 +109,7 @@ val showcaseView = project.in(file("showcase-view")).
 //
 
 val app = project.in(file("app")).
-  androidBuildWith(dragSortListView, prestissimo, showcaseView, bottomSheet).
+  enablePlugins(AndroidApp).dependsOn(dragSortListView, prestissimo, showcaseView, bottomSheet).
   //enablePlugins(AndroidProtify).
   settings(
     versionCode in Android := Some(gradleAppVersionCode),
