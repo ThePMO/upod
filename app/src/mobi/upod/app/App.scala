@@ -3,6 +3,7 @@ package mobi.upod.app
 import android.app.{NotificationManager, PendingIntent}
 import android.content.{Context, Intent}
 import android.support.multidex.MultiDexApplication
+import de.wcht.upod.R
 import mobi.upod.android.app.{AppException, AppNotificationBuilder}
 import mobi.upod.android.logging.{LogConfiguration, Logging}
 import mobi.upod.app.storage._

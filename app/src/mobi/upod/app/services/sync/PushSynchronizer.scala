@@ -2,7 +2,7 @@ package mobi.upod.app.services.sync
 
 import com.escalatesoft.subcut.inject.{BindingModule, Injectable}
 import mobi.upod.android.logging.Logging
-import mobi.upod.app.R
+import de.wcht.upod.R
 import mobi.upod.app.data.EpisodeStatus.EpisodeStatus
 import mobi.upod.app.data.{EpisodeReference, EpisodeStatus}
 import mobi.upod.app.services.device.DeviceIdService

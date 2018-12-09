@@ -6,7 +6,7 @@ import android.graphics.drawable.{Drawable, StateListDrawable}
 import android.util.AttributeSet
 import android.widget.SeekBar
 import mobi.upod.android.util.ApiLevel
-import mobi.upod.app.R
+import de.wcht.upod.R
 
 class TintableSeekBar(context: Context, attrs: AttributeSet) extends SeekBar(context, attrs) with TintableProgressBar {
   private val thumb = if (ApiLevel >= ApiLevel.Lollipop) new MaterialThumb else new LegacyThumb

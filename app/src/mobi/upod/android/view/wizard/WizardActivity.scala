@@ -10,7 +10,7 @@ import android.support.v7.app.ActionBarActivity
 import android.widget.TextView
 import mobi.upod.android.app.SimpleAlertDialogFragment
 import mobi.upod.android.view.ChildViews
-import mobi.upod.app.R
+import de.wcht.upod.R
 
 abstract class WizardActivity extends ActionBarActivity with OnPageChangeListener with ChildViews {
   private lazy val pageHeader = childAs[TextView](R.id.header)

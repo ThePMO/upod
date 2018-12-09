@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.view.Gravity
 import android.widget.Button
 import mobi.upod.android.view.Tintable
-import mobi.upod.app.R
+import de.wcht.upod.R
 
 class VolumeGainIndicator(context: Context, attrs: AttributeSet)
   extends Button(context, attrs)

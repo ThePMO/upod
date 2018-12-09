@@ -2,7 +2,7 @@ package mobi.upod.app.gui.podcast
 
 import android.app.Application
 import mobi.upod.android.content.preferences._
-import mobi.upod.app.R
+import de.wcht.upod.R
 
 private[podcast] class SubscriptionSettingsPreferences(app: Application) extends DefaultPreferences(app, R.xml.subscription_settings) {
 

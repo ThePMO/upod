@@ -6,6 +6,7 @@ import android.app.LoaderManager.LoaderCallbacks
 import android.content.{Context, Intent, Loader}
 import android.os.Bundle
 import android.view.Menu
+import de.wcht.upod.R
 import mobi.upod.android.app.{ViewMode, _}
 import mobi.upod.android.content.AsyncDaoItemLoader
 import mobi.upod.android.content.IntentHelpers._

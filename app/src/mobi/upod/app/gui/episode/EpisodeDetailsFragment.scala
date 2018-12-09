@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view._
 import android.webkit.WebView
+import de.wcht.upod.R
 import mobi.upod.android.app.action.ActionState.ActionState
 import mobi.upod.android.app.action.{Action, ActionState, AsyncAction, SimpleFragmentActions}
 import mobi.upod.android.app.{FragmentStateHolder, NavigationItemSelection, SupportActionBar}
@@ -14,6 +15,7 @@ import mobi.upod.android.os.AsyncTask
 import mobi.upod.android.view.{ChildViews, FragmentViewFinder, MenuUtil, WindowCompat}
 import mobi.upod.android.widget.bottomsheet.BottomSheet
 import mobi.upod.android.widget.{ActionPanel, FloatingActionButton, SlidingTitleLayout}
+import mobi.upod.app.AppInjection
 import mobi.upod.app.data.EpisodeListItem
 import mobi.upod.app.gui.MainNavigation
 import mobi.upod.app.gui.chapters.ChapterBottomSheetController
@@ -23,7 +25,6 @@ import mobi.upod.app.gui.episode.news.AddEpisodeToLibraryAction
 import mobi.upod.app.gui.episode.playlist._
 import mobi.upod.app.services.EpisodeService
 import mobi.upod.app.storage.EpisodeDao
-import mobi.upod.app.{AppInjection, R}
 import mobi.upod.media.MediaChapterTable
 
 class EpisodeDetailsFragment

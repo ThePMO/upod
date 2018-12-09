@@ -2,8 +2,9 @@ package mobi.upod.android.logging
 
 import android.content.Context
 import android.net.Uri
+import de.wcht.upod.R
 import mobi.upod.android.app.action.{ActionWaitDialog, AsyncAction}
-import mobi.upod.app.{AppInjection, R}
+import mobi.upod.app.AppInjection
 
 class SendDiagnosticsAction(subject: String = "")
   extends AsyncAction[Unit, Iterable[Uri]]

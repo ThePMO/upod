@@ -6,7 +6,7 @@ import android.content.Context
 import android.graphics.{RectF, Paint, Rect, Canvas}
 import mobi.upod.android.view.DisplayUnits._
 import mobi.upod.android.view.{Tintable, DisplayMetrics}
-import mobi.upod.app.R
+import de.wcht.upod.R
 
 class PlaybackSpeedIndicatorView(context: Context, attrs: AttributeSet)
   extends TextView(context, attrs)

@@ -5,7 +5,7 @@ import android.graphics.drawable._
 import android.view.Gravity
 import android.widget.ProgressBar
 import mobi.upod.android.view.Tintable
-import mobi.upod.app.R
+import de.wcht.upod.R
 
 trait TintableProgressBar extends ProgressBar with Tintable {
   private val progressDrawable = new ProgressDrawable(0xff)

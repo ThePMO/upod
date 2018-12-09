@@ -5,13 +5,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.NavUtils
 import android.widget.FrameLayout
+import de.wcht.upod.R
 import mobi.upod.android.app.FragmentTransactions._
-import mobi.upod.android.app.{NavigationItemSelection, ViewModeSelection, UpNavigation}
+import mobi.upod.android.app.{NavigationItemSelection, UpNavigation, ViewModeSelection}
 import mobi.upod.android.content.IntentHelpers._
 import mobi.upod.android.view.ChildViews
+import mobi.upod.app.AppInjection
 import mobi.upod.app.data.EpisodeListItem
 import mobi.upod.app.gui.{ActivityWithPlaybackPanelAndStandardActions, MainNavigation, ParentActivityIntent}
-import mobi.upod.app.{R, AppInjection}
 
 class EpisodeDetailsActivity
   extends ActivityWithPlaybackPanelAndStandardActions

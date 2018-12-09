@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.preference.Preference.OnPreferenceChangeListener
 import android.preference.{Preference, PreferenceFragment}
 import android.support.v7.app.ActionBarActivity
+import de.wcht.upod.R
 import mobi.upod.android.content.IntentHelpers._
 import mobi.upod.android.os.AsyncTask
+import mobi.upod.app.AppInjection
 import mobi.upod.app.services.subscription.SubscriptionService
 import mobi.upod.app.storage.{AsyncTransactionTask, DownloadPreferences, EpisodeDao}
-import mobi.upod.app.{AppInjection, R}
 
 private[podcast] class SubscriptionSettingsFragment
   extends PreferenceFragment

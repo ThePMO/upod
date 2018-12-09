@@ -4,7 +4,7 @@ import android.content.Context
 import android.text.Html
 import android.view.{LayoutInflater, ViewGroup}
 import android.widget._
-import mobi.upod.app.R
+import de.wcht.upod.R
 
 abstract class WizardChoicePage[A](
     key: String,

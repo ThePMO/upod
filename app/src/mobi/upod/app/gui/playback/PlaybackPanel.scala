@@ -12,7 +12,7 @@ import mobi.upod.android.logging.Logging
 import mobi.upod.android.os.AsyncTask
 import mobi.upod.android.view.{ChildViews, Tintable}
 import mobi.upod.android.widget.{ActionButtons, FloatingActionButton}
-import mobi.upod.app.R
+import de.wcht.upod.R
 import mobi.upod.app.data._
 import mobi.upod.app.gui.{CoverartLoader, CoverartLoaderFallbackDrawable, CoverartPlaceholderDrawable, Theme}
 import mobi.upod.app.services.download.{DownloadListener, DownloadService}

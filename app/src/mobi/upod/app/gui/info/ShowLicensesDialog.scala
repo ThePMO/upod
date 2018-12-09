@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.view.View
 import android.webkit.WebView
-import mobi.upod.app.R
+import de.wcht.upod.R
 
 class ShowLicensesDialog(val url: String) extends DialogFragment {
 

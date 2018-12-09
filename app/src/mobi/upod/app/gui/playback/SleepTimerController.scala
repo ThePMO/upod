@@ -6,12 +6,13 @@ import android.support.v7.widget.PopupMenu
 import android.support.v7.widget.PopupMenu.OnMenuItemClickListener
 import android.util.AttributeSet
 import android.view.View.OnClickListener
-import android.view.{View, Menu, MenuItem, Gravity}
+import android.view.{Gravity, MenuItem, View}
 import android.widget.Button
+import de.wcht.upod.R
 import mobi.upod.android.logging.Logging
-import mobi.upod.android.os.{PowerManager, Runnable}
+import mobi.upod.android.os.PowerManager
 import mobi.upod.android.view.Tintable
-import mobi.upod.app.{AppInjection, R}
+import mobi.upod.app.AppInjection
 import mobi.upod.app.services.playback.{PlaybackService, SleepTimerMode}
 import mobi.upod.timedurationpicker.TimeDurationUtil
 

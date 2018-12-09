@@ -6,7 +6,7 @@ import android.content.{Intent, Context}
 import android.net.Uri
 import com.escalatesoft.subcut.inject.{BindingModule, Injectable}
 import mobi.upod.android.app.action.{ActionWaitDialog, AsyncAction}
-import mobi.upod.app.R
+import de.wcht.upod.R
 import mobi.upod.app.storage.PodcastDao
 
 class ExportSubscriptionsAction(implicit val bindingModule: BindingModule)

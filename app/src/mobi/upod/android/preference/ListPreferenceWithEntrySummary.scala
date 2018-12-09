@@ -3,7 +3,7 @@ package mobi.upod.android.preference
 import android.preference.ListPreference
 import android.content.Context
 import android.util.AttributeSet
-import mobi.upod.app.R
+import de.wcht.upod.R
 import mobi.upod.util.Collections._
 
 class ListPreferenceWithEntrySummary(context: Context, attrs: AttributeSet) extends ListPreference(context, attrs) {

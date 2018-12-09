@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.View
 import android.widget.{RadioButton, RadioGroup}
 import mobi.upod.android.widget.TextViewWithImages
-import mobi.upod.app.R
+import de.wcht.upod.R
 
 class SingleChoiceCardView(
   context: Context,

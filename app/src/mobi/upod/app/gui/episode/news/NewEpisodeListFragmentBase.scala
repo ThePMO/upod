@@ -1,7 +1,7 @@
 package mobi.upod.app.gui.episode.news
 
 import mobi.upod.android.app.action.{ActionWaitDialog, Action, SimpleFragmentActions}
-import mobi.upod.app.R
+import de.wcht.upod.R
 import mobi.upod.app.data.EpisodeListItem
 import mobi.upod.app.gui.episode._
 import mobi.upod.app.gui.episode.download.AddEpisodesToDownloadListAction

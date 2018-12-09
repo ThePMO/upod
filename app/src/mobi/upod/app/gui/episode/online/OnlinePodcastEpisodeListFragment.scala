@@ -4,7 +4,7 @@ import android.content.Loader
 import android.view.View
 import mobi.upod.android.app.action.{Action, SimpleFragmentActions}
 import mobi.upod.android.logging.Logging
-import mobi.upod.app.R
+import de.wcht.upod.R
 import mobi.upod.app.data.{EpisodeListItem, PodcastListItem}
 import mobi.upod.app.gui.UsageTips.ShowcaseTip
 import mobi.upod.app.gui.episode._

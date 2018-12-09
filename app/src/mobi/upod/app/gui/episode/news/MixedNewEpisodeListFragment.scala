@@ -1,7 +1,7 @@
 package mobi.upod.app.gui.episode.news
 
 import mobi.upod.android.app.action.Action
-import mobi.upod.app.R
+import de.wcht.upod.R
 import mobi.upod.app.data.{EpisodeListItem, PodcastListItem}
 import mobi.upod.app.gui.episode.{EpisodeListItemAdapter, OfflinePodcastEpisodeListFragment}
 import mobi.upod.app.gui.info.NewEpisodesTip

@@ -6,15 +6,16 @@ import android.os.Bundle
 import android.support.v4.app.NavUtils
 import android.support.v7.app.ActionBarActivity
 import android.view.Menu
+import de.wcht.upod.R
 import mobi.upod.android.app.FragmentTransactions.RichFragmentManager
 import mobi.upod.android.app.{ActivityStateHolder, ListenerActivity, UpNavigation}
 import mobi.upod.android.content.IntentHelpers._
 import mobi.upod.android.logging.Logging
+import mobi.upod.app.AppInjection
 import mobi.upod.app.data.{EpisodeBaseWithPlaybackInfo, EpisodeListItem}
 import mobi.upod.app.gui.episode.PlayingEpisodeExtra
 import mobi.upod.app.gui.{MainActivity, MainNavigation}
 import mobi.upod.app.services.playback.{PlaybackListener, PlaybackService}
-import mobi.upod.app.{AppInjection, R}
 import mobi.upod.util.ExceptionUtil
 
 final class PlaybackActivity

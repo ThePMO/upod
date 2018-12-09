@@ -7,13 +7,14 @@ import android.support.v7.app.AlertDialog
 import android.view.{LayoutInflater, View}
 import android.widget.CompoundButton.OnCheckedChangeListener
 import android.widget.{CompoundButton, SeekBar, TextView}
+import de.wcht.upod.R
 import mobi.upod.android.view.DialogClickListener
 import mobi.upod.android.view.Helpers.RichView
+import mobi.upod.app.AppInjection
 import mobi.upod.app.data.EpisodeBaseWithPlaybackInfo
 import mobi.upod.app.services.playback.PlaybackService
 import mobi.upod.app.services.sync.SyncService
 import mobi.upod.app.storage.{AsyncTransactionTask, EpisodeDao, PodcastDao}
-import mobi.upod.app.{AppInjection, R}
 
 class AudioFxDialogFragment  extends DialogFragment with SeekBar.OnSeekBarChangeListener with AppInjection {
   import AudioFxDialogFragment._

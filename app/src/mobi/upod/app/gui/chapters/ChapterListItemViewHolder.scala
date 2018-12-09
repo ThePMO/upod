@@ -8,7 +8,7 @@ import mobi.upod.android.app.action.ActionState.ActionState
 import mobi.upod.android.app.action.{Action, ActionController, ActionState}
 import mobi.upod.android.view.Helpers.RichView
 import mobi.upod.android.widget.{ActionButtons, ViewHolder}
-import mobi.upod.app.R
+import de.wcht.upod.R
 import mobi.upod.media.MediaChapter
 import mobi.upod.util.Duration.LongDuration
 

@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.NumberPicker;
 import android.widget.TextView;
-import mobi.upod.app.R;
+import de.wcht.upod.R;
 
 public class NumberPickerPreference extends DialogPreference {
     private static final String DEFAULT_NUMBER_FORMAT = "%d";

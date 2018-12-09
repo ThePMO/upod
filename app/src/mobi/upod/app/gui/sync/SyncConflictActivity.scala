@@ -3,11 +3,12 @@ package mobi.upod.app.gui.sync
 import android.app.PendingIntent
 import android.content.{Context, Intent}
 import android.os.Bundle
+import de.wcht.upod.R
 import mobi.upod.android.view.wizard._
 import mobi.upod.android.widget.Toast
+import mobi.upod.app.{App, AppInjection}
 import mobi.upod.app.gui.MainActivity
 import mobi.upod.app.services.sync.{SyncConflictResolution, SyncService}
-import mobi.upod.app.{App, AppInjection, R}
 
 class SyncConflictActivity extends WizardActivity with AppInjection {
 

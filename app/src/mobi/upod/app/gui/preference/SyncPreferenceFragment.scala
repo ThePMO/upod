@@ -5,7 +5,7 @@ import android.preference.Preference.OnPreferenceChangeListener
 import mobi.upod.android.app.action.Action
 import mobi.upod.android.content.preferences.{OptionSetter, TimePreference}
 import mobi.upod.android.preference.{PreferenceChangeListener, SimplePreferenceFragment, TimePickerPreference}
-import mobi.upod.app.R
+import de.wcht.upod.R
 import mobi.upod.app.storage.{InternalSyncPreferences, SyncPreferences}
 import mobi.upod.util.DateTimeUtils.RichDateTime
 import mobi.upod.util.TimeOfDay

@@ -1,8 +1,9 @@
 package mobi.upod.app.storage
 
 import android.app.Application
-import mobi.upod.android.content.preferences.{Setter, EnumerationPreference, DefaultPreferences}
-import mobi.upod.app.{AppUpgradeListener, R}
+import de.wcht.upod.R
+import mobi.upod.android.content.preferences.{DefaultPreferences, EnumerationPreference, Setter}
+import mobi.upod.app.AppUpgradeListener
 
 class DownloadPreferences(app: Application) extends DefaultPreferences(app, R.xml.pref_download) with AppUpgradeListener {
 

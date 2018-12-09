@@ -4,7 +4,7 @@ import android.view.View
 import com.escalatesoft.subcut.inject.{Injectable, BindingModule}
 import mobi.upod.android.view.Helpers._
 import mobi.upod.android.widget._
-import mobi.upod.app.R
+import de.wcht.upod.R
 import mobi.upod.app.data.EpisodeListItem
 import mobi.upod.util.Collections._
 import scala.collection.mutable.ArrayBuffer

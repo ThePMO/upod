@@ -4,18 +4,19 @@ import android.content.{Context, Loader}
 import android.os.Bundle
 import android.view.{ActionMode, View}
 import android.widget.{AbsListView, AdapterView, GridView}
+import de.wcht.upod.R
 import mobi.upod.android.app.action._
 import mobi.upod.android.app.{FragmentStateHolder, GridFragment, InitialFragmentCreation, SupportActionBar}
 import mobi.upod.android.logging.Logging
 import mobi.upod.android.view.DisplayUnits.Pixels
 import mobi.upod.android.view.cards.CardHeaders
 import mobi.upod.android.view.{ChildViews, DisplayMetrics, FragmentViewFinder}
+import mobi.upod.app.AppInjection
 import mobi.upod.app.data.PodcastListItem
 import mobi.upod.app.gui.{PodcastEpisodesActivity, ReloadOnEpisodeListChangedFragment}
 import mobi.upod.app.services.sync.SyncService
 import mobi.upod.app.storage.PodcastGridType.PodcastListType
 import mobi.upod.app.storage.{ImageSize, PodcastGridType, UiPreferences}
-import mobi.upod.app.{AppInjection, R}
 
 private[podcast] abstract class PodcastGridFragment(
     navId: Long,

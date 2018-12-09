@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="mobi.upod.app"
-          android:sharedUserId="mobi.upod.app"
+          package="de.wcht.upod"
+          android:sharedUserId="de.wcht.upod"
           android:sharedUserLabel="@string/app_user_name">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -23,7 +23,7 @@
             android:theme="@style/Theme.Light"
             android:icon="@drawable/ic_launcher"
             android:label="@string/app_name"
-            android:name=".App"
+            android:name="mobi.upod.app.App"
             android:allowBackup="true"
             android:fullBackupContent="@xml/backup_rules">
 
@@ -34,7 +34,7 @@
 
         <!-- activities -->
         <activity
-                android:name=".gui.MainActivity"
+                android:name="mobi.upod.app.gui.MainActivity"
                 android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -42,51 +42,51 @@
             </intent-filter>
             <meta-data
                 android:name="android.app.default_searchable"
-                android:value=".gui.podcast.PodcastSearchActivity"/>
+                android:value="mobi.upod.app.gui.podcast.PodcastSearchActivity"/>
         </activity>
         <activity
-            android:name=".gui.preference.StartupWizardActivity"
+            android:name="mobi.upod.app.gui.preference.StartupWizardActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.Light.NoTitleBar"/>
         <activity
-            android:name=".gui.preference.UpdateWizardActivity"
+            android:name="mobi.upod.app.gui.preference.UpdateWizardActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.Light.NoTitleBar"/>
         <activity
-            android:name=".gui.sync.SyncConflictActivity"
+            android:name="mobi.upod.app.gui.sync.SyncConflictActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.Light.NoTitleBar"/>
         <activity
-                android:name=".gui.PodcastEpisodesActivity"
+                android:name="mobi.upod.app.gui.PodcastEpisodesActivity"
                 android:theme="@style/Theme.Light.ScrollHeader"
-                android:parentActivityName=".gui.MainActivity">
+                android:parentActivityName="mobi.upod.app.gui.MainActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:label="@string/app_name"
-                    android:value=".gui.MainActivity" />
+                    android:value="mobi.upod.app.gui.MainActivity" />
         </activity>
         <activity
-            android:name=".gui.episode.EpisodeDetailsActivity"
+            android:name="mobi.upod.app.gui.episode.EpisodeDetailsActivity"
             android:theme="@style/Theme.Light.ScrollHeader"/>
         <activity
-            android:name=".gui.playback.PlaybackActivity"
+            android:name="mobi.upod.app.gui.playback.PlaybackActivity"
             android:theme="@style/Theme.Light.Playback"
             android:launchMode="singleTop"/>
         <activity
-            android:name=".gui.playback.PlaybackShowNotesActivity"
+            android:name="mobi.upod.app.gui.playback.PlaybackShowNotesActivity"
             android:theme="@style/Theme.Light"
-            android:parentActivityName=".gui.playback.PlaybackActivity">
+            android:parentActivityName="mobi.upod.app.gui.playback.PlaybackActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".gui.playback.PlaybackActivity" />
+                android:value="mobi.upod.app.gui.playback.PlaybackActivity" />
         </activity>
         <activity
-            android:name=".gui.playback.PlaybackErrorActivity"
+            android:name="mobi.upod.app.gui.playback.PlaybackErrorActivity"
             android:theme="@style/Theme.Light.Translucent.NoTitleBar"
             android:configChanges="keyboardHidden|orientation|screenSize"/>
         <activity
-            android:name=".gui.podcast.PodcastSearchActivity"
-            android:parentActivityName=".gui.MainActivity"
+            android:name="mobi.upod.app.gui.podcast.PodcastSearchActivity"
+            android:parentActivityName="mobi.upod.app.gui.MainActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH"/>
@@ -97,13 +97,13 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:label="@string/app_name"
-                android:value=".gui.MainActivity"/>
+                android:value="mobi.upod.app.gui.MainActivity"/>
         </activity>
         <activity
-            android:name=".gui.chapters.ChapterImageActivity"
+            android:name="mobi.upod.app.gui.chapters.ChapterImageActivity"
             android:theme="@style/Theme.FullImage"/>
         <activity
-                android:name=".gui.podcast.OpenPodcastUrlActivity"
+                android:name="mobi.upod.app.gui.podcast.OpenPodcastUrlActivity"
                 android:label="@string/open_podcast_url_activity"
                 android:theme="@style/Theme.Light.Translucent.NoTitleBar"
                 android:configChanges="keyboardHidden|orientation|screenSize">
@@ -163,12 +163,12 @@
 
         </activity>
         <activity
-                android:name=".gui.podcast.OpenPodcastUriActivity"
+                android:name="mobi.upod.app.gui.podcast.OpenPodcastUriActivity"
                 android:label="@string/open_podcast_url_activity"
                 android:theme="@style/Theme.Light.Translucent.NoTitleBar"
                 android:configChanges="keyboardHidden|orientation|screenSize"/>
         <activity
-                android:name=".gui.opml.OpmlImportActivity"
+                android:name="mobi.upod.app.gui.opml.OpmlImportActivity"
                 android:label="@string/opml_import"
                 android:theme="@style/Theme.Light.Translucent.NoTitleBar"
                 android:configChanges="keyboardHidden|orientation|screenSize">
@@ -192,61 +192,61 @@
                 <data android:scheme="file" android:host="*" android:pathPattern=".*\\.xml"/>
             </intent-filter>
         </activity>
-        <activity android:name=".gui.preference.PreferenceActivity"
+        <activity android:name="mobi.upod.app.gui.preference.PreferenceActivity"
                   android:label="@string/pref_title"
                   android:theme="@style/Theme.Light.Settings"
-                  android:parentActivityName=".gui.MainActivity">
+                  android:parentActivityName="mobi.upod.app.gui.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:label="@string/app_name"
-                android:value=".gui.MainActivity"/>
+                android:value="mobi.upod.app.gui.MainActivity"/>
         </activity>
-        <activity android:name=".gui.preference.SupportActivity"
+        <activity android:name="mobi.upod.app.gui.preference.SupportActivity"
                   android:label="@string/nav_support"
-                  android:parentActivityName=".gui.MainActivity">
+                  android:parentActivityName="mobi.upod.app.gui.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:label="@string/app_name"
-                android:value=".gui.MainActivity"/>
+                android:value="mobi.upod.app.gui.MainActivity"/>
         </activity>
-        <activity android:name=".gui.podcast.SubscriptionSettingsActivity"
+        <activity android:name="mobi.upod.app.gui.podcast.SubscriptionSettingsActivity"
                   android:label="@string/action_subscription_settings"/>
 
         <!-- services -->
-        <service android:name=".services.sync.SyncServiceImpl"
+        <service android:name="mobi.upod.app.services.sync.SyncServiceImpl"
                  android:label="uPod Sync Service"
                  android:stopWithTask="true"/>
-        <service android:name=".services.download.DownloadServiceImpl"
+        <service android:name="mobi.upod.app.services.download.DownloadServiceImpl"
                  android:label="uPod Download Service"/>
-        <service android:name=".services.playback.PlaybackServiceImpl"
+        <service android:name="mobi.upod.app.services.playback.PlaybackServiceImpl"
                  android:label="uPod Playback Service"/>
 
         <!-- broadcast receivers -->
-        <receiver android:name=".services.sync.BootCompletedReceiver">
+        <receiver android:name="mobi.upod.app.services.sync.BootCompletedReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
-        <receiver android:name=".services.download.RemoteDownloadActionReceiver">
+        <receiver android:name="mobi.upod.app.services.download.RemoteDownloadActionReceiver">
             <intent-filter>
                 <action android:name="mobi.upod.app.intent.action.REMOTE_DOWNLOAD_ACTION"/>
                 <data android:scheme="upod" android:host="remote-action.upod.mobi"/>
             </intent-filter>
         </receiver>
-        <receiver android:name=".services.playback.RemotePlaybackActionReceiver">
+        <receiver android:name="mobi.upod.app.services.playback.RemotePlaybackActionReceiver">
             <intent-filter>
                 <action android:name="mobi.upod.app.intent.action.REMOTE_PLAYBACK_ACTION"/>
                 <data android:scheme="upod" android:host="remote-action.upod.mobi"/>
             </intent-filter>
         </receiver>
-        <receiver android:name=".services.storage.StorageStateReceiver">
+        <receiver android:name="mobi.upod.app.services.storage.StorageStateReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.MEDIA_MOUNTED"/>
                 <action android:name="android.intent.action.MEDIA_UNMOUNTED"/>
                 <data android:scheme="file"/>
             </intent-filter>
         </receiver>
-        <receiver android:name=".services.playback.MediaControlEventReceiver" android:enabled="false">
+        <receiver android:name="mobi.upod.app.services.playback.MediaControlEventReceiver" android:enabled="false">
             <intent-filter android:priority="999">
                 <action android:name="android.intent.action.MEDIA_BUTTON"/>
                 <action android:name="android.media.AUDIO_BECOMING_NOISY"/>
@@ -256,7 +256,7 @@
         <!-- providers -->
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="mobi.upod.app.fileprovider"
+            android:authorities="de.wcht.upod.fileprovider"
             android:grantUriPermissions="true"
             android:exported="false">
             <meta-data

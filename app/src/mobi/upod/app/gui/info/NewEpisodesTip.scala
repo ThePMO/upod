@@ -3,7 +3,7 @@ package mobi.upod.app.gui.info
 import com.escalatesoft.subcut.inject.Injectable
 import mobi.upod.android.os.AsyncTask
 import mobi.upod.android.view.cards.{CardHeader, CardHeaders, TipCardHeader}
-import mobi.upod.app.R
+import de.wcht.upod.R
 import mobi.upod.app.services.EpisodeService
 import mobi.upod.app.services.sync.SyncService
 import mobi.upod.app.storage.UiPreferences

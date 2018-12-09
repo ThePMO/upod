@@ -8,7 +8,7 @@ import com.escalatesoft.subcut.inject.BindingModule
 import mobi.upod.android.app.action.{Action, ActionController, ActionState}
 import mobi.upod.android.widget.bottomsheet.BottomSheet
 import mobi.upod.android.widget.{ActionButtons, TintableProgressBar}
-import mobi.upod.app.R
+import de.wcht.upod.R
 import mobi.upod.app.data.{EpisodeBaseWithPlaybackInfo, EpisodeListItem}
 import mobi.upod.app.gui.chapters.{ChapterBottomSheetController, OpenChapterLinkAction}
 import mobi.upod.app.services.playback.{PlaybackListener, PlaybackService}

@@ -2,15 +2,16 @@ package mobi.upod.app.gui
 
 import android.content.{Context, Intent}
 import android.os.Bundle
+import de.wcht.upod.R
 import mobi.upod.android.app.FragmentTransactions._
-import mobi.upod.android.app.{LabeledNavigationDrawerEntry, ActionModeTracking, NavigationItemSelection, StandardUpNavigation}
+import mobi.upod.android.app.{ActionModeTracking, LabeledNavigationDrawerEntry, NavigationItemSelection, StandardUpNavigation}
 import mobi.upod.android.content.IntentHelpers._
 import mobi.upod.android.logging.Logging
 import mobi.upod.android.os.BundleBooleanValue
 import mobi.upod.app.data.PodcastListItem
-import mobi.upod.app.gui.episode.{PodcastEpisodeListFragment, FullFeaturedEpisodeListHolderActivity}
+import mobi.upod.app.gui.episode.{FullFeaturedEpisodeListHolderActivity, PodcastEpisodeListFragment}
 import mobi.upod.app.gui.podcast.{PodcastListFragment, PodcastSelectionListener}
-import mobi.upod.app.{IntentExtraKey, AppInjection, R}
+import mobi.upod.app.{AppInjection, IntentExtraKey}
 
 class PodcastEpisodesActivity
   extends ActivityWithPlaybackPanelAndStandardActions

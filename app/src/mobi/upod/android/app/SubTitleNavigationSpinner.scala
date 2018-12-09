@@ -8,7 +8,7 @@ import android.view.ViewGroup.LayoutParams._
 import android.view.{LayoutInflater, MenuItem}
 import android.widget.LinearLayout
 import mobi.upod.android.view.Helpers._
-import mobi.upod.app.R
+import de.wcht.upod.R
 
 class SubTitleNavigationSpinner(
   spinnerContext: Context,

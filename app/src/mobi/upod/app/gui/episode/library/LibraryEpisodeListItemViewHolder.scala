@@ -3,7 +3,7 @@ package mobi.upod.app.gui.episode.library
 import android.view.View
 import com.escalatesoft.subcut.inject.BindingModule
 import mobi.upod.android.app.action.Action
-import mobi.upod.app.R
+import de.wcht.upod.R
 import mobi.upod.app.gui.episode.{EpisodeListItemViewHolderConfiguration, _}
 import mobi.upod.app.gui.episode.download._
 import mobi.upod.app.gui.episode.news.AddEpisodeToLibraryAction
