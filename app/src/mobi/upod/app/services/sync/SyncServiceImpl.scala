@@ -8,6 +8,7 @@ import android.content.{Context, Intent}
 import android.support.v7.app.NotificationCompat
 import com.github.nscala_time.time.Imports._
 import com.google.gson.JsonIOException
+import de.wcht.upod.R
 import mobi.upod.android.app.{AppException, IntegratedNotificationManager}
 import mobi.upod.android.content.IntentHelpers._
 import mobi.upod.android.logging.Logging

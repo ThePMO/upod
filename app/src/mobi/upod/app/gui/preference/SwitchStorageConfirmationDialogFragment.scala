@@ -2,13 +2,14 @@ package mobi.upod.app.gui.preference
 
 import android.app.Activity
 import android.content.Context
+import de.wcht.upod.R
 import mobi.upod.android.app.{AbstractAlertDialogFragment, SimpleDialogFragmentObjectWithShowMethod, WaitDialogFragment}
 import mobi.upod.android.logging.Logging
 import mobi.upod.android.os.AsyncTask
+import mobi.upod.app.AppInjection
 import mobi.upod.app.services.download.DownloadService
 import mobi.upod.app.storage.StorageProvider
 import mobi.upod.app.storage.StorageProvider.StorageProviderType
-import mobi.upod.app.{AppInjection, R}
 import mobi.upod.io.RichFile
 
 class SwitchStorageRequest(oldStorageTypeId: Int, newStorageTypeId: Int, val storageFragmentId: Int)

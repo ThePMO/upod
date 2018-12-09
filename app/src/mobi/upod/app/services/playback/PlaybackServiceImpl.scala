@@ -7,11 +7,13 @@ import android.content.{Context, Intent}
 import android.graphics.SurfaceTexture
 import android.media.AudioManager
 import android.media.AudioManager.OnAudioFocusChangeListener
+import de.wcht.upod.R
 import mobi.upod.android.app.{BoundService, IntegratedNotificationManager, ServiceBinder}
 import mobi.upod.android.content.preferences.PreferenceChangeListener
 import mobi.upod.android.logging.Logging
 import mobi.upod.android.os.AsyncTask
 import mobi.upod.android.util.ApiLevel
+import mobi.upod.app.AppInjection
 import mobi.upod.app.data.{EpisodeBaseWithDownloadInfo, EpisodeBaseWithPlaybackInfo, EpisodeListItem}
 import mobi.upod.app.gui.playback.{PlaybackActivity, PlaybackErrorActivity}
 import mobi.upod.app.services.EpisodeNotificationBuilder
@@ -20,7 +22,6 @@ import mobi.upod.app.services.playback.player.SwitchableMediaPlayer
 import mobi.upod.app.services.playback.state._
 import mobi.upod.app.storage.PlaybackNotificationButtons._
 import mobi.upod.app.storage.PlaybackPreferences
-import mobi.upod.app.{AppInjection, R}
 import mobi.upod.media.{MediaChapter, MediaChapterTable}
 import mobi.upod.util.Duration._
 import mobi.upod.util.Permille._

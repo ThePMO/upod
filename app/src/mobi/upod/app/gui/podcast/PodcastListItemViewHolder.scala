@@ -8,7 +8,7 @@ import com.escalatesoft.subcut.inject.{BindingModule, Injectable}
 import mobi.upod.android.content.Theme._
 import mobi.upod.android.view.Helpers._
 import mobi.upod.android.widget.ViewHolder
-import mobi.upod.app.R
+import de.wcht.upod.R
 import mobi.upod.app.data.PodcastListItem
 import mobi.upod.app.gui.{CoverartLoaderFallbackDrawable, CoverartPlaceholderDrawable, CoverartLoader, Theme}
 import mobi.upod.app.storage.{UiPreferences, ImageSize}

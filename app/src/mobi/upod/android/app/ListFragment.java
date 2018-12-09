@@ -26,7 +26,7 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.*;
 import mobi.upod.android.widget.SwipeRefreshLayoutForIndirectListView;
-import mobi.upod.app.R;
+import de.wcht.upod.R;
 
 /**
  * A fragment that displays a list of items by binding to a data source such as

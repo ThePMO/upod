@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.v4.app.ActivityOptionsCompat
 import android.view.{LayoutInflater, View, ViewGroup}
 import android.widget._
+import de.wcht.upod.R
 import mobi.upod.android.app.action.{Action, SimpleFragmentActions}
 import mobi.upod.android.app.{FragmentStateHolder, ObservableFragmentLifecycle, SupportActionBar}
 import mobi.upod.android.content.IntentHelpers.RichIntent
@@ -15,11 +16,11 @@ import mobi.upod.android.os.AsyncTask
 import mobi.upod.android.view._
 import mobi.upod.android.widget.FloatingActionButton
 import mobi.upod.android.widget.bottomsheet.BottomSheet
+import mobi.upod.app.AppInjection
 import mobi.upod.app.data.{EpisodeBaseWithPlaybackInfo, EpisodeListItem}
 import mobi.upod.app.gui.episode._
 import mobi.upod.app.gui.episode.library.StarEpisodeAction
 import mobi.upod.app.gui.{MainActivity, MainNavigation}
-import mobi.upod.app.{AppInjection, R}
 import mobi.upod.media.MediaChapterTable
 
 import scala.util.Try

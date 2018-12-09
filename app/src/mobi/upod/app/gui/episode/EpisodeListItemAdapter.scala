@@ -4,7 +4,7 @@ import android.view.View
 import com.escalatesoft.subcut.inject.{Injectable, BindingModule}
 import mobi.upod.android.view.Helpers._
 import mobi.upod.android.widget.MutableItemAdapter
-import mobi.upod.app.R
+import de.wcht.upod.R
 import mobi.upod.util.Collections._
 import mobi.upod.app.data.EpisodeListItem
 

@@ -1,7 +1,7 @@
 package mobi.upod.app.gui.info
 
 import mobi.upod.android.view.cards.{CardHeader, CardHeaders, TipCardHeader}
-import mobi.upod.app.R
+import de.wcht.upod.R
 
 trait FinishedEpisodesTip extends CardHeaders {
 

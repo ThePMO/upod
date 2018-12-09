@@ -1,8 +1,9 @@
 package mobi.upod.app.storage
 
 import android.app.Application
+import de.wcht.upod.R
 import mobi.upod.android.content.preferences._
-import mobi.upod.app.{AppUpgradeListener, R}
+import mobi.upod.app.AppUpgradeListener
 import mobi.upod.util.TimeOfDay
 
 class SyncPreferences(app: Application) extends DefaultPreferences(app, R.xml.pref_sync) with AppUpgradeListener {

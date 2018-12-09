@@ -1,7 +1,8 @@
 package mobi.upod.app.services.playback
 
+import de.wcht.upod.R
 import mobi.upod.android.content.{RemoteActionIntent, RemoteActionReceiver}
-import mobi.upod.app.{R, AppInjection}
+import mobi.upod.app.AppInjection
 
 class RemotePlaybackActionReceiver extends RemoteActionReceiver with AppInjection {
 

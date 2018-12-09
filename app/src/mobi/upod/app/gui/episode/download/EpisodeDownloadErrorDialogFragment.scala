@@ -1,7 +1,8 @@
 package mobi.upod.app.gui.episode.download
 
+import de.wcht.upod.R
 import mobi.upod.android.app.{AbstractAlertDialogFragment, SimpleDialogFragmentObjectWithShowMethod}
-import mobi.upod.app.{AppInjection, R}
+import mobi.upod.app.AppInjection
 import mobi.upod.app.data.EpisodeListItem
 
 final class EpisodeDownloadErrorDialogFragment extends AbstractAlertDialogFragment[EpisodeListItem](

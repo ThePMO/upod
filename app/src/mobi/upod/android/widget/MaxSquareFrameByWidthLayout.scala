@@ -5,7 +5,7 @@ import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.View.MeasureSpec
 import android.widget.FrameLayout
-import mobi.upod.app.R
+import de.wcht.upod.R
 
 /** A FrameLayout that keeps the specified width and sets the height to be at maximum as large as the width. */
 class MaxSquareFrameByWidthLayout(context: Context, attributes: AttributeSet) extends FrameLayout(context, attributes) {

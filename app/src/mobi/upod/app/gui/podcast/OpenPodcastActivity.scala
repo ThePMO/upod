@@ -5,14 +5,15 @@ import java.net.URL
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.ActionBarActivity
+import de.wcht.upod.R
 import mobi.upod.android.app.{ActivityStateHolder, WaitDialogFragment}
 import mobi.upod.android.logging.Logging
 import mobi.upod.android.os.AsyncTask
+import mobi.upod.app.AppInjection
 import mobi.upod.app.data.{Podcast, PodcastListItem}
 import mobi.upod.app.gui.PodcastEpisodesActivity
-import mobi.upod.app.services.sync.{PodcastColorExtractor, ImageFetcher}
-import mobi.upod.app.storage.{ImageSize, CoverartProvider}
-import mobi.upod.app.{AppInjection, R}
+import mobi.upod.app.services.sync.{ImageFetcher, PodcastColorExtractor}
+import mobi.upod.app.storage.{CoverartProvider, ImageSize}
 
 import scala.util.{Failure, Success, Try}
 

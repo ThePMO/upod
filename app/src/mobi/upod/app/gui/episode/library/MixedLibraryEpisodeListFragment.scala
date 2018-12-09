@@ -1,7 +1,7 @@
 package mobi.upod.app.gui.episode.library
 
 import mobi.upod.android.app.action.{SimpleFragmentActions, Action}
-import mobi.upod.app.R
+import de.wcht.upod.R
 import mobi.upod.app.data.{EpisodeListItem, PodcastListItem}
 import mobi.upod.app.gui.episode.download.{DeleteRecentlyFinishedPodcastEpisodesAction, DeleteRecentlyFinishedEpisodesAction}
 import mobi.upod.app.gui.info.FinishedEpisodesTip

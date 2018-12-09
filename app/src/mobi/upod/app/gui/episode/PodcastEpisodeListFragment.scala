@@ -18,7 +18,7 @@ import mobi.upod.android.content.IntentHelpers._
 import mobi.upod.android.os.AsyncTask
 import mobi.upod.android.view.{MenuUtil, WindowCompat}
 import mobi.upod.android.widget._
-import mobi.upod.app.R
+import de.wcht.upod.R
 import mobi.upod.app.data._
 import mobi.upod.app.gui._
 import mobi.upod.app.gui.podcast.{SharePodcastAction, SubscriptionSettingsAction}

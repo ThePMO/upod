@@ -5,15 +5,15 @@ import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.ActionBarActivity
 import com.escalatesoft.subcut.inject.BindingModule
+import de.wcht.upod.R
 import mobi.upod.android.app.action.Action
-import mobi.upod.android.app.{SimpleAlertDialogFragment, AlertDialogListener}
+import mobi.upod.android.app.{AlertDialogListener, SimpleAlertDialogFragment}
 import mobi.upod.android.content.IntentHelpers.RichIntent
-import mobi.upod.android.logging.SendDiagnosticsAction
 import mobi.upod.android.os.BundleSerializableValue
 import mobi.upod.app.data.EpisodeBaseWithDownloadInfo
 import mobi.upod.app.services.playback.PlaybackError
 import mobi.upod.app.storage.StoragePreferences
-import mobi.upod.app.{AppInjection, IntentExtraKey, R}
+import mobi.upod.app.{AppInjection, IntentExtraKey}
 
 class PlaybackErrorActivity extends ActionBarActivity with AlertDialogListener with AppInjection {
 

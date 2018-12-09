@@ -2,7 +2,7 @@
 
 <PreferenceScreen
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:upod="http://schemas.android.com/apk/res/mobi.upod.app">
+        xmlns:upod="http://schemas.android.com/apk/res/de.wcht.upod">
 
     <mobi.upod.android.preference.ListPreferenceWithEntrySummary
         android:key="pref_download_auto_add"

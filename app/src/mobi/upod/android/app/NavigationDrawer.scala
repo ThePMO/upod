@@ -14,7 +14,7 @@ import mobi.upod.android.content.IntentHelpers._
 import mobi.upod.android.logging.Logging
 import mobi.upod.android.view.ChildViews
 import mobi.upod.android.widget.AdapterViewClickListener
-import mobi.upod.app.R
+import de.wcht.upod.R
 
 import scala.reflect.ClassTag
 

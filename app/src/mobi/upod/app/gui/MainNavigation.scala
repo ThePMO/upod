@@ -2,7 +2,7 @@ package mobi.upod.app.gui
 
 import android.app.Fragment
 import mobi.upod.android.app._
-import mobi.upod.app.R
+import de.wcht.upod.R
 import mobi.upod.app.gui.episode.download.DownloadListFragment
 import mobi.upod.app.gui.episode.news.{NewPodcastEpisodeListFragment, NewEpisodeListFragment, GroupedNewEpisodeListFragment}
 import mobi.upod.app.gui.episode.library._

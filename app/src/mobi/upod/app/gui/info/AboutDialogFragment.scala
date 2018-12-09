@@ -10,7 +10,7 @@ import android.view.{Gravity, View}
 import android.widget.{ScrollView, TextView}
 import mobi.upod.android.app.SimpleDialogFragment
 import mobi.upod.android.content.Theme._
-import mobi.upod.app.R
+import de.wcht.upod.R
 
 class AboutDialogFragment extends DialogFragment {
 

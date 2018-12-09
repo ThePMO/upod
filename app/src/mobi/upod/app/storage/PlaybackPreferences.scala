@@ -2,7 +2,7 @@ package mobi.upod.app.storage
 
 import android.app.Application
 import mobi.upod.android.content.preferences._
-import mobi.upod.app.R
+import de.wcht.upod.R
 import mobi.upod.app.storage.AudioPlayerType.AudioPlayerType
 import mobi.upod.app.storage.PlaybackNotificationButtons.PlaybackNotificationButtons
 import mobi.upod.util.MediaPositionFormat

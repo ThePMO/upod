@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.{Button, FrameLayout}
 import mobi.upod.android.app.action.Action
 import mobi.upod.android.view.ChildViews
-import mobi.upod.app.R
+import de.wcht.upod.R
 
 class CardView(context: Context) extends FrameLayout(context: Context) with ChildViews {
   private var dismissListener: Option[OnCardDismissListener] = None

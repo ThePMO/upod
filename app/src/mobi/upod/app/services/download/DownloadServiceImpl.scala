@@ -5,16 +5,17 @@ import java.io.InterruptedIOException
 import android.app.PendingIntent
 import android.content.Intent
 import android.support.v4.app.NotificationCompat
+import de.wcht.upod.R
 import mobi.upod.android.app.{AsyncBoundService, IntegratedNotificationManager, ServiceBinder}
 import mobi.upod.android.logging.Logging
 import mobi.upod.android.media.MediaFileDurationRetriever
 import mobi.upod.android.os.{AsyncObservable, PowerManager}
+import mobi.upod.app.AppInjection
 import mobi.upod.app.data.{EpisodeBaseWithDownloadInfo, EpisodeListItem}
 import mobi.upod.app.gui.{MainActivity, MainNavigation}
 import mobi.upod.app.services.net.{ConnectionException, ConnectionState, ConnectionStateRetriever}
 import mobi.upod.app.services.{EpisodeNotificationBuilder, EpisodeService}
 import mobi.upod.app.storage._
-import mobi.upod.app.{AppInjection, R}
 import mobi.upod.net._
 import mobi.upod.util.Duration._
 import mobi.upod.util.MinIntervalEventFilter

@@ -9,7 +9,7 @@ import mobi.upod
 import mobi.upod.android.logging.Logging
 import mobi.upod.android.os.FileSystem
 import mobi.upod.android.util.ApiLevel
-import mobi.upod.app.R
+import de.wcht.upod.R
 import mobi.upod.util.EnumerationName
 import scala.io.Source
 

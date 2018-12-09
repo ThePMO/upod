@@ -20,7 +20,7 @@ android {
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
-        applicationId = "mobi.upod.app"
+        applicationId = "de.wcht.upod"
         targetSdkVersion 25
         versionCode Integer.parseInt(VERSION_CODE)
         versionName VERSION_NAME

@@ -6,17 +6,18 @@ import android.view._
 import android.widget.AbsListView.MultiChoiceModeListener
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.{AbsListView, AdapterView, ListView}
+import de.wcht.upod.R
 import mobi.upod.android.app._
 import mobi.upod.android.app.action.{Action, AsyncActionHook, ContextualActions, ImplicitFragmentContext}
 import mobi.upod.android.content.AsyncCursorLoader
 import mobi.upod.android.content.Theme._
 import mobi.upod.android.view.cards.CardHeaders
 import mobi.upod.android.view.{ChildViews, FragmentViewFinder}
+import mobi.upod.app.AppInjection
 import mobi.upod.app.data.EpisodeListItem
 import mobi.upod.app.gui.SyncOnPull
 import mobi.upod.app.services.sync.SyncService
 import mobi.upod.app.storage.{EpisodeDao, InternalAppPreferences}
-import mobi.upod.app.{AppInjection, R}
 import mobi.upod.util.Collections.Index
 import mobi.upod.util.Cursor
 

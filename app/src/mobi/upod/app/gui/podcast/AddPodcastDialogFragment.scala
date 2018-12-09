@@ -8,9 +8,10 @@ import android.text.Html
 import android.text.method.LinkMovementMethod
 import android.view.{LayoutInflater, View}
 import android.widget.TextView
+import de.wcht.upod.R
 import mobi.upod.android.view.DialogClickListener
 import mobi.upod.android.view.Helpers.RichView
-import mobi.upod.app.{AppInjection, R}
+import mobi.upod.app.AppInjection
 
 class AddPodcastDialogFragment extends DialogFragment with AppInjection {
 

@@ -1,7 +1,8 @@
 package mobi.upod.app.services.download
 
+import de.wcht.upod.R
 import mobi.upod.android.content.{RemoteActionIntent, RemoteActionReceiver}
-import mobi.upod.app.{AppInjection, R}
+import mobi.upod.app.AppInjection
 
 class RemoteDownloadActionReceiver extends RemoteActionReceiver with AppInjection {
 

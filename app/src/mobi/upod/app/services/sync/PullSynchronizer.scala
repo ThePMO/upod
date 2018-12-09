@@ -4,13 +4,14 @@ import java.net.{URI, URL}
 
 import com.escalatesoft.subcut.inject.{BindingModule, Injectable}
 import com.google.api.client.http.HttpResponseException
+import de.wcht.upod.R
 import mobi.upod.android.logging.Logging
+import mobi.upod.app.App
 import mobi.upod.app.data._
 import mobi.upod.app.services.EpisodeService
 import mobi.upod.app.services.download.DownloadService
 import mobi.upod.app.services.playback.PlaybackService
 import mobi.upod.app.storage._
-import mobi.upod.app.{App, R}
 import org.joda.time.DateTime
 
 import scala.collection.mutable
