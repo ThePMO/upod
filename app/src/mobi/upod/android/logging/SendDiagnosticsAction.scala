@@ -17,7 +17,7 @@ class SendDiagnosticsAction(subject: String = "")
 
   protected def processData(context: Context, data: Unit): Iterable[Uri] = {
     Diagnostics.writeInfoLog(context)
-    Diagnostics.worldReadableLogs(context) ++ 
+    Diagnostics.worldReadableLogs(context) ++
       Diagnostics.worldReadablePrefs(context) ++ 
       Diagnostics.worldReadableDatabases(context, Iterable("upod"))
   }

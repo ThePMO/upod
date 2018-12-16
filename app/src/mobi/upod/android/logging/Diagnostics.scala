@@ -9,6 +9,7 @@ import java.util.zip.{ZipEntry, ZipOutputStream}
 
 import mobi.upod.android.content.SupportMail
 import mobi.upod.app.services.net.ConnectionStateRetriever
+import mobi.upod.io.WorldReadables.worldReadable
 import mobi.upod.io._
 
 object Diagnostics {
@@ -84,16 +85,6 @@ object Diagnostics {
     zipFile
   }
 
-  private def worldReadable(context: Context, file: File): Uri = {
-    val targetDir = new File(context.getFilesDir, "sharables")
-    targetDir.mkdir()
-    file.copyToDir(targetDir)
-    Uri.parse(s"content://de.wcht.upod.fileprovider/sharables/${file.getName}")
-  }
-
-  private def worldReadable(context: Context, files: Iterable[File]): Iterable[Uri] =
-    files.map(worldReadable(context, _))
-
   def worldReadableLogs(context: Context): Iterable[Uri] = {
     val logs = logFiles(context)
     worldReadable(context, logs)
@@ -117,13 +108,13 @@ object Diagnostics {
 
     val prefDir = getDir(context, "shared_prefs")
     val files = prefDir.map(_.listFilesRecursively.filter(f => shouldInclude(f.getName))).getOrElse(Iterable())
-    worldReadable(context, files)
+    WorldReadables.worldReadable(context, files)
   }
 
   def worldReadableDatabases(context: Context, dbNames: Iterable[String]): Iterable[Uri] = {
     val dbDir = getDir(context, "databases")
     val files = dbDir.map(dir => dbNames.map(new File(dir, _))).getOrElse(Iterable())
-    worldReadable(context, files)
+    WorldReadables.worldReadable(context, files)
   }
 
   def sendDiagnostics(context: Context, attachements: Iterable[Uri], subject: String = ""): Unit = {
