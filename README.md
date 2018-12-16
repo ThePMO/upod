@@ -56,6 +56,10 @@ The release build requires gradle at the moment (see "History" section), specifi
 ./release.sh /path/to/keystore.jks keystore_key_alias /path/to/gradle-4.1/bin/gradle
 ```
 
+#### Using and IDE
+
+See [#1][issue1] for some discussion on IDE usage
+
 ## History
 uPod is originally developed by [@svenwiegand](https://github.com/svenwiegand) who decided to stop developing in 2018, here is the original content of the README from the initial publication at [@svenwiegand/upod](https://github.com/svenwiegand/upod):
 
@@ -75,3 +79,5 @@ uPod is originally developed by [@svenwiegand](https://github.com/svenwiegand) w
 >
 > ##### Release Builds
 > Unfortunately I never managed it to create release builds using sbt-android. Thus for release builds you need to use gradle. I include the `gradle-android-scala-plugin` to compile the Scala code.
+
+[issue1]: https://github.com/Boris-de/upod/issues/1
