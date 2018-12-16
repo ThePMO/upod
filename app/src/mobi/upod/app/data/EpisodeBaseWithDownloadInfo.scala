@@ -5,7 +5,7 @@ import java.net.{URL, URI}
 import mobi.upod.app.storage.StorageProvider
 import mobi.upod.io._
 import mobi.upod.net._
-import mobi.upod.util.Hash
+import mobi.upod.util.Hashing
 import mobi.upod.util.Permille._
 import org.joda.time.DateTime
 import java.text.SimpleDateFormat
@@ -68,7 +68,7 @@ object EpisodeBaseWithDownloadInfo {
         if (fallbackOne.length <= MaxPathSegmentLength) {
           fallbackOne
         } else {
-          val hash = Hash(uri.toString).fileNameEncoded
+          val hash = Hashing.sha256(uri.toString).fileNameEncoded
           val hostWithHash = s"${uri.getHost}/$hash".fileNameEncoded
           val path = uri.getPath.fileNameEncoded
           val fallback = hostWithHash + path.takeRight(MaxPathSegmentLength - hostWithHash.length)
