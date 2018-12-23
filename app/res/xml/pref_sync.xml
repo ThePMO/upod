@@ -49,17 +49,4 @@
             android:summary="@string/pref_sync_only_on_wifi_summary"
             android:defaultValue="true"/>
     </PreferenceCategory>
-
-    <PreferenceCategory android:title="@string/pref_category_sync_cloud">
-        <CheckBoxPreference
-            android:key="pref_sync_cloud"
-            android:title="@string/pref_sync_cloud"
-            android:summary="@string/pref_sync_cloud_summary"
-            android:defaultValue="false"/>
-        <Preference
-            android:key="pref_fix_gdrive_app_folder"
-            android:dependency="pref_sync_cloud"
-            android:title="@string/pref_fix_gdrive_app_folder"
-            android:summary="@string/pref_fix_gdrive_app_folder_summary"/>
-    </PreferenceCategory>
 </PreferenceScreen>

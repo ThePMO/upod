@@ -12,7 +12,6 @@ class SyncPreferences(app: Application) extends DefaultPreferences(app, R.xml.pr
   lazy val syncTime1 = new TimePreference("pref_sync_time1") with OptionSetter[TimeOfDay]
   lazy val syncTime2 = new TimePreference("pref_sync_time2") with OptionSetter[TimeOfDay]
   lazy val syncOnlyOnWifi = new BooleanPreference("pref_sync_only_on_wifi", true)
-  lazy val cloudSyncEnabled = new BooleanPreference("pref_sync_cloud", false) with Setter[Boolean]
   lazy val showSyncNotification = new BooleanPreference("pref_sync_notification", true)
 
   def syncFrequency: Option[Long] = {
@@ -26,7 +25,6 @@ class SyncPreferences(app: Application) extends DefaultPreferences(app, R.xml.pr
   def preferences = Seq(
     syncFrequencyInMinutes,
     syncOnlyOnWifi,
-    cloudSyncEnabled,
     showSyncNotification
   )
 
@@ -41,7 +39,6 @@ class SyncPreferences(app: Application) extends DefaultPreferences(app, R.xml.pr
 
       deleteIntSyncFrequency()
       syncFrequencyInMinutes := "120"
-      cloudSyncEnabled := true
     }
   }
 }
