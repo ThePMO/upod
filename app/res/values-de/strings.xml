@@ -524,14 +524,6 @@ Erfahre mehr auf der <a href="http://upod.uservoice.com/knowledgebase/articles/2
     <string name="pref_sync_time_info">Zeitinfo</string>
     <string name="pref_sync_time_info_summary">Letzter Sync: %1$s\nNächster Sync: %2$s</string>
 
-    <string name="pref_sync_cloud">Cloud-Synchronisierung</string>
-    <string name="pref_sync_cloud_summary">Sichere Deine Wiedergabeliste, Wiedergabepositionen und Episoden-Zustände in Google Drive und synchronisiere sie mit all Deinen uPod-Geräten</string>
-
-    <string name="pref_fix_gdrive_app_folder">Repariere Google Drive Sync</string>
-    <string name="pref_fix_gdrive_app_folder_summary">Repariert den Sync, nachdem Du uPods Daten in Google Drive gelöscht hast</string>
-    <string name="pref_fix_gdrive_app_folder_succeeded">Der Sync funktioniert wieder</string>
-    <string name="pref_fix_gdrive_app_folder_failed">Die Reparatur ist fehlgeschlagen. Kontaktiere den Support.</string>
-
     <!-- download -->
     <string name="pref_category_download">Download</string>
     <string name="pref_auto_add_download_strategy">Hinzufügen von Episoden zur Download-Liste</string>

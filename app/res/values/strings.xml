@@ -1129,14 +1129,6 @@
 
     <string name="pref_category_sync_cloud">Cloud Synchronization</string>
 
-    <string name="pref_sync_cloud">Cloud sync</string>
-    <string name="pref_sync_cloud_summary">Backup your playlist, playback positions and episode states to Google Drive and sync them across all your uPod devices</string>
-
-    <string name="pref_fix_gdrive_app_folder">Fix Google Drive for sync</string>
-    <string name="pref_fix_gdrive_app_folder_summary">Make sync work again after you\'ve deleted uPod\'s app data in Google Drive</string>
-    <string name="pref_fix_gdrive_app_folder_succeeded">Sync is working again</string>
-    <string name="pref_fix_gdrive_app_folder_failed">Fixing the sync failed. Contact support.</string>
-
     <!-- download -->
     <string name="pref_category_download"
             comment="top level settings category"
