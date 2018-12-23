@@ -35,8 +35,13 @@ trait Duration[A] extends Any {
   def fullSecondsOfMinute: Int =
     ((toLong(millis) % Duration.MillisPerMinute) / Duration.MillisPerSecond).toInt
 
-  def formatHoursAndMinutes: String =
-    f"$fullHours%d:$roundedMinutesOfHour%02d"
+  def formatHoursAndMinutes: String = {
+    val (hours, minutes) = (fullHours, roundedMinutesOfHour) match {
+      case (h, m) if m == 60 => (h + 1, 0)
+      case (h, m) => (h, m)
+    }
+    f"$hours%d:$minutes%02d"
+  }
 
   def formatHoursMinutesAndSeconds: String = fullHours match {
     case hours if hours > 0 => f"$hours%d:$fullMinutesOfHour%02d:$fullSecondsOfMinute%02d"
