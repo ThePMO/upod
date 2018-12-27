@@ -49,10 +49,6 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.Light.NoTitleBar"/>
         <activity
-            android:name="mobi.upod.app.gui.preference.UpdateWizardActivity"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.Light.NoTitleBar"/>
-        <activity
                 android:name="mobi.upod.app.gui.PodcastEpisodesActivity"
                 android:theme="@style/Theme.Light.ScrollHeader"
                 android:parentActivityName="mobi.upod.app.gui.MainActivity">
