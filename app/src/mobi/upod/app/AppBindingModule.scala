@@ -47,7 +47,6 @@ class AppBindingModule(app: App) extends NewBindingModule(
     bind [SubscriptionChangeDao] toProvider databaseHelper.subscriptionChangeDao
     bind [PodcastColorChangeDao] toProvider databaseHelper.podcastColorChangeDao
     bind [ImportedSubscriptionsDao] toProvider databaseHelper.importedSubscriptionsDao
-    bind [AnnouncementDao] toProvider databaseHelper.announcementDao
     bind [CoverartProvider] toSingle new CoverartProvider(app)
 
     // service layer
