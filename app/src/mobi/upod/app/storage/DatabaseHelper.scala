@@ -14,18 +14,12 @@ final class DatabaseHelper private (context: Context, name: String, version: Int
 
   lazy val podcastDao = new PodcastDao(this)
   lazy val episodeDao = new EpisodeDao(this)
-  lazy val podcastColorChangeDao = new PodcastColorChangeDao(this)
-  lazy val episodeListChangeDao = new EpisodeListChangeDao(this)
   lazy val importedSubscriptionsDao = new ImportedSubscriptionsDao(this)
-  lazy val subscriptionChangeDao = new SubscriptionChangeDao(this)
 
   private lazy val daos = Seq(
     podcastDao,
     episodeDao,
-    podcastColorChangeDao,
-    episodeListChangeDao,
-    importedSubscriptionsDao,
-    subscriptionChangeDao
+    importedSubscriptionsDao
   )
 
   def onCreate(db: SQLiteDatabase) {
