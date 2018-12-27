@@ -25,6 +25,15 @@ object LogConfiguration {
     configureLogging(context.getAssets.open(configPath))
   }
 
-  def logDir(context: Context): File =
-    new File(context.getFilesDir, "logs")
+  def logDir(context: Context): File = {
+    val logDir = new File(context.getFilesDir, "logs")
+    mkdirIfNeeded(logDir)
+    logDir
+  }
+
+  private def mkdirIfNeeded(logDir: File): Unit = {
+    if (!logDir.exists()) {
+      logDir.mkdir()
+    }
+  }
 }
