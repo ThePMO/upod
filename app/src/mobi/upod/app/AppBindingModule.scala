@@ -43,9 +43,6 @@ class AppBindingModule(app: App) extends NewBindingModule(
     bind [Database] toProvider databaseHelper.writable
     bind [PodcastDao] toProvider databaseHelper.podcastDao
     bind [EpisodeDao] toProvider databaseHelper.episodeDao
-    bind [EpisodeListChangeDao] toProvider databaseHelper.episodeListChangeDao
-    bind [SubscriptionChangeDao] toProvider databaseHelper.subscriptionChangeDao
-    bind [PodcastColorChangeDao] toProvider databaseHelper.podcastColorChangeDao
     bind [ImportedSubscriptionsDao] toProvider databaseHelper.importedSubscriptionsDao
     bind [CoverartProvider] toSingle new CoverartProvider(app)
 
