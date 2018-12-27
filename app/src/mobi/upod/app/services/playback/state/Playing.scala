@@ -49,7 +49,6 @@ private[playback] class Playing(
     updateProgressTimer.cancel()
     log.debug("onExitState")
     updateProgress(true)
-    inject[SyncService].pushSyncRequired()
     Try(wakeLock.release()).recover { case err =>
       log.crashLogError(err.getMessage, err)
     }

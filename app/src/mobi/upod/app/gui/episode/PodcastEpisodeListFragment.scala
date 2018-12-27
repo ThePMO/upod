@@ -236,7 +236,7 @@ trait PodcastEpisodeListFragment
 
     override protected def processData(context: Context, data: PodcastListItem): PodcastListItem = {
       data.imageUrl.foreach(new ImageFetcher().fetchImage)
-      data.copy(colors = new PodcastColorExtractor().colorizePodcast(data.uri, data.imageUrl, true))
+      data.copy(colors = new PodcastColorExtractor().colorizePodcast(data.uri, data.imageUrl))
     }
 
     override protected def postProcessData(context: Context, result: PodcastListItem): Unit = {

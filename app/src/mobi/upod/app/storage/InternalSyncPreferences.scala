@@ -9,7 +9,6 @@ class InternalSyncPreferences(app: Application) extends DevicePreferences(app) w
 
   lazy val lastPushSyncTimestamp = new DateTimePreference("lastPushSyncTimestamp") with Setter[DateTime]
   lazy val lastFullSyncTimestamp = new DateTimePreference("lastFullSyncTimestamp") with Setter[DateTime]
-  lazy val pushSyncRequired = new BooleanPreference("pushSyncRequired") with Setter[Boolean]
   lazy val fullSyncRequired = new BooleanPreference("fullSyncRequired") with Setter[Boolean]
   lazy val playlistUpdated = new BooleanPreference("playlistUpdated") with Setter[Boolean]
   lazy val identitySettingsUpdated = new BooleanPreference("identitySettingsUpdated") with Setter[Boolean]
@@ -21,13 +20,11 @@ class InternalSyncPreferences(app: Application) extends DevicePreferences(app) w
   def preferences = Seq(
     lastPushSyncTimestamp,
     lastFullSyncTimestamp,
-    pushSyncRequired,
     fullSyncRequired,
     playlistUpdated
   )
 
   def reset() {
-    pushSyncRequired := false
     fullSyncRequired := false
     playlistUpdated := false
   }

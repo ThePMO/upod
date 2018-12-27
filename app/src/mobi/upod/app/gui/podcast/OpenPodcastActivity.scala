@@ -41,7 +41,7 @@ private[podcast] abstract class OpenPodcastActivity
     }
 
     def podcastWithExtractedColors(podcast: Podcast): Podcast = {
-      new PodcastColorExtractor().colorizePodcast(podcast.uri, podcast.imageUrl, true) match {
+      new PodcastColorExtractor().colorizePodcast(podcast.uri, podcast.imageUrl) match {
         case Some(colors) => podcast.copy(colors = Some(colors))
         case _ => podcast
       }

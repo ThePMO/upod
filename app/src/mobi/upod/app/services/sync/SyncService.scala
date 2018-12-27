@@ -77,8 +77,6 @@ final class SyncService(context: Context)(implicit val bindingModule: BindingMod
     syncPreferences.syncOnlyOnWifi.addListener(FunctionalPreferenceChangeListener(_ => scheduleAutomaticSync()))
   }
 
-  def isCloudSyncEnabled: Boolean = syncPreferences.cloudSyncEnabled
-
   def ensureAutomaticSyncIsScheduled(): Unit = {
     if (JobManager.instance.getAllJobRequestsForTag(SyncJob.TagFullSync).isEmpty) {
       scheduleAutomaticSync(10.seconds.millis)
@@ -130,47 +128,26 @@ final class SyncService(context: Context)(implicit val bindingModule: BindingMod
     }
   }
 
-  private def schedulePushSync(): Unit = if (isCloudSyncEnabled) {
-    SyncJob.schedule(SyncJob.TagPushSync, syncPreferences.syncOnlyOnWifi, PushSyncDelay, PushSyncDelayTolerance)
-  }
-
-  def pushSyncRequired(): Unit = {
-    internalSyncPreferences.pushSyncRequired := true
-    schedulePushSync()
-  }
-
   def playlistUpdated() {
     internalSyncPreferences.playlistUpdated := true
-    pushSyncRequired()
   }
 
   def identitySettingsUpdated() {
     internalSyncPreferences.identitySettingsUpdated := true
-    pushSyncRequired()
   }
 
-  def requestFullSync(forceNow: Boolean = false, syncConflictResolution: Option[SyncConflictResolution.Value] = None): Unit = {
+  def requestFullSync(forceNow: Boolean = false): Unit = {
     internalSyncPreferences.fullSyncRequired := true
     if (forceNow) {
       log.info("starting immediate sync")
-      SyncServiceImpl.requestFullSync(context, syncConflictResolution)
+      SyncServiceImpl.requestFullSync(context)
     } else {
       log.info("scheduling sync as soon as network connection is available")
       SyncJob.scheduleImmediate(context, SyncJob.TagFullSync, syncPreferences.syncOnlyOnWifi)
     }
   }
 
-  def requestCrossDeviceSync(): Unit = {
-    runningSyncType match {
-      case Some(SyncServiceImpl.CrossDeviceSyncAction | SyncServiceImpl.FullSyncAction) =>
-        log.info("skipping cross device sync, as a sync is currently running")
-      case _ =>
-        SyncJob.scheduleImmediate(context, SyncJob.TagCrossDeviceSync, syncPreferences.syncOnlyOnWifi)
-    }
-  }
-
   def fullSyncRequired() {
-    pushSyncRequired()
     requestFullSync()
   }
 
@@ -199,13 +176,9 @@ final class SyncService(context: Context)(implicit val bindingModule: BindingMod
 
 private object SyncJob {
   val TagFullSync = "sync_full"
-  val TagPushSync = "sync_push"
-  val TagCrossDeviceSync = "sync_cross_device"
 
   def create(tag: String, context: Context): Job = tag match {
     case TagFullSync => SimpleJob(SyncServiceImpl.requestFullSync(context))
-    case TagPushSync => SimpleJob(SyncServiceImpl.requestPushSync(context))
-    case TagCrossDeviceSync => SimpleJob(SyncServiceImpl.requestCrossDeviceSync(context))
     case _ => null
   }
 

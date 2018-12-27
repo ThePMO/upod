@@ -28,7 +28,6 @@ class SubscriptionService(implicit val bindingModule: BindingModule) extends Inj
         episodeDao.addAllNewEpisodesToLibrary()
       }
     }
-    syncService.pushSyncRequired()
     episodeService.fireEpisodeCountChanged()
   }
 
@@ -46,7 +45,6 @@ class SubscriptionService(implicit val bindingModule: BindingModule) extends Inj
         episodeDao.deletePodcastNewEpisodes(podcast)
       }
     }
-    syncService.pushSyncRequired()
     episodeService.fireEpisodeCountChanged()
   }
 
@@ -60,7 +58,6 @@ class SubscriptionService(implicit val bindingModule: BindingModule) extends Inj
         podcastDao.delete(podcast)
       }
     }
-    syncService.pushSyncRequired()
     episodeService.fireEpisodeCountChanged()
   }
 
@@ -89,7 +86,6 @@ class SubscriptionService(implicit val bindingModule: BindingModule) extends Inj
 
   def updateSettings(podcast: URI, settings: SubscriptionSettings): Unit = {
     podcastDao.inTransaction(podcastDao.updateSettings(podcast, settings))
-    syncService.pushSyncRequired()
     syncService.syncPodcast(podcast)
   }
 }
