@@ -5,6 +5,7 @@ import de.wcht.upod.R
 import mobi.upod.android.view.wizard.{ValueChoice, _}
 import mobi.upod.app.AppInjection
 import mobi.upod.app.gui.MainActivity
+import mobi.upod.app.gui.preference.StartupWizardActivity.ExistingUser
 import mobi.upod.app.storage._
 
 final class StartupWizardActivity extends WizardActivity with StoragePermissionRequestActivity with AppInjection {
@@ -22,6 +23,7 @@ final class StartupWizardActivity extends WizardActivity with StoragePermissionR
   override protected def createNextPage(currentPageIndex: Int, currentPageKey: String): WizardPage = currentPageKey match {
     case PageKeyWelcome => userType match {
       case Some(NewUser) => new NewUserPage
+      case Some(ExistingUser) => new RecurringUserPage
       case _ => new RecurringUserPage
     }
     case _ => new RecurringUserPage
@@ -55,6 +57,7 @@ object StartupWizardActivity {
   private val PageKeyRecurringUser = "recurringUser"
 
   private val NewUser = 0
+  private val ExistingUser = 1
 
   private var userType: Option[Int] = None
 
@@ -74,7 +77,8 @@ object StartupWizardActivity {
     0,
     userType,
     choice => userType = Some(choice),
-    ValueChoice(NewUser, R.string.wizard_welcome_option_new_user)
+    ValueChoice(NewUser, R.string.wizard_welcome_option_new_user),
+    ValueChoice(ExistingUser, R.string.wizard_welcome_option_existing_user)
   )
 
   class NewUserPage extends WizardWebPage(PageKeyNewUser, R.string.wizard_new_user, R.string.wizard_new_user_introduction)
