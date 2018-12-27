@@ -82,7 +82,6 @@ class AudioFxDialogFragment  extends DialogFragment with SeekBar.OnSeekBarChange
         else
           inject[PodcastDao].resetVolumeGain(podcastId)
         inject[EpisodeDao].resetVolumeGain(podcastId)
-        inject[SyncService].pushSyncRequired()
       } else {
         inject[EpisodeDao].updateVolumeGain(episodeId, currentGain)
       }

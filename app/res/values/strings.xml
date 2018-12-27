@@ -578,12 +578,6 @@
         <p>Go ahead and grab your first podcast from the catalog.</p>
     ]]></string>
 
-    <string name="wizard_cloud_sync">Cloud Sync</string>
-    <string name="wizard_cloud_sync_introduction">Did you use uPod\'s cloud sync and want to restore your subscriptions and playback positions from it?</string>
-    <string name="wizard_cloud_sync_yes">Yes (requires premium license)</string>
-    <string name="wizard_cloud_sync_no">No</string>
-    <string name="wizard_cloud_sync_license_required">You need the uPod premium license to use the cloud sync. Install it and come back again.</string>
-
     <string name="wizard_recurring_user">Welcome back</string>
     <string name="wizard_recurring_user_introduction">You know what to do: Go ahead and grab your first podcast from the catalog.</string>
 

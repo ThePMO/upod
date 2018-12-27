@@ -32,8 +32,6 @@ private[sync] class PullSynchronizer(syncWebService: Syncer)(implicit val bindin
   private val uiPreferences = inject[UiPreferences]
   private val internalSyncPreferences = inject[InternalSyncPreferences]
 
-  private val cloudSyncEnabled = inject[SyncService].isCloudSyncEnabled
-
   def syncAllPodcasts(progressIndicator: SyncProgressIndicator): Unit =
     syncAllPodcasts(progressIndicator, false)
 
@@ -41,12 +39,7 @@ private[sync] class PullSynchronizer(syncWebService: Syncer)(implicit val bindin
     syncAllPodcasts(progressIndicator, true)
 
   def syncPodcast(podcast: URI, progressIndicator: SyncProgressIndicator): Unit = {
-    val maxProgress = if (cloudSyncEnabled) {
-      1 + // fetch one podcast
-      1 // fetch playlist
-    } else {
-      1 // fetch one podcast
-    }
+    val maxProgress = 1 // fetch one podcast
 
     podcastDao.findFetchInfoFor(podcast) foreach { fetchInfo =>
       progressIndicator.initProgress(
@@ -57,19 +50,10 @@ private[sync] class PullSynchronizer(syncWebService: Syncer)(implicit val bindin
   }
 
   private def syncAllPodcasts(progressIndicator: SyncProgressIndicator, syncOnlyPodcastsWithNewerServerStatus: Boolean): Unit = {
-    val maxProgress = if (cloudSyncEnabled) {
-      1 + // pull settings
-        1 + // fetching podcast list
-        1 + // fetching playlist
-        1 + // deleting downloads
+    val maxProgress = 1 + // deleting downloads
         1 // updating coverart
-    } else {
-      1 + // deleting downloads
-        1 // updating coverart
-    }
 
     progressIndicator.initProgress(maxProgress, "")
-    pullSettings(progressIndicator)
     sync(progressIndicator, doSyncAllPodcasts(syncOnlyPodcastsWithNewerServerStatus, progressIndicator))
     internalSyncPreferences.isUpgradeSync := false
 
@@ -84,7 +68,6 @@ private[sync] class PullSynchronizer(syncWebService: Syncer)(implicit val bindin
   def sync(progressIndicator: SyncProgressIndicator, syncImplementation: => Unit) {
     val timestamp = DateTime.now
     val newEpisodesHash = episodeDao.calculateNewEpisodesHash
-    updatePushSyncTimestampIfRequired(timestamp)
 
     val playlistChangeDao = new PlaylistChangeDao(inject[DatabaseHelper])
     playlistChangeDao.create()
@@ -96,7 +79,6 @@ private[sync] class PullSynchronizer(syncWebService: Syncer)(implicit val bindin
       episodeDao.inTransaction(episodeDao.deleteEpisodesWithoutPodcast())
       syncImplementation
       episodeDao.inTransaction(episodeDao.deleteEpisodesWithoutPodcast())
-      fetchAndUpdatePlaylist(playlistChangeDao, progressIndicator)
     } finally {
       playlistChangeDao.drop()
     }
@@ -112,40 +94,10 @@ private[sync] class PullSynchronizer(syncWebService: Syncer)(implicit val bindin
     notifyNewEpisodesIfApplicable(newEpisodesHash)
   }
 
-  private def fetchAndUpdatePlaylist(playlistChangeDao: PlaylistChangeDao, progressIndicator: SyncProgressIndicator): Unit = {
-    if (cloudSyncEnabled && internalSyncPreferences.episodeUriState.get == EpisodeUriState.UpToDate) {
-      progressIndicator.increaseProgress(context.getString(R.string.sync_notification_pull_playlist))
-
-      val playlist = syncWebService.getPlaylist.toSeqAndClose()
-      database newTransaction {
-        playlistChangeDao.disableTriggers()
-        episodeDao.updatePlaylistByReferences(playlist)
-        if (playlistChangeDao.replayChanges() > 0) {
-          internalSyncPreferences.playlistUpdated := true
-        }
-      }
-    }
-  }
-
-  private def updatePushSyncTimestampIfRequired(timestamp: DateTime): Unit = {
-    internalSyncPreferences.lastPushSyncTimestamp.option match {
-      case Some(_) if cloudSyncEnabled => // everything OK
-      case _ => internalSyncPreferences.lastPushSyncTimestamp := timestamp
-    }
-  }
-
   private def updateSyncPreferences(timestamp: DateTime): Unit = {
     internalSyncPreferences.lastFullSyncTimestamp := timestamp
     if (internalSyncPreferences.episodeUriState.get == EpisodeUriState.LocalUriUpdateRequired)
       internalSyncPreferences.episodeUriState := EpisodeUriState.UpToDate
-  }
-
-  private def pullSettings(progressIndicator: SyncProgressIndicator): Unit = if (cloudSyncEnabled) {
-    progressIndicator.increaseProgress(context.getString(R.string.sync_notification_pull_settings))
-
-    syncWebService.getSettings foreach { settings =>
-      settings.applyToPreferences(bindingModule)
-    }
   }
 
   /** Fetches subscriptions and their settings and all required podcasts from the server, updates them in the database
@@ -156,23 +108,7 @@ private[sync] class PullSynchronizer(syncWebService: Syncer)(implicit val bindin
   private def fetchAndUpdatePodcasts(progressIndicator: SyncProgressIndicator): (Seq[Subscription], Seq[URL]) = {
     val importedSubscriptions = importedSubscriptionsDao.list.toSetAndClose().map(Subscription.apply)
 
-    if (cloudSyncEnabled) {
-      progressIndicator.increaseProgress(context.getString(R.string.sync_notification_pull_settings))
-
-      val allSubscriptions = syncWebService.getSubscriptions.toSeqAndClose()
-      val episodePodcasts = {
-        syncWebService.getEpisodePodcasts(None).toSetAndClose() -- allSubscriptions.map(_.url).toSet
-      }
-
-      database.newTransactionWithoutTriggers {
-        podcastDao.markAllUnlisted()
-        val unknownPodcasts = podcastDao.markPodcastsNotSubscribedButListed(episodePodcasts)
-        val unknownSubscriptions = podcastDao.updateSubscriptions(allSubscriptions).toSet ++ importedSubscriptions
-        podcastDao.deleteUnlistedPodcasts()
-        (unknownSubscriptions.toSeq, unknownPodcasts)
-      }
-    } else
-      (importedSubscriptions.toSeq, Seq())
+    (importedSubscriptions.toSeq, Seq())
   }
 
   private def findKnownFetchInfos(syncOnlyPodcastsWithNewerServerStatus: Boolean): List[PodcastFetchInfo] = {
@@ -229,19 +165,6 @@ private[sync] class PullSynchronizer(syncWebService: Syncer)(implicit val bindin
   }
 
   private def fetchPodcast(fetchInfo: PodcastFetchInfo, newSubscription: Boolean, onlyIfNewerServerStatus: Boolean = false): Try[URI] = {
-    val respectRemoteState = cloudSyncEnabled
-
-    def needToFetchPodcast(remoteEpisodeStatus: Seq[EpisodeStatusSyncInfo]): Boolean = {
-
-      def serverStatusContainsUnknownEpisodes: Boolean = {
-        val knownEpisodes = episodeDao.findAllPodcastEpisodeUris(fetchInfo.url).toSetAndClose()
-        val unknownEpisodes = remoteEpisodeStatus.map(_.uri).toSet -- knownEpisodes
-        unknownEpisodes.nonEmpty
-      }
-
-      !onlyIfNewerServerStatus || !respectRemoteState || serverStatusContainsUnknownEpisodes
-    }
-
     def fetch: Option[PodcastWithEpisodes] = {
       if (internalSyncPreferences.episodeUriState.get != EpisodeUriState.UpToDate)
         Some(podcastFetchService.fetchPodcast(fetchInfo.url))
@@ -270,7 +193,6 @@ private[sync] class PullSynchronizer(syncWebService: Syncer)(implicit val bindin
         else
           episodeDao.updateOrInsertListed(episode, episode.toEpisode(podcastInfo))
       }
-      internalSyncPreferences.pushSyncRequired := true
     }
 
     def update(podcastWithEpisodes: Option[PodcastWithEpisodes]): URI = {
@@ -288,14 +210,10 @@ private[sync] class PullSynchronizer(syncWebService: Syncer)(implicit val bindin
     }
 
     def fetchEpisodeStatus: Seq[EpisodeStatusSyncInfo] = {
-      if (respectRemoteState) {
-        val minFetchTimestamp = if (onlyIfNewerServerStatus) internalSyncPreferences.lastFullSyncTimestamp.option else None
-        syncWebService.getEpisodeStatus(fetchInfo.url, minFetchTimestamp).toSeqAndClose()
-      } else
         Seq()
     }
 
-    def updateEpisodeStatus(podcast: URI, remoteEpisodeStatus: Seq[EpisodeStatusSyncInfo]): Unit = if (respectRemoteState) {
+    def updateEpisodeStatus(podcast: URI, remoteEpisodeStatus: Seq[EpisodeStatusSyncInfo]): Unit = if (false) {
       database.withoutTriggers {
         val episodeStatus = remoteEpisodeStatus.map(es => (EpisodeId(podcast, es.uri), es.status, es.playbackInfo))
         episodeDao.updateEpisodeStatus(episodeStatus)
@@ -327,7 +245,7 @@ private[sync] class PullSynchronizer(syncWebService: Syncer)(implicit val bindin
 
     try {
       val remoteEpisodeStatus = fetchEpisodeStatus
-      val podcastWithEpisodes = if (needToFetchPodcast(remoteEpisodeStatus)) fetch else None
+      val podcastWithEpisodes = fetch
       val podcast = database.newTransaction {
         val newestNotNewPublishedTimestamp = episodeDao.findNewestNotNewPublishedTimestamp(fetchInfo.url)
         val podcast = update(podcastWithEpisodes)

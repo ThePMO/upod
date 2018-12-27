@@ -82,7 +82,6 @@ class PlaybackSpeedDialogFragment extends DialogFragment with SeekBar.OnSeekBarC
         else
           inject[PodcastDao].resetPlaybackSpeed(podcastId)
         inject[EpisodeDao].resetPlaybackSpeed(podcastId)
-        inject[SyncService].pushSyncRequired()
       } else {
         if (currentSpeed != 1.0f)
           inject[EpisodeDao].updatePlaybackSpeed(episodeId, currentSpeed)

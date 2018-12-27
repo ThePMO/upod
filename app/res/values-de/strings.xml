@@ -283,12 +283,6 @@ Erfahre mehr auf der <a href="http://upod.uservoice.com/knowledgebase/articles/2
         <p>Such Dir Deinen ersten Podcast aus dem Katalog aus.</p>
     ]]></string>
 
-    <string name="wizard_cloud_sync">Cloud-Sync</string>
-    <string name="wizard_cloud_sync_introduction">Hast Du uPods Cloud-Synchronisierung benutzt und möchtest jetzt Deinen Status aus der Cloud wiederherstellen?</string>
-    <string name="wizard_cloud_sync_yes">Ja (Premium-Lizenz benötigt)</string>
-    <string name="wizard_cloud_sync_no">Nein</string>
-    <string name="wizard_cloud_sync_license_required">Du benötigst die uPod Premium-Lizenz um den Cloud-Sync zu nutzen. Installiere die Lizenz und komm dann wieder hier her.</string>
-
     <string name="wizard_recurring_user">Willkommen zurück</string>
     <string name="wizard_recurring_user_introduction">Du weißt was zu tun ist: Such Dir Deinen ersten Podcast aus dem Katalog aus.</string>
 

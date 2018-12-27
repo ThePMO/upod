@@ -66,7 +66,6 @@ final class EpisodeService(implicit val bindingModule: BindingModule)
       }
       fireEpisodeCountChanged()
     }
-    syncService.pushSyncRequired()
   }
 
   def addUnfinishedToLibrary(podcast: Long): Unit =
@@ -91,7 +90,6 @@ final class EpisodeService(implicit val bindingModule: BindingModule)
     if (ids.nonEmpty) {
       episodeDao.inTransaction(episodeDao.starEpisodes(ids, star))
       fireEpisodeCountChanged()
-      syncService.pushSyncRequired()
     }
     affectedEpisodes
   }

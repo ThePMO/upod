@@ -17,9 +17,6 @@ class PodcastColorExtractor(implicit val bindingModule: BindingModule) extends I
     val addedAtLeastOneColor = podcastsWithMissingColors.foldLeft(false) { case (addedColor, (podcast, imageUrl)) =>
         colorizePodcast(podcast, imageUrl).nonEmpty || addedColor
     }
-    if (addedAtLeastOneColor) {
-      syncService.pushSyncRequired()
-    }
   }
 
   /** Extracts the color from the specified image if any and stores it for the specified podcast.
@@ -28,13 +25,10 @@ class PodcastColorExtractor(implicit val bindingModule: BindingModule) extends I
     * @param imageUrl the URL of the image to extract the color from
     * @return the extracted podcast colors if any
     */
-  def colorizePodcast(podcast: URI, imageUrl: Option[URL], pushSync: Boolean = false): Option[PodcastColors] = {
+  def colorizePodcast(podcast: URI, imageUrl: Option[URL]): Option[PodcastColors] = {
     val colors = imageUrl.flatMap(extractColors)
     colors foreach { c =>
       podcastDao.inTransaction(podcastDao.updatePodcastColors(podcast, c))
-      if (pushSync) {
-        syncService.pushSyncRequired()
-      }
     }
     colors
   }

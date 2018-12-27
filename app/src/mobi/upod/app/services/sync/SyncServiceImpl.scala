@@ -12,10 +12,9 @@ import de.wcht.upod.R
 import mobi.upod.android.app.{AppException, IntegratedNotificationManager}
 import mobi.upod.android.content.IntentHelpers._
 import mobi.upod.android.logging.Logging
-import mobi.upod.android.os.{BundleEnumValue, BundleSerializableValue, PowerManager}
+import mobi.upod.android.os.{BundleSerializableValue, PowerManager}
 import mobi.upod.app._
 import mobi.upod.app.gui.MainActivity
-import mobi.upod.app.gui.sync.SyncConflictActivity
 import mobi.upod.app.storage.{EpisodeUriState, InternalSyncPreferences, SyncPreferences}
 import org.joda.time.DateTime
 
@@ -46,20 +45,15 @@ class SyncServiceImpl
     HighFrequencyIntentFilter.ifAllowed(intent) {
       inject[PowerManager].partiallyWaked {
         inForeground(notificationBuilder.build, syncPreferences.showSyncNotification) {
-          val conflictResolution = intent.getExtra(SyncConflictResolutionValue)
           if (internalSyncPreferences.episodeUriState.get != EpisodeUriState.UpToDate) {
-            doSync(FullSyncAction, "full with URI update", fullSync(_, conflictResolution, _))
+            doSync(FullSyncAction, "full with URI update", fullSync)
           } else intent.getAction match {
-            case PushSyncAction =>
-              doSync(PushSyncAction, "push", pushSync(_, true, conflictResolution, _, true))
             case FullSyncAction =>
-              doSync(FullSyncAction, "full", fullSync(_, conflictResolution, _))
+              doSync(FullSyncAction, "full", fullSync)
             case PodcastSyncAction =>
               intent.getExtra(PodcastToSync) foreach { podcast =>
-                doSync(PodcastSyncAction, "podcast $podcast", podcastSync(_, conflictResolution, podcast, _))
+                doSync(PodcastSyncAction, "podcast $podcast", podcastSync(_, podcast, _))
               }
-            case CrossDeviceSyncAction =>
-              doSync(CrossDeviceSyncAction, "cross device", crossDeviceSync(_, conflictResolution, _))
             case unknownAction =>
               log.error(s"Unknown action $unknownAction")
           }
@@ -92,9 +86,6 @@ class SyncServiceImpl
     }
 
     def processException(error: Throwable, rootCause: Option[Throwable] = None): Unit = error match {
-      case ex: OutOfSyncException =>
-        log.warn(s"SYNCSTATUS: ${ex.getMessage}")
-        SyncConflictActivity.showNotification()
       case ex: AppException =>
         log.error(s"$syncType sync failed due to app error", rootCause.getOrElse(error))
         app.notifyError(ex)
@@ -123,26 +114,16 @@ class SyncServiceImpl
     }
   }
 
-  private def pushSync(syncer: Syncer, verifySyncState: Boolean, conflictResolution: Option[SyncConflictResolution.Value], progressIndicator: SyncProgressIndicator, commitChanges: Boolean): Unit = {
-    new PushSynchronizer(syncer, verifySyncState, conflictResolution).sync(progressIndicator, commitChanges)
-  }
-
-  private def fullSync(syncer: Syncer, conflictResolution: Option[SyncConflictResolution.Value], progressIndicator: SyncProgressIndicator): Unit = {
-    pushSync(syncer, true, conflictResolution, progressIndicator, false)
+  private def fullSync(syncer: Syncer, progressIndicator: SyncProgressIndicator): Unit = {
     new PullSynchronizer(syncer).syncAllPodcasts(progressIndicator)
-    pushSync(syncer, false, None, progressIndicator, true)
   }
 
-  private def podcastSync(syncer: Syncer, conflictResolution: Option[SyncConflictResolution.Value], podcast: URI, progressIndicator: SyncProgressIndicator): Unit = {
-    pushSync(syncer, true, conflictResolution, progressIndicator, false)
+  private def podcastSync(syncer: Syncer, podcast: URI, progressIndicator: SyncProgressIndicator): Unit = {
     new PullSynchronizer(syncer).syncPodcast(podcast, progressIndicator)
-    pushSync(syncer, false, None, progressIndicator, true)
   }
 
-  private def crossDeviceSync(syncer: Syncer, conflictResolution: Option[SyncConflictResolution.Value], progressIndicator: SyncProgressIndicator): Unit = {
-    pushSync(syncer, true, conflictResolution, progressIndicator, false)
+  private def crossDeviceSync(syncer: Syncer, progressIndicator: SyncProgressIndicator): Unit = {
     new PullSynchronizer(syncer).syncAllPodcastsWithNewerServerStatus(progressIndicator)
-    pushSync(syncer, false, None, progressIndicator, false)
   }
 
   private def scheduleNextAutomaticSync(): Unit =
@@ -193,26 +174,18 @@ class SyncServiceImpl
 }
 
 object SyncServiceImpl {
-  private[sync] val PushSyncAction = IntentAction("sync.push")
   private[sync] val FullSyncAction = IntentAction("sync.full")
   private[sync] val PodcastSyncAction = IntentAction("sync.podcast")
-  private[sync] val CrossDeviceSyncAction = IntentAction("sync.crossDevice")
 
   private object PodcastToSync extends BundleSerializableValue[URI](IntentExtraKey("podcastToSync"))
-  private object SyncConflictResolutionValue extends BundleEnumValue(SyncConflictResolution)(IntentExtraKey("syncConflictResolution"))
 
   private def syncIntent(context: Context, syncAction: String): Intent = {
     val intent = new Intent(syncAction, null, context, classOf[SyncServiceImpl])
     intent
   }
 
-  private[sync] def pushSyncIntent(context: Context): Intent =
-    syncIntent(context, PushSyncAction)
-
-  private[sync] def fullSyncIntent(context: Context, syncConflictResolution: Option[SyncConflictResolution.Value]): Intent = {
-    val intent = syncIntent(context, FullSyncAction)
-    intent.putExtra(SyncConflictResolutionValue, syncConflictResolution)
-    intent
+  private[sync] def fullSyncIntent(context: Context): Intent = {
+    syncIntent(context, FullSyncAction)
   }
 
   private[sync] def syncPodcastIntent(context: Context, podcast: URI): Intent = {
@@ -221,18 +194,9 @@ object SyncServiceImpl {
     intent
   }
 
-  private[sync] def crossDeviceSyncIntent(context: Context): Intent =
-    syncIntent(context, CrossDeviceSyncAction)
-
-  def requestPushSync(context: Context): Unit =
-    context.startService(pushSyncIntent(context))
-
-  def requestFullSync(context: Context, syncConflictResolution: Option[SyncConflictResolution.Value] = None): Unit =
-    context.startService(fullSyncIntent(context, syncConflictResolution))
+  def requestFullSync(context: Context): Unit =
+    context.startService(fullSyncIntent(context))
 
   def requestPodcastSync(context: Context, podcast: URI): Unit =
     context.startService(syncPodcastIntent(context, podcast))
-
-  def requestCrossDeviceSync(context: Context): Unit =
-    context.startService(crossDeviceSyncIntent(context))
 }
