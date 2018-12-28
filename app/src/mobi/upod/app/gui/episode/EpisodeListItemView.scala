@@ -3,6 +3,7 @@ package mobi.upod.app.gui.episode
 import java.net.URL
 
 import android.content.Context
+import android.support.v4.widget.TextViewCompat
 import android.view.{Menu, MenuItem, View}
 import com.escalatesoft.subcut.inject.Injectable
 import mobi.upod.android.app.ActivityLifecycleListener
@@ -115,7 +116,7 @@ private[episode] trait EpisodeListItemView
     downloadListIndicator.show(item.downloadInfo.listPosition.isDefined)
 
     val textAppearance = if (item.isNew) R.style.TextAppearance_List_PrimaryText_Emphasized else R.style.TextAppearance_List_PrimaryText
-    episodeTitleView.setTextAppearance(context, textAppearance)
+    TextViewCompat.setTextAppearance(episodeTitleView, textAppearance)
     showAsFinished(item.playbackInfo.finished)
   }
 

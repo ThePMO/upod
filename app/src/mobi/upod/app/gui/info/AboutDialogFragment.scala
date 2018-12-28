@@ -2,6 +2,7 @@ package mobi.upod.app.gui.info
 
 import android.app.{Activity, Dialog, DialogFragment}
 import android.os.Bundle
+import android.support.v4.widget.TextViewCompat
 import android.support.v7.app.AlertDialog
 import android.text.method.LinkMovementMethod
 import android.text.style.{ClickableSpan, URLSpan}
@@ -37,7 +38,7 @@ class AboutDialogFragment extends DialogFragment {
     val content = new TextView(context)
     val padding = getResources.getDimensionPixelSize(R.dimen.space_medium)
     content.setPadding(padding, padding, padding, padding)
-    content.setTextAppearance(context, context.getThemeResource(R.attr.textAppearance))
+    TextViewCompat.setTextAppearance(content, context.getThemeResource(R.attr.textAppearance))
     content.setGravity(Gravity.CENTER_HORIZONTAL)
     content.setLinksClickable(true)
     content.setMovementMethod(LinkMovementMethod.getInstance())
