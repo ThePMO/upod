@@ -1,11 +1,11 @@
 package mobi.upod.app.storage
 
 import android.database.sqlite.SQLiteStatement
-import com.escalatesoft.subcut.inject.{Injectable, BindingModule}
+import com.escalatesoft.subcut.inject.{BindingModule, Injectable}
 import mobi.upod.android.database.{Cursor => DbCursor}
 import mobi.upod.android.logging.Logging
 import mobi.upod.data.Mapping
-import mobi.upod.data.sql.{SqlReader, SqlGenerator}
+import mobi.upod.data.sql.{SqlGenerator, SqlReader}
 import mobi.upod.sql.{Sql, SqlApp}
 import mobi.upod.util.Cursor
 
@@ -163,6 +163,8 @@ abstract class Dao[A](
   //
   // query stuff
   //
+
+  def all(): Cursor[A] = findMultiple(sql"SELECT * FROM $table")
 
   protected def findOne[B](query: Sql, mapping: Mapping[B] = standardMapping): Option[B] = {
     withReader(rawQuery(query), mapping) { reader =>

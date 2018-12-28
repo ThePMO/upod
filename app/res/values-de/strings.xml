@@ -294,19 +294,7 @@ Erfahre mehr auf der <a href="http://upod.uservoice.com/knowledgebase/articles/2
     <string name="wizard_recurring_user">Willkommen zurück</string>
     <string name="wizard_recurring_user_introduction">Du weißt was zu tun ist: Such Dir Deinen ersten Podcast aus dem Katalog aus.</string>
 
-    <string name="wizard_account">Anmeldung</string>
-    <string name="wizard_account_introduction">Verbinde uPod zu Google Drive um Deine Daten wiederherzustellen.</string>
-    <string name="wizard_account_required">Du musst uPod mit Google Drive verbinden, um Deine Podcasts aus der Cloud wiederherzustellen.</string>
-
     <string name="wizard_single_choice_required">Wähle bitte eine Option.</string>
-
-    <string name="wizard_update_gdrive">Google Drive</string>
-    <string name="wizard_update_gdrive_introduction">Ab dieser Version nutzt uPod Google Drive für die Synchornisierung Deiner Abos, Wiedergabeliste und mehr.\n\nBitte aktualisiere alle Deine Geräte auf die aktuelle uPod-Version, um sie synchron zu halten.\n\n(Verzichte auf die Anmeldung um die Cloud-Synchronisierung zu daktivieren)</string>
-
-    <string name="wizard_sync_conflict">Synchronisierungs-Konflikt</string>
-    <string name="wizard_sync_conflict_introduction">Dein Geräte- und Server-Status sind nicht mehr synchron. Wie möchtest Du fortfahren?</string>
-    <string name="wizard_sync_conflict_use_server_state">Server-Status nutzen (lokalen Änderungen verwerfen)</string>
-    <string name="wizard_sync_conflict_use_device_state">Gerätestatus nutzen (Server-Status verwerfen)</string>
 
     <string name="wizard_back">Zurück</string>
     <string name="wizard_next">Weiter</string>
@@ -608,4 +596,52 @@ Erfahre mehr auf der <a href="http://upod.uservoice.com/knowledgebase/articles/2
 
     <!-- about uPod -->
     <string name="about">Über uPod</string>
+    <string name="wizard_welcome_option_opml">Ich habe eine OPML-Datei</string>
+    <string name="wizard_welcome_option_migrating">Ich möchte vom alten uPod migrieren</string>
+    <string name="wizard_migration">Migration</string>
+    <string name="wizard_migration_import_running">Importvorgang läuft</string>
+    <string name="wizard_migration_import_opml">OPML importieren</string>
+    <string name="wizard_migration_import_opml_finished">Du solltest den Import-Dialog sehen oder gesehen haben. Du kannst jetzt fortführen</string>
+    <string name="wizard_migration_import_file_not_found">Die Datei %$1s konnte nicht gefunden werden</string>
+    <string name="wizard_migration_import_diagnostics">Importiere Diagnosedaten</string>
+    <string name="wizard_migration_import_diagnostics_finished">Import wurde ohne Fehler beendet</string>
+    <string name="wizard_migration_import_error">Fehler beim Import: %1$s</string>
+    <string name="wizard_migration_import_diagnostics_info">Import gestartet. Aus Gründen der einfachen Umsetzung dieses Prozesses gibt es keine Rückmeldung bis der Vorgang abgeschlossen wurde. Bei vielen Podcasts mit vielen Episoden kann der Vorang einigen Minuten dauern. Bitte nicht Abbrechen.</string>
+
+    <string name="wizard_migration_introduction"><![CDATA[
+          <p>Eine Migration vom alten uPod is aufwendig weil das Importieren der Einstellungen einer anderen App
+          im Normalfall schlicht nicht vorgesehen ist und anständige Backups in Android schwer sind.
+          Entschuldige bitte diese Unbequemlichkeit.</p>
+          <h6>Vollständiger Import</h6>
+          <p>Wenn du einen vollständigen Import machen willst, ist es mit diesen Schritten möglich:</p>
+          <ul>
+            <li>Rufe in der alten App "Hilfe & Feedback" auf</li>
+            <li>Wähle "Sammle Diagnosedaten"</li>
+            <li>Speicher das Resultat auf irgendeinem Weg
+              <strong>WICHTIG</strong> Wenn du dich dazu entscheidest dir selbst eine EMail zu schicken, bitte denk
+              daran die Standard-Adresse zu löschen. Bitte sende <strong>NICHT</strong> an die Standard-Adresse. Du
+              willst nicht den Autor der originalen App damit zuspammen!
+            </li>
+            <li>Lege die Datei "upod" im Verzeichnis /sdcard auf deinem Gerät ab</li>
+            <li>Lege die Datei "mobi.upod.app_preferences.xml" ebenfalls im Verzeichnis /sdcard auf deinem Gerät ab</li>
+            <li>Wähle unten "Importiere Diagnosedaten" aus</li>
+          </ul>
+          <h6>OPML imporieren</h6>
+          <p>Wenn die vorige Möglichkeit zu viel Aufwand ist, wäre eine andere Möglichkeit der Import eines OPML-Exports.
+          (Leider gibt es beim Export von OPML einen Bug in uPod im Zusammenspiel mit neueren Android-Versionen).
+          Auf diesem Weg wirst du die Einstellungen, die playlists und die Information über gehörte Episoden verlieren,
+          aber dieser Weg kann weniger Aufwand sein wenn du keine große Menge ungehörter Episoden hast.</p>
+          <ul>
+            <li>Gehe zu "Meine Podcasts" in der alten App</li>
+            <li>Öffne das Overflow-Menü und wähle "Exportiere OPML"</li>
+            <li>Wenn du jetzt einen Fehler bekommst, dann ist deine Android version zu neu und du bist vom Export-Bug betroffen</li>
+            <li>Wenn der Export funktioniert hat, lege die Datei im Verzeichnis /sdcard auf deinem Gerät ab</li>
+            <li>Wähle unten "OPML importieren" aus</li>
+          </ul>
+          <h6>Ein neuer Anfang</h6>
+          <p>Falls das beides nicht funktioniert, bitte ich erneut um Entschuldigung für die Umstände. Du kannst immer
+          einen neuen Anfang machen und auf der vorherigen Seite "Ich habe uPod bereits genutzt" wählen. Nochmal Sorry,
+          leider kenne ich keinen anderen Weg.</p>
+      ]]></string>
+
 </resources>
