@@ -1,6 +1,7 @@
 package mobi.upod.android.view.wizard
 
 import android.content.Context
+import android.support.v4.widget.TextViewCompat
 import android.view.{LayoutInflater, ViewGroup}
 import android.widget._
 import de.wcht.upod.R
@@ -24,7 +25,7 @@ abstract class WizardChoicePage[A](
   override protected def createContentView(context: Context, container: ViewGroup, inflater: LayoutInflater) = {
     val choiceGroup = createChoiceGroup(context)
     val introduction = new TextView(context)
-    introduction.setTextAppearance(context, R.style.TextAppearance_Wizard)
+    TextViewCompat.setTextAppearance(introduction, R.style.TextAppearance_Wizard)
     introduction.setText(HtmlCompat.fromHtml(context.getString(introductionId)))
     choiceGroup.addView(introduction)
 
@@ -37,7 +38,7 @@ abstract class WizardChoicePage[A](
 
     if (tipId != 0) {
       val tip = new TextView(context)
-      tip.setTextAppearance(context, R.style.TextAppearance_Wizard)
+      TextViewCompat.setTextAppearance(tip, R.style.TextAppearance_Wizard)
       tip.setText(HtmlCompat.fromHtml(context.getString(tipId)))
       choiceGroup.addView(tip)
     }
