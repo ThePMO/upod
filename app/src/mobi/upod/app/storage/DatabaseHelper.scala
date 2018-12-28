@@ -5,12 +5,13 @@ import android.database.sqlite.{SQLiteDatabase, SQLiteOpenHelper}
 import com.escalatesoft.subcut.inject.BindingModule
 import mobi.upod.android.logging.Logging
 
-final class DatabaseHelper private (context: Context, name: String, version: Int)(implicit val bindingModule: BindingModule)
+final class DatabaseHelper private (context: Context, name: String, version: Int, writeableDb: Option[SQLiteDatabase])(implicit val bindingModule: BindingModule)
     extends SQLiteOpenHelper(context, name, null, version)
     with Logging {
 
   lazy val readable = new Database(getReadableDatabase, this)
-  lazy val writable = new Database(getWritableDatabase, this)
+
+  lazy val writable = new Database(writeableDb.getOrElse(getWritableDatabase), this)
 
   lazy val podcastDao = new PodcastDao(this)
   lazy val episodeDao = new EpisodeDao(this)
@@ -63,7 +64,7 @@ object DatabaseHelper {
   val name = "upod"
   val schemaVersion = 99
 
-  def apply(context: Context)(implicit bindingModule: BindingModule): DatabaseHelper =
-    new DatabaseHelper(context, name, schemaVersion)
+  def apply(context: Context, writeableDb: Option[SQLiteDatabase] = None)(implicit bindingModule: BindingModule): DatabaseHelper =
+    new DatabaseHelper(context, name, schemaVersion, writeableDb)
 }
 

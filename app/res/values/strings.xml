@@ -571,6 +571,8 @@
     <string name="wizard_welcome_introduction">What\'s your situation?</string>
     <string name="wizard_welcome_option_new_user">I am new to uPod</string>
     <string name="wizard_welcome_option_existing_user">I have used uPod before</string>
+    <string name="wizard_welcome_option_opml">I have an OPML file</string>
+    <string name="wizard_welcome_option_migrating">I am migrating from the old uPod</string>
 
     <string name="wizard_new_user">Get started</string>
     <string name="wizard_new_user_introduction"><![CDATA[
@@ -581,23 +583,66 @@
     <string name="wizard_recurring_user">Welcome back</string>
     <string name="wizard_recurring_user_introduction">You know what to do: Go ahead and grab your first podcast from the catalog.</string>
 
-    <string name="wizard_account">Google Drive</string>
-    <string name="wizard_account_introduction">Connect uPod to Google Drive to restore your data.</string>
-    <string name="wizard_account_required">You need to connect uPod to Google Drive to restore your podcasts from the cloud.</string>
-
     <string name="wizard_single_choice_required">Please choose an option.</string>
-
-    <string name="wizard_update_gdrive">Google Drive</string>
-    <string name="wizard_update_gdrive_introduction">Starting with this version uPod uses Google Drive to synchronize your subscriptions, playlist and more.\n\nPlease update all your devices to the latest uPod version to keep them in sync.\n\n(Skip sign in to disable cloud sync)</string>
-
-    <string name="wizard_sync_conflict">Synchronization Conflict</string>
-    <string name="wizard_sync_conflict_introduction">Your device and server state are out of sync. How do you want to proceed?</string>
-    <string name="wizard_sync_conflict_use_server_state">Use server state (dismiss local changes)</string>
-    <string name="wizard_sync_conflict_use_device_state">Use device state (dismiss server state)</string>
 
     <string name="wizard_back">Back</string>
     <string name="wizard_next">Next</string>
     <string name="wizard_start">Start</string>
+
+    <string name="wizard_migration">Migration</string>
+    <string name="wizard_migration_introduction"><![CDATA[
+        <p>Migrating from the old uPod is painful because importing settings from a different app is just not possible
+        and creating proper backups in Android also seems kind of hard. Sorry for the inconvenience.</p>
+        <h6>Full import</h6>
+        <p>If you want to do a full import of your data it is possible by following these steps:</p>
+        <ul>
+          <li>Go to "Help &amp; support" in the old app</li>
+          <li>Select "Send diagnostics"</li>
+          <li>Somehow store that information.
+            <strong>IMPORTANT</strong> If you choose to send yourself an email with the data, remember to delete
+            the default address, <strong>DO NOT</strong> send it to the default address. You don\'t want to spam
+            the original author with your export!
+          </li>
+          <li>Put the file "upod" to /sdcard on your device</li>
+          <li>Put the file "mobi.upod.app_preferences.xml" to /sdcard on your device</li>
+          <li>Select "Import Diagnostics" below</li>
+        </ul>
+        <h6>OPML import</h6>
+        <p>If that is to much effort you might import an OPML if you are able to export OPML in the old uPod
+        (sadly there is a bug when running on recent versions of Android). This way you will loose your settings,
+        playlists and listened episodes, but keep all subscriptions. This might be less effort you don\'t have a lot of
+        unlistened episodes.</p>
+        <ul>
+          <li>Go to "My podcasts" in the old app</li>
+          <li>Click the overflow menu at the top and select "Export OPML"</li>
+          <li>If you get an error, your Android version is too new and you are affected by uPod\'s export bug</li>
+          <li>If the export worked, put it into /sdcard on your device</li>
+          <li>Select "Import OPML" below</li>
+        </ul>
+        <h6>A fresh start</h6>
+        <p>If neither of this works for you, again am terribly sorry for the circumstances. You can always make a fresh
+        start by going back to the previous page and selecting "I have used uPod before". And again sorry for the
+        inconvenience, but there is no other way (that I known of)</p>
+    ]]></string>
+    <string name="wizard_migration_import_running">Import is running</string>
+    <string name="wizard_migration_import_opml">Import OPML</string>
+    <string name="wizard_migration_import_opml_introduction"><![CDATA[
+        <p>There are two ways to import OPML:</p>
+        <ul>
+          <li>Either go back to the previous page and start as a new user, then open the OPML file within you system (e.g. the
+          file-manager, your email-client or wherever it is stored)</li>
+          <li>Or put the file to "/sdcard/subscriptions.opml" and start the import here</li>
+        </ul>
+    ]]></string>
+    <string name="wizard_migration_import_opml_finished">You should see / have seen the import-dialog, the import should be running. You can continue</string>
+    <string name="wizard_migration_import_file_not_found">The file %1$s was not found</string>
+    <string name="wizard_migration_import_diagnostics">Import Diagnostics</string>
+    <string name="wizard_migration_import_diagnostics_finished">Import finished without errors</string>
+    <string name="wizard_migration_import_error">Import failed: %1$s</string>
+    <string name="wizard_migration_import_diagnostics_info">Import started, for simplicity reasons this does not give
+        you any feedback on the progress. This can take a few minutes if you had a lot of podcasts with a lot
+        of episodes. Do NOT abort the process or your database may be incomplete. Thanks :)
+    </string>
 
     <!-- ================================================================== -->
     <!-- permission requests -->
