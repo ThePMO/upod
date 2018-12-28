@@ -1,10 +1,10 @@
 package mobi.upod.android.view.wizard
 
 import android.content.Context
-import android.text.Html
 import android.view.{LayoutInflater, ViewGroup}
 import android.widget._
 import de.wcht.upod.R
+import mobi.upod.android.util.HtmlCompat
 
 abstract class WizardChoicePage[A](
     key: String,
@@ -25,7 +25,7 @@ abstract class WizardChoicePage[A](
     val choiceGroup = createChoiceGroup(context)
     val introduction = new TextView(context)
     introduction.setTextAppearance(context, R.style.TextAppearance_Wizard)
-    introduction.setText(Html.fromHtml(context.getString(introductionId)))
+    introduction.setText(HtmlCompat.fromHtml(context.getString(introductionId)))
     choiceGroup.addView(introduction)
 
     choices.zipWithIndex.foreach { case (choice, index) =>
@@ -38,7 +38,7 @@ abstract class WizardChoicePage[A](
     if (tipId != 0) {
       val tip = new TextView(context)
       tip.setTextAppearance(context, R.style.TextAppearance_Wizard)
-      tip.setText(Html.fromHtml(context.getString(tipId)))
+      tip.setText(HtmlCompat.fromHtml(context.getString(tipId)))
       choiceGroup.addView(tip)
     }
 
