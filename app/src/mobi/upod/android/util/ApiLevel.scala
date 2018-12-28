@@ -11,6 +11,8 @@ object ApiLevel extends Ordered[Int] {
   val KitKat = KITKAT
   val Lollipop = LOLLIPOP
   val Marshmallow = M
+  val Nougat = N
+  val NougatMR1 = N_MR1
 
   val apiLevel = android.os.Build.VERSION.SDK_INT
 

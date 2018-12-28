@@ -5,12 +5,13 @@ import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.text.method.LinkMovementMethod
 import android.text.style.{ClickableSpan, URLSpan}
-import android.text.{Html, Spannable, SpannableStringBuilder}
+import android.text.{Spannable, SpannableStringBuilder}
 import android.view.{Gravity, View}
 import android.widget.{ScrollView, TextView}
+import de.wcht.upod.R
 import mobi.upod.android.app.SimpleDialogFragment
 import mobi.upod.android.content.Theme._
-import de.wcht.upod.R
+import mobi.upod.android.util.HtmlCompat
 
 class AboutDialogFragment extends DialogFragment {
 
@@ -60,7 +61,7 @@ class AboutDialogFragment extends DialogFragment {
 
     val context = getActivity
     val version = context.getPackageManager.getPackageInfo(context.getPackageName, 0).versionName
-    val text = Html.fromHtml(context.getString(R.string.about_details, version))
+    val text = HtmlCompat.fromHtml(context.getString(R.string.about_details, version))
     val spannable = new SpannableStringBuilder(text)
     val linkSpans = spannable.getSpans(0, text.length(), classOf[URLSpan])
     linkSpans.foreach(makeLinkClickable(spannable, _))

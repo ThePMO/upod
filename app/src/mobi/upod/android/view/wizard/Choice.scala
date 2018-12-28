@@ -1,7 +1,7 @@
 package mobi.upod.android.view.wizard
 
 import android.content.Context
-import android.text.Html
+import mobi.upod.android.util.HtmlCompat
 
 trait Choice[A] {
   def id: A
@@ -11,7 +11,7 @@ trait Choice[A] {
 case class ValueChoice[A](id: A, labelId: Int) extends Choice[A] {
 
   override def label(context: Context) =
-    Html.fromHtml(context.getString(labelId))
+    HtmlCompat.fromHtml(context.getString(labelId))
 }
 
 case class ValueChoiceWithStringLabel[A](id: A, labelText: String) extends Choice[A] {
