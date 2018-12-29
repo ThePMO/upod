@@ -614,6 +614,8 @@
           <li>Put the file "upod" to /sdcard on your device</li>
           <li>Put the file "mobi.upod.app_preferences.xml" to /sdcard on your device</li>
           <li>Select "Import Diagnostics" below</li>
+          <li>Note: this process will download your playlist and coverart again, please make sure that you are using an
+          unmetered connection and that you have enough free space on your device</li>
         </ul>
         <h6>OPML import</h6>
         <p>If that is to much effort you might import an OPML if you are able to export OPML in the old uPod
