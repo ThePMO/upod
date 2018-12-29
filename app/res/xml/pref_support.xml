@@ -20,10 +20,6 @@
 
     <PreferenceCategory android:title="@string/pref_category_contribute">
         <Preference
-            android:key="pref_purchase"
-            android:title="@string/pref_purchase"
-            android:summary="@string/pref_purchase_summary"/>
-        <Preference
             android:key="pref_share_upod"
             android:title="@string/pref_share_upod"
             android:summary="@string/pref_share_upod_summary"/>

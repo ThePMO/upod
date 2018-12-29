@@ -1247,13 +1247,6 @@
             comment="setting category"
             >Contribute</string>
 
-    <string name="pref_purchase"
-            comment="setting title"
-            >Purchase premium license</string>
-    <string name="pref_purchase_summary"
-            comment="setting summary"
-            >Unlock uPod\'s premium features and help us to further improve uPod</string>
-
     <string name="pref_share_upod"
             comment="setting title"
             >Tell your friends about uPod</string>
