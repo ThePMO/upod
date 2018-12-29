@@ -617,6 +617,10 @@ Erfahre mehr auf der <a href="http://upod.uservoice.com/knowledgebase/articles/2
             <li>Lege die Datei "upod" im Verzeichnis /sdcard auf deinem Gerät ab</li>
             <li>Lege die Datei "mobi.upod.app_preferences.xml" ebenfalls im Verzeichnis /sdcard auf deinem Gerät ab</li>
             <li>Wähle unten "Importiere Diagnosedaten" aus</li>
+            <li>
+              Hinweis: dieser Vorgang wird die Playlist und Podcast-Icons neu runterladen. Bitte versichere dich, dass
+              du eine Flatrate benutzt und genug Speicherplatz auf dem Gerät zur Verfügung steht!
+            </li>
           </ul>
           <h6>OPML imporieren</h6>
           <p>Wenn die vorige Möglichkeit zu viel Aufwand ist, wäre eine andere Möglichkeit der Import eines OPML-Exports.

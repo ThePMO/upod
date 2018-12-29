@@ -13,6 +13,7 @@ import mobi.upod.android.logging.Logging
 import mobi.upod.android.os.{AsyncTask, Runnable}
 import mobi.upod.app.AppInjection
 import mobi.upod.app.data.{Episode, Podcast}
+import mobi.upod.app.services.download.DownloadService
 import mobi.upod.app.storage.{ImportedSubscriptionsDao, _}
 import org.w3c.dom.Node
 
@@ -46,6 +47,8 @@ class DiagnosticsImport(pageKey: String) extends StartActionWizardPage(pageKey, 
       importSharedPreferences(context, preferencesFile)
 
       importDatabase(context, databaseFile)
+
+      addPlaylistItemsToDownloadQueue()
 
       context.getString(R.string.wizard_migration_import_diagnostics_finished)
     } catch {
@@ -101,6 +104,16 @@ class DiagnosticsImport(pageKey: String) extends StartActionWizardPage(pageKey, 
     importTable[Episode, EpisodeDao](importDatabaseHelper, new EpisodeDao(_))
     importTable[Podcast, PodcastDao](importDatabaseHelper, new PodcastDao(_))
     importTable[URL, ImportedSubscriptionsDao](importDatabaseHelper, new ImportedSubscriptionsDao(_))
+  }
+
+  private def addPlaylistItemsToDownloadQueue(): Unit = {
+    val episodeDao = inject[EpisodeDao]
+    val playlistIDs = episodeDao.findPlaylistItems.map(_.id).toSeqAndClose()
+    episodeDao.inTransaction {
+      playlistIDs.foreach(episodeDao.resetDownloadInfo)
+      episodeDao.addToDownloadListEnd(playlistIDs)
+    }
+    inject[DownloadService].downloadQueue()
   }
 
   private def importTable[T, D<:Dao[T]](databaseHelper: DatabaseHelper, daoConstructor: DatabaseHelper => D)(implicit m: scala.reflect.Manifest[D]): Unit = {
