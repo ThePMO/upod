@@ -20,6 +20,7 @@ def appProperties(): Properties = {
 
 val gradleAppVersionCode = appProperties().getProperty("VERSION_CODE").toInt
 val gradleAppVersionName = appProperties().getProperty("VERSION_NAME")
+val javacVersionOptions = Seq("-source", "1.7", "-target", "1.7")
 
 //
 // android libraries
@@ -33,11 +34,7 @@ val bottomSheet = project.in(file("bottom-sheet")).
     buildToolsVersion in Android := androidBuildToolsVersion,
     platformTarget in Android := androidPlatformTarget,
     minSdkVersion in Android := androidMinSdkVersion,
-    javacOptions in Compile ++= List(
-      "-source",
-      "1.7",
-      "-target",
-      "1.7"),
+    javacOptions in Compile ++= javacVersionOptions,
 
     libraryDependencies ++= List(
       aar("com.android.support" % "appcompat-v7" % "25.3.1"),
@@ -52,11 +49,7 @@ val dragSortListView = project.in(file("drag-sort-listview")).
     buildToolsVersion in Android := androidBuildToolsVersion,
     platformTarget in Android := androidPlatformTarget,
     minSdkVersion in Android := androidMinSdkVersion,
-    javacOptions in Compile ++= List(
-      "-source",
-      "1.7",
-      "-target",
-      "1.7"),
+    javacOptions in Compile ++= javacVersionOptions,
 
     antLayoutDetector in Android := (),
 
@@ -72,11 +65,7 @@ val prestissimo = project.in(file("prestissimo")).
     buildToolsVersion in Android := androidBuildToolsVersion,
     platformTarget in Android := androidPlatformTarget,
     minSdkVersion in Android := androidMinSdkVersion,
-    javacOptions in Compile ++= List(
-      "-source",
-      "1.7",
-      "-target",
-      "1.7"),
+    javacOptions in Compile ++= javacVersionOptions,
 
     antLayoutDetector in Android := (),
 
@@ -96,11 +85,7 @@ val showcaseView = project.in(file("showcase-view")).
     buildToolsVersion in Android := androidBuildToolsVersion,
     platformTarget in Android := androidPlatformTarget,
     minSdkVersion in Android := androidMinSdkVersion,
-    javacOptions in Compile ++= List(
-      "-source",
-      "1.7",
-      "-target",
-      "1.7"),
+    javacOptions in Compile ++= javacVersionOptions,
 
     libraryDependencies ++= List()
   )
@@ -124,11 +109,7 @@ val app = project.in(file("app")).
     unmanagedResourceDirectories in Compile := Seq(baseDirectory.value / "src"),
     includeFilter in unmanagedResources := "*.properties",
 
-    javacOptions in Compile ++= List(
-      "-source",
-      "1.7",
-      "-target",
-      "1.7"),
+    javacOptions in Compile ++= javacVersionOptions,
     scalaVersion := "2.11.6",
 
     resConfigs in Android := Seq("en", "de"),
