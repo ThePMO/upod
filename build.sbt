@@ -141,7 +141,7 @@ val app = project.in(file("app")).
       aar("mobi.upod" % "time-duration-picker" % "1.0.3"),
 
       "com.escalatesoft.subcut" % "subcut_2.11" % "2.1",
-      "com.evernote" % "android-job" % "1.1.12",
+      "com.evernote" % "android-job" % "1.2.6",
       "com.google.http-client" % "google-http-client-android" % "1.27.0",
       "com.google.code.gson" % "gson" % "2.8.5",
       "com.googlecode.mp4parser" % "isoparser" % "1.1.17", // later versions are compiled with jdk9 and use ByteBuffer methods that don't exist on android
