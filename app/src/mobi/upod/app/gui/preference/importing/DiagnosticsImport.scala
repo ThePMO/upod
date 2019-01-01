@@ -11,9 +11,11 @@ import de.wcht.upod.R
 import javax.xml.parsers.{DocumentBuilderFactory, ParserConfigurationException}
 import mobi.upod.android.logging.Logging
 import mobi.upod.android.os.{AsyncTask, Runnable}
+import mobi.upod.android.util.ApiLevel
 import mobi.upod.app.AppInjection
 import mobi.upod.app.data.{Episode, Podcast}
 import mobi.upod.app.services.download.DownloadService
+import mobi.upod.app.services.playback.player.MediaPlayerCompat
 import mobi.upod.app.storage.{ImportedSubscriptionsDao, _}
 import org.w3c.dom.Node
 
@@ -85,13 +87,19 @@ class DiagnosticsImport(pageKey: String) extends StartActionWizardPage(pageKey, 
 
   private def putPreference(prefEditor: SharedPreferences.Editor, typeName: String, name: String, value: String) = {
     typeName match {
-      case "string" => prefEditor.putString(name, value)
+      case "string" => prefEditor.putString(name, modernizeValue(name, value))
       case "boolean" => prefEditor.putBoolean(name, value.toBoolean)
       case "float" => prefEditor.putFloat(name, value.toFloat)
       case "int" => prefEditor.putInt(name, value.toInt)
       case "long" => prefEditor.putLong(name, value.toLong)
       case _ => throw new IllegalStateException(s"Unknown element in preferences: $typeName $name $value")
     }
+  }
+
+  private def modernizeValue(name: String, value: String) = name match {
+    // newer androids don't need the Sonic player anymore
+    case "pref_audio_player" if ApiLevel >= MediaPlayerCompat.MIN_LEVEL => "Android"
+    case _ => value
   }
 
   // the preferences might contain some weird legacy values, only import what looks like a setting from uPod

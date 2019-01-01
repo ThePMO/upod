@@ -460,8 +460,8 @@ Erfahre mehr auf der <a href="http://upod.uservoice.com/knowledgebase/articles/2
     <string name="pref_category_media_player">Media Player</string>
     <string name="pref_audio_player">Audio-Player</string>
     <string-array name="pref_audio_player_summaries">
-        <item>Benutze Androids integrierten Player – stabil, bietet aber keine Steuerung der Wiedergabegeschwindigkeit und kein Audio-Boost</item>
-        <item>Benutze Sonic Player – experimentell und evtl. höherer Batterieverbrauch, unterstützt dafür aber die Steuerung der Wiedergabegeschwindigkeit und Audio-Boost</item>
+        <item>Benutze Androids integrierten Player – stabil, bietet vor Android 6.0 keine Steuerung der Wiedergabegeschwindigkeit und kein Audio-Boost</item>
+        <item>Benutze Sonic Player – experimentell und evtl. höherer Batterieverbrauch, unterstützt dafür aber die Steuerung der Wiedergabegeschwindigkeit und Audio-Boost in veralten Android Versionen</item>
     </string-array>
     <string-array name="pref_audio_player_entries">
         <item>Android-Player</item>
