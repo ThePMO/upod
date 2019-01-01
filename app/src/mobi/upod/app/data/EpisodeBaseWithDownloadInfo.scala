@@ -68,7 +68,7 @@ object EpisodeBaseWithDownloadInfo {
         if (fallbackOne.length <= MaxPathSegmentLength) {
           fallbackOne
         } else {
-          val hash = Hashing.sha256(uri.toString).fileNameEncoded
+          val hash = Hashing.sha256Base64(uri.toString).fileNameEncoded
           val hostWithHash = s"${uri.getHost}/$hash".fileNameEncoded
           val path = uri.getPath.fileNameEncoded
           val fallback = hostWithHash + path.takeRight(MaxPathSegmentLength - hostWithHash.length)
