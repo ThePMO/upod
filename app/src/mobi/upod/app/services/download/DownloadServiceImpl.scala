@@ -2,14 +2,15 @@ package mobi.upod.app.services.download
 
 import java.io.InterruptedIOException
 
+import android.annotation.TargetApi
 import android.app.PendingIntent
 import android.content.Intent
-import android.support.v4.app.NotificationCompat
 import de.wcht.upod.R
 import mobi.upod.android.app.{AsyncBoundService, IntegratedNotificationManager, ServiceBinder, UpodNotificationChannels}
 import mobi.upod.android.logging.Logging
 import mobi.upod.android.media.MediaFileDurationRetriever
 import mobi.upod.android.os.{AsyncObservable, PowerManager}
+import mobi.upod.android.util.ApiLevel
 import mobi.upod.app.AppInjection
 import mobi.upod.app.data.{EpisodeBaseWithDownloadInfo, EpisodeListItem}
 import mobi.upod.app.gui.{MainActivity, MainNavigation}
@@ -45,6 +46,7 @@ final class DownloadServiceImpl
   override def onCreate(): Unit = {
     log.info("download service created")
     super.onCreate()
+    showQueueCheckNotification()
   }
 
   override def onDestroy(): Unit = {
@@ -270,6 +272,17 @@ final class DownloadServiceImpl
 
   def showErrorNotification(title: Int, content: Int): Unit =
     showErrorNotification(title, getString(content))
+
+  @TargetApi(ApiLevel.Oreo)
+  private def showQueueCheckNotification(): Unit = {
+    if (ApiLevel >= ApiLevel.Oreo) {
+      // temporary (smile here!) HACK to avoid exception on startup. Android O only allows Services while showing a
+      // notification this shows a notification to satisfy android. if there are no downloads the service will quite
+      // right away and if there are downloads it will be replaced by a proper notification for the new episode in queue
+      // TODO: only start this service if there are queued downloads
+      startForeground(notificationBuilder.setContentText(getString(R.string.download_queue_check)))
+    }
+  }
 
   private def showStartNotification(episode: EpisodeBaseWithDownloadInfo): Unit = if (!isBuffering) {
     val notification = notificationBuilder.

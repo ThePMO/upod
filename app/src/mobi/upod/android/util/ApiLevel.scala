@@ -13,6 +13,7 @@ object ApiLevel extends Ordered[Int] {
   final val Marshmallow = M
   final val Nougat = N
   final val NougatMR1 = N_MR1
+  final val Oreo = O
 
   val apiLevel = android.os.Build.VERSION.SDK_INT
 

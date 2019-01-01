@@ -392,6 +392,9 @@
             >An unexpected error occurred: %s</string>
 
     <!-- downloading -->
+    <string name="download_queue_check"
+      comment="notification content displayed while checking if downloads are needed"
+      >checking for downloads…</string>
     <string name="download_preparing"
             comment="notification content displayed when a download starts"
             >preparing download…</string>
