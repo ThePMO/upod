@@ -1,6 +1,7 @@
 package mobi.upod.media.mp4
 
-import com.coremedia.iso.boxes.TrackBox
+import org.mp4parser.boxes.iso14496.part12.TrackBox
+
 
 class Track private[mp4] (trackBox: TrackBox) {
   val handlerType: String = trackBox.getMediaBox.getHandlerBox.getHandlerType

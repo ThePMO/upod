@@ -7,7 +7,10 @@ val androidBuildToolsVersion = Some("26.0.1")
 val androidPlatformTarget = "android-25"
 val androidMinSdkVersion = "21" // should be 14 (21 for debug because of multi dex support)
 
-resolvers in ThisBuild += Resolver.jcenterRepo
+resolvers in ThisBuild ++= List(
+  Resolver.jcenterRepo,
+  "Google Maven" at "https://maven.google.com/"
+)
 
 def appProperties(): Properties = {
   val prop = new Properties()
@@ -83,9 +86,7 @@ val prestissimo = project.in(file("prestissimo")).
     },
 
     libraryDependencies ++= List(
-      "com.github.tony19" % "logback-android-core" % "1.1.1-4" exclude("com.google.android", "android"),
-      "com.github.tony19" % "logback-android-classic" % "1.1.1-4" exclude("com.google.android", "android"),
-      "org.slf4j" % "slf4j-api" % "1.7.6"
+      "org.slf4j" % "slf4j-api" % "1.7.25"
     )
   )
 
@@ -148,16 +149,15 @@ val app = project.in(file("app")).
       aar("mobi.upod" % "time-duration-picker" % "1.0.3"),
 
       "com.escalatesoft.subcut" % "subcut_2.11" % "2.1",
-      "com.evernote" % "android-job" % "1.1.2",
-      "com.google.http-client" % "google-http-client-android" % "1.20.0",
-      "com.google.code.gson" % "gson" % "2.3.1",
-      "com.googlecode.mp4parser" % "isoparser" % "1.1.17",
-      "com.github.nscala-time" % "nscala-time_2.11" % "2.0.0",
-      "com.nostra13.universalimageloader" % "universal-image-loader" % "1.8.5",
+      "com.evernote" % "android-job" % "1.1.12",
+      "com.google.http-client" % "google-http-client-android" % "1.27.0",
+      "com.google.code.gson" % "gson" % "2.8.5",
+      "org.mp4parser" % "isoparser" % "1.9.37",
+      "com.github.nscala-time" % "nscala-time_2.11" % "2.20.0",
+      "com.nostra13.universalimageloader" % "universal-image-loader" % "1.9.5",
 
-      "com.github.tony19" % "logback-android-core" % "1.1.1-4" exclude("com.google.android", "android"),
-      "com.github.tony19" % "logback-android-classic" % "1.1.1-4" exclude("com.google.android", "android"),
-      "org.slf4j" % "slf4j-api" % "1.7.6",
+      aar("com.github.tony19" % "logback-android" % "1.3.0-3"),
+      "org.slf4j" % "slf4j-api" % "1.7.25",
 
       aar("com.android.support" % "support-v13" % "25.3.1"),
       aar("com.android.support" % "design" % "25.3.1"),

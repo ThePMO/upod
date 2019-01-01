@@ -2,7 +2,7 @@ package mobi.upod.media.mp4
 
 import java.io.RandomAccessFile
 
-import com.coremedia.iso.boxes.SampleTableBox
+import org.mp4parser.boxes.iso14496.part12.SampleTableBox
 
 import scala.collection.JavaConverters._
 
@@ -84,7 +84,7 @@ private[mp4] object SampleInfo {
       val timeToSampleEntries = sampleTable.getTimeToSampleBox.getEntries.asScala
       val sampleDeltas = timeToSampleEntries.
         flatMap(e => Seq.fill(e.getCount.toInt)(e.getDelta)).
-        map(_ / (timeScale / 1000.0) toLong)
+        map(_ / (timeScale / 1000.0).toLong)
       deltaMillisToMediaRange(sampleDeltas)
     }
 

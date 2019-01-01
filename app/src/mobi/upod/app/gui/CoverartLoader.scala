@@ -8,11 +8,12 @@ import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
 import com.escalatesoft.subcut.inject.{BindingModule, Injectable}
-import com.nostra13.universalimageloader.cache.disc.impl.FileCountLimitedDiscCache
+import com.nostra13.universalimageloader.cache.disc.impl.ext.LruDiskCache
 import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache
-import com.nostra13.universalimageloader.core.assist.{FailReason, ImageLoadingListener}
+import com.nostra13.universalimageloader.core.assist.FailReason
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener
 import com.nostra13.universalimageloader.core.{DisplayImageOptions, ImageLoader, ImageLoaderConfiguration}
 import com.nostra13.universalimageloader.utils.StorageUtils
 import mobi.upod.android.logging.Logging
@@ -32,16 +33,16 @@ class CoverartLoader(implicit val bindingModule: BindingModule) extends Injectab
     .cacheInMemory(true)
   private lazy val localDefaultDisplayImageOptions = baseDisplayImageOptionsBuilder.build()
   private lazy val localListDisplayImageOptions = baseDisplayImageOptionsBuilder.cacheInMemory(true).build()
-  private lazy val onlineDisplayImageOptions = baseDisplayImageOptionsBuilder.cacheOnDisc(true).build()
+  private lazy val onlineDisplayImageOptions = baseDisplayImageOptionsBuilder.cacheOnDisk(true).build()
 
   private def initImageLoader(): ImageLoader = {
     val app = inject[App]
-    val cacheDir = new File(StorageUtils.getCacheDirectory(app), "coverart")
+    val cacheDir = new File(StorageUtils.getCacheDirectory(app, false), "coverart")
     val config = new ImageLoaderConfiguration.Builder(app)
       .imageDownloader(new BaseImageDownloader(app))
       .defaultDisplayImageOptions(localDefaultDisplayImageOptions)
       .memoryCache(new LruMemoryCache(1.mb))
-      .discCache(new FileCountLimitedDiscCache(cacheDir, 1000))
+      .diskCache(new LruDiskCache(cacheDir, null, new CoverartFileNameGenerator, 0, 1000))
       .build()
 
     val imageLoader = ImageLoader.getInstance

@@ -4,7 +4,8 @@ import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
-import com.nostra13.universalimageloader.core.assist.{FailReason, ImageLoadingListener}
+import com.nostra13.universalimageloader.core.assist.FailReason
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener
 
 trait CoverartLoaderFallbackDrawable extends Drawable with ImageLoadingListener {
 
