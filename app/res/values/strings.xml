@@ -1110,8 +1110,8 @@
     <string name="pref_category_media_player">Media Player</string>
     <string name="pref_audio_player">Audio player</string>
     <string-array name="pref_audio_player_summaries">
-        <item>Use Android\'s integrated media player – more reliable but no speed control and audio boost</item>
-        <item>Use Sonic player – experimental and may cause higher battery drain, but provides speed control and audio boost</item>
+        <item>Use Android\'s integrated media player – more reliable but prior to Android 6.0 no speed control and audio boost</item>
+        <item>Use Sonic player – experimental and may cause higher battery drain, but provides speed control and audio boost on ancient Androids</item>
     </string-array>
     <string-array name="pref_audio_player_entries">
         <item>Android player</item>
