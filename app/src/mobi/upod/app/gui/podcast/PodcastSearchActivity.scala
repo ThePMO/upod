@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.ActionBarActivity
 import mobi.upod.android.app.StandardUpNavigation
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 
 class PodcastSearchActivity extends ActionBarActivity with StandardUpNavigation {
 

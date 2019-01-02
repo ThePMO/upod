@@ -6,7 +6,7 @@ import android.content.{Context, Intent}
 import android.net.Uri
 import com.escalatesoft.subcut.inject.{BindingModule, Injectable}
 import mobi.upod.android.app.action.{ActionWaitDialog, AsyncAction}
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.app.storage.PodcastDao
 import mobi.upod.io.WorldReadables
 

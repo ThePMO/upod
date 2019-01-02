@@ -7,7 +7,7 @@ import android.content.{Context, Intent}
 import android.os.Bundle
 import android.support.v7.app.ActionBarActivity
 import android.widget.ImageView
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.app.UpNavigation
 import mobi.upod.android.content.IntentHelpers.RichIntent
 import mobi.upod.android.logging.Logging

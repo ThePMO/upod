@@ -3,7 +3,7 @@ package mobi.upod.android.app
 import android.view.View
 import mobi.upod.android.view.Helpers.RichView
 import mobi.upod.android.widget.{SimpleHeader, ViewHolder}
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 
 class NavigationDrawerHeaderViewHolder(view: View) extends ViewHolder[SimpleHeader]  {
   private val textView = view.childTextView(R.id.text)

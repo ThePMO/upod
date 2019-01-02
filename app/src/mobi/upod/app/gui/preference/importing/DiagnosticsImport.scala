@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit
 import android.content.{Context, SharedPreferences}
 import android.database.sqlite.SQLiteDatabase
 import android.preference.PreferenceManager
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import javax.xml.parsers.{DocumentBuilderFactory, ParserConfigurationException}
 import mobi.upod.android.logging.Logging
 import mobi.upod.android.os.{AsyncTask, Runnable}

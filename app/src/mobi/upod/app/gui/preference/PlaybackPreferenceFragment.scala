@@ -1,7 +1,7 @@
 package mobi.upod.app.gui.preference
 
 import mobi.upod.android.preference.SimplePreferenceFragment
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.app.storage.PlaybackPreferences
 import mobi.upod.android.util.ApiLevel
 

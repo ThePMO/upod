@@ -2,7 +2,7 @@ package mobi.upod.app.gui.episode
 
 import android.view.View
 import android.widget.ListView
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.app.gui.{MainNavigation, PodcastEpisodesActivity}
 
 trait OfflinePodcastEpisodeListFragment extends PodcastEpisodeListFragment {

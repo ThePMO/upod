@@ -4,7 +4,7 @@ import android.content.Context
 import android.support.v4.widget.TextViewCompat
 import android.view.{LayoutInflater, ViewGroup}
 import android.widget._
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.util.HtmlCompat
 
 abstract class WizardChoicePage[A](

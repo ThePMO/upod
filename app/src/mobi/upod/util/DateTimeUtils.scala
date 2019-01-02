@@ -3,7 +3,7 @@ package mobi.upod.util
 import android.content.Context
 import com.github.nscala_time.time.Imports._
 import java.text.SimpleDateFormat
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 
 object DateTimeUtils {
   implicit class RichDateTime(val timestamp: DateTime) extends AnyVal {

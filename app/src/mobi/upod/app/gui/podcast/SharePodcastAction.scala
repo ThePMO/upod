@@ -2,7 +2,7 @@ package mobi.upod.app.gui.podcast
 
 import mobi.upod.android.app.action.ShareAction
 import mobi.upod.android.app.action.ShareAction.SharedData
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.app.data.PodcastListItem
 
 final class SharePodcastAction(podcast: => Option[PodcastListItem])

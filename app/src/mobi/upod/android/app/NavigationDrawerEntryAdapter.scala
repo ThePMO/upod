@@ -2,7 +2,7 @@ package mobi.upod.android.app
 
 import android.view.View
 import mobi.upod.android.widget._
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 
 class NavigationDrawerEntryAdapter(initialItems: IndexedSeq[NavigationDrawerEntry]) extends
   GroupedItemAdapter[SimpleHeader, LabeledNavigationDrawerEntryWithIcon](R.layout.drawer_section_header, R.layout.drawer_navigation_item) {

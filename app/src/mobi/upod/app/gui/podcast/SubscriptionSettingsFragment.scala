@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.preference.Preference.OnPreferenceChangeListener
 import android.preference.{Preference, PreferenceFragment}
 import android.support.v7.app.ActionBarActivity
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.content.IntentHelpers._
 import mobi.upod.android.os.AsyncTask
 import mobi.upod.app.AppInjection

@@ -8,7 +8,7 @@ import android.util.AttributeSet
 import android.view.View.OnClickListener
 import android.view.{Gravity, MenuItem, View}
 import android.widget.Button
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.logging.Logging
 import mobi.upod.android.os.PowerManager
 import mobi.upod.android.view.Tintable

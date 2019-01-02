@@ -6,7 +6,7 @@ import android.util.AttributeSet
 import android.view.View
 import mobi.upod.android.app.action.{Action, ActionState}
 import mobi.upod.android.view.Helpers._
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 
 trait AbstractActionButton extends View {
   protected def context: Context

@@ -2,7 +2,7 @@
 
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:upod="http://schemas.android.com/apk/res/de.wcht.upod"
+    xmlns:upod="http://schemas.android.com/apk/res/tech.olbrich.upod"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <mobi.upod.android.preference.ListPreferenceWithEntrySummary

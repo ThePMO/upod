@@ -3,7 +3,7 @@ package mobi.upod.app.gui.preference
 import android.content.Context
 import android.preference.ListPreference
 import android.util.AttributeSet
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.app.storage.StorageProvider
 import mobi.upod.app.storage.StorageProvider._
 import mobi.upod.util.StorageSize.DoubleStorageSize

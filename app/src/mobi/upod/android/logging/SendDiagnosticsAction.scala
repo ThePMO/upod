@@ -2,7 +2,7 @@ package mobi.upod.android.logging
 
 import android.content.Context
 import android.net.Uri
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.app.action.{ActionWaitDialog, AsyncAction}
 import mobi.upod.app.AppInjection
 

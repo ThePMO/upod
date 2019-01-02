@@ -4,7 +4,7 @@ import java.io.File
 
 import android.content.{Context, Intent}
 import android.net.Uri
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.app.gui.opml.OpmlImportActivity
 
 

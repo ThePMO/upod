@@ -13,7 +13,7 @@ import mobi.upod.android.content.AsyncCursorLoader
 import mobi.upod.android.logging.Logging
 import mobi.upod.android.view.DisplayMetrics
 import mobi.upod.android.widget.OnScrolledToBottomListener
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.app.data.PodcastListItem
 import mobi.upod.app.gui.UsageTips.ShowcaseTip
 import mobi.upod.app.gui.{MainNavigation, UsageTips}

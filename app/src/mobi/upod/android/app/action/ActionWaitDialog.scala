@@ -1,7 +1,7 @@
 package mobi.upod.android.app.action
 
 import mobi.upod.android.app.WaitDialogFragment
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import android.content.Context
 import android.app.Activity
 

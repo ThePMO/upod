@@ -25,7 +25,7 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.AbsListView;
 import android.widget.ImageButton;
-import de.wcht.upod.R;
+import tech.olbrich.upod.R;
 
 /**
  * Android Google+ like floating action button which reacts on the attached list view scrolling events.

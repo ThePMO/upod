@@ -2,7 +2,7 @@ package mobi.upod.android.widget.card
 
 import android.content.Context
 import android.widget.TextView
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 
 abstract class StandardCardView(context: Context, title: String, buttons: CardButton*) extends CardView(context) {
 

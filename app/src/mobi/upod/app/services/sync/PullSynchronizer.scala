@@ -4,7 +4,7 @@ import java.net.{URI, URL}
 
 import com.escalatesoft.subcut.inject.{BindingModule, Injectable}
 import com.google.api.client.http.HttpResponseException
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.logging.Logging
 import mobi.upod.app.App
 import mobi.upod.app.data._

@@ -4,7 +4,7 @@ import android.graphics.Bitmap
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import mobi.upod.android.graphics.Color
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.app.data.EpisodeListItem
 import mobi.upod.app.gui.chapters.{ChapterImageActivity, ChapterImageLoader}
 import mobi.upod.app.storage.{StoragePreferences, ImageSize}

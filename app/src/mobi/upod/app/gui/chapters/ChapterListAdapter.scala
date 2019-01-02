@@ -4,7 +4,7 @@ import java.io.File
 
 import android.view.View
 import mobi.upod.android.widget.ItemAdapter
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.media.{MediaChapter, MediaChapterTable}
 
 import scala.collection.mutable.ListBuffer

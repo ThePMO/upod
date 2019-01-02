@@ -4,7 +4,7 @@ import android.app.{NotificationManager, PendingIntent}
 import android.content.Context
 import com.escalatesoft.subcut.inject.BindingModule
 import mobi.upod.android.app.AppNotificationBuilder
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.app.gui.{MainActivity, MainNavigation}
 
 object NewEpisodesNotification {

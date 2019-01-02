@@ -2,7 +2,7 @@ package mobi.upod.android.app
 
 import android.app.Activity
 import mobi.upod.android.app.action.Action
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 
 object ConfirmationDialog {
 

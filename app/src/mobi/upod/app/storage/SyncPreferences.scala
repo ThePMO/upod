@@ -1,7 +1,7 @@
 package mobi.upod.app.storage
 
 import android.app.Application
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.content.preferences._
 import mobi.upod.app.AppUpgradeListener
 import mobi.upod.util.TimeOfDay

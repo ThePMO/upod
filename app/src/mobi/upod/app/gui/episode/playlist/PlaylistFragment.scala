@@ -3,7 +3,7 @@ package mobi.upod.app.gui.episode.playlist
 import android.view.View
 import mobi.upod.android.app.ListenerFragment
 import mobi.upod.android.app.action._
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.app.data.EpisodeBaseWithPlaybackInfo
 import mobi.upod.app.gui.MainNavigation
 import mobi.upod.app.gui.episode._

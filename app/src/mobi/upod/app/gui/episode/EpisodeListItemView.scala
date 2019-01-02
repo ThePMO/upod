@@ -11,7 +11,7 @@ import mobi.upod.android.app.action.ContextMenuActions
 import mobi.upod.android.graphics.Color
 import mobi.upod.android.view.Helpers.RichView
 import mobi.upod.android.widget.{PrimaryActionChooser, TintableProgressBar}
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.app.data.{EpisodeBaseWithDownloadInfo, EpisodeBaseWithPlaybackInfo, EpisodeListItem}
 import mobi.upod.app.gui._
 import mobi.upod.app.services.download.{DownloadListener, DownloadService}

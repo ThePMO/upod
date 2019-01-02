@@ -6,7 +6,7 @@ import android.util.AttributeSet
 import android.view.{Menu, MenuItem, View}
 import android.widget.LinearLayout
 import mobi.upod.android.view.ChildViews
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 
 class ItemContextMenu(context: Context, attributes: AttributeSet)
   extends LinearLayout(context, attributes)

@@ -3,7 +3,7 @@ package mobi.upod.app.gui.episode
 import android.content.Context
 import mobi.upod.android.app.action.ActionState.ActionState
 import mobi.upod.android.app.action.{Action, ActionState}
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.app.data.EpisodeListItem
 
 trait EpisodeOrderActions extends EpisodeListItemViewHolder {

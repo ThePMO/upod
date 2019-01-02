@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.support.v4.app.ActivityOptionsCompat
 import android.view.{LayoutInflater, View, ViewGroup}
 import android.widget._
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.app.action.{Action, SimpleFragmentActions}
 import mobi.upod.android.app.{FragmentStateHolder, ObservableFragmentLifecycle, SupportActionBar}
 import mobi.upod.android.content.IntentHelpers.RichIntent

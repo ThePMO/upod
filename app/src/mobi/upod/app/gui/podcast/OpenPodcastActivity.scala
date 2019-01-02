@@ -5,7 +5,7 @@ import java.net.URL
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.ActionBarActivity
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.app.{ActivityStateHolder, WaitDialogFragment}
 import mobi.upod.android.logging.Logging
 import mobi.upod.android.os.AsyncTask

@@ -6,7 +6,7 @@ import mobi.upod.app.services.subscription.ExportSubscriptionsAction
 import mobi.upod.app.storage.PodcastDao
 import mobi.upod.util.Cursor
 import mobi.upod.app.gui.{SyncOnPull, EpisodeListViewModeTip, HideNewPreferenceListenerFragment, MainNavigation}
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.app.action._
 import mobi.upod.app.services.sync.NewEpisodesNotification
 import android.os.Bundle

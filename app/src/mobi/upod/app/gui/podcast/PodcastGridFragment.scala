@@ -4,7 +4,7 @@ import android.content.{Context, Loader}
 import android.os.Bundle
 import android.view.{ActionMode, View}
 import android.widget.{AbsListView, AdapterView, GridView}
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.app.action._
 import mobi.upod.android.app.{FragmentStateHolder, GridFragment, InitialFragmentCreation, SupportActionBar}
 import mobi.upod.android.logging.Logging

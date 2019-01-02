@@ -2,7 +2,7 @@ package mobi.upod.android.app
 
 import mobi.upod.android.widget.GroupViewHolder
 import android.view.View
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.view.Helpers.RichView
 
 class NavigationDrawerItemViewHolder(view: View) extends GroupViewHolder[LabeledNavigationDrawerEntryWithIcon]  {

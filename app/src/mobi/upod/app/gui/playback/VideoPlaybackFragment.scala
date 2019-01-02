@@ -13,7 +13,7 @@ import mobi.upod.android.app.FragmentStateHolder
 import mobi.upod.android.graphics.Color
 import mobi.upod.android.os.AsyncTask
 import mobi.upod.android.util.ApiLevel
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.app.data.{EpisodeListItem, EpisodeBaseWithPlaybackInfo}
 import mobi.upod.app.services.playback.VideoSize
 import mobi.upod.app.storage.{StoragePreferences, ImageSize, CoverartProvider}

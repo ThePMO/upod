@@ -6,7 +6,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view._
 import android.webkit.WebView
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.app.action.ActionState.ActionState
 import mobi.upod.android.app.action.{Action, ActionState, AsyncAction, SimpleFragmentActions}
 import mobi.upod.android.app.{FragmentStateHolder, NavigationItemSelection, SupportActionBar}

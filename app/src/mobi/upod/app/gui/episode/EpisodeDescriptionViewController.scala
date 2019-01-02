@@ -6,7 +6,7 @@ import android.webkit.WebView
 import mobi.upod.android.content.Theme._
 import mobi.upod.android.os.AsyncTask
 import mobi.upod.android.util.HtmlText.HtmlText
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.app.data.Episode
 
 trait EpisodeDescriptionViewController {

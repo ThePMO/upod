@@ -5,7 +5,7 @@ import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import de.wcht.upod.R;
+import tech.olbrich.upod.R;
 
 public class TintableImageView extends ImageView {
 

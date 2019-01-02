@@ -6,7 +6,7 @@ import mobi.upod.android.app.AlertDialogListener
 import mobi.upod.android.app.action.Action
 import mobi.upod.android.logging.Logging
 import mobi.upod.android.preference.{PreferenceChangeListener, SimplePreferenceFragment}
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.app.services.storage.{StorageStateListener, StorageService}
 import mobi.upod.app.storage.StorageProvider.StorageProviderType
 import mobi.upod.app.storage.{StoragePreferences, StorageProvider}

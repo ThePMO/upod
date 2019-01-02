@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.NavUtils
 import android.widget.FrameLayout
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.app.FragmentTransactions._
 import mobi.upod.android.app.{NavigationItemSelection, UpNavigation, ViewModeSelection}
 import mobi.upod.android.content.IntentHelpers._

@@ -5,7 +5,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.{LayoutInflater, View, ViewGroup}
 import mobi.upod.android.view.{ChildViews, FragmentViewFinder}
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 
 abstract class WizardPage(val key: String, val headerId: Int) extends Fragment with ChildViews with FragmentViewFinder {
 

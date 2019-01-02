@@ -7,7 +7,7 @@ import com.escalatesoft.subcut.inject.BindingModule
 import mobi.upod.android.view.Helpers._
 import mobi.upod.android.view.Tintable
 import mobi.upod.android.widget.{GroupViewHolder, ItemContextMenu}
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.app.data.EpisodeListItem
 
 import scala.util.Try

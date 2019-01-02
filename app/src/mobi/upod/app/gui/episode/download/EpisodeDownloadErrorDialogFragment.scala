@@ -1,6 +1,6 @@
 package mobi.upod.app.gui.episode.download
 
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.app.{AbstractAlertDialogFragment, SimpleDialogFragmentObjectWithShowMethod}
 import mobi.upod.app.AppInjection
 import mobi.upod.app.data.EpisodeListItem

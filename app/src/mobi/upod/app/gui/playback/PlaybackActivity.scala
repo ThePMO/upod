@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.support.v4.app.NavUtils
 import android.support.v7.app.ActionBarActivity
 import android.view.Menu
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.app.FragmentTransactions.RichFragmentManager
 import mobi.upod.android.app.{ActivityStateHolder, ListenerActivity, UpNavigation}
 import mobi.upod.android.content.IntentHelpers._

@@ -1,6 +1,6 @@
 package mobi.upod.app.gui.episode.library
 
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.app.data.EpisodeListItem
 import mobi.upod.app.gui.episode.GroupedEpisodeListItemAdapter
 import mobi.upod.app.gui.info.FinishedEpisodesTip

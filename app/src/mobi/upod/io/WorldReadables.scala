@@ -10,7 +10,7 @@ object WorldReadables {
     val targetDir = new File(context.getFilesDir, "sharables")
     targetDir.mkdir()
     file.copyToDir(targetDir)
-    Uri.parse(s"content://de.wcht.upod.fileprovider/sharables/${file.getName}")
+    Uri.parse(s"content://tech.olbrich.upod.fileprovider/sharables/${file.getName}")
   }
 
   def worldReadable(context: Context, files: Iterable[File]): Iterable[Uri] =

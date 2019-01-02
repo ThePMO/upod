@@ -4,7 +4,7 @@ import android.preference.Preference
 import mobi.upod.android.app.action.BrowseAction
 import mobi.upod.android.logging.{LogConfiguration, SendDiagnosticsAction}
 import mobi.upod.android.preference.{PreferenceChangeListener, SimplePreferenceFragment}
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.app.gui.info.{ResetTipsAction, ShareUpodAction, ShowAboutDialogAction}
 
 

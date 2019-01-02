@@ -2,7 +2,7 @@ package mobi.upod.app.storage
 
 import android.app.Application
 import mobi.upod.android.content.preferences._
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 
 class UiPreferences(app: Application) extends DefaultPreferences(app, R.xml.pref_ui) {
 

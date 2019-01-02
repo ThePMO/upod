@@ -6,7 +6,7 @@ import android.widget.ListView
 import com.escalatesoft.subcut.inject.{BindingModule, Injectable}
 import mobi.upod.android.view.ChildViews
 import mobi.upod.android.widget.bottomsheet.BottomSheet
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.app.data.EpisodeListItem
 import mobi.upod.app.storage.StoragePreferences
 import mobi.upod.media.MediaChapterTable

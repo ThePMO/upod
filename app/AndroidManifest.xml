@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="de.wcht.upod"
-          android:sharedUserId="de.wcht.upod"
+          package="tech.olbrich.upod"
+          android:sharedUserId="tech.olbrich.upod"
           android:sharedUserLabel="@string/app_user_name">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -248,7 +248,7 @@
         <!-- providers -->
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="de.wcht.upod.fileprovider"
+            android:authorities="tech.olbrich.upod.fileprovider"
             android:grantUriPermissions="true"
             android:exported="false">
             <meta-data

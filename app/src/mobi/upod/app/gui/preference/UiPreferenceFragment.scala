@@ -5,7 +5,7 @@ import android.preference.Preference
 import mobi.upod.android.app.{AlertDialogListener, SimpleAlertDialogFragment, WaitDialogFragment}
 import mobi.upod.android.os.AsyncTask
 import mobi.upod.android.preference.{PreferenceChangeListener, SimplePreferenceFragment}
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.app.services.EpisodeService
 import mobi.upod.app.services.sync.SyncService
 import mobi.upod.app.storage.UiPreferences

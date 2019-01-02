@@ -7,7 +7,7 @@ import mobi.upod.android.view.DisplayUnits._
 import mobi.upod.android.view.DisplayMetrics
 import android.graphics.{Rect, Canvas, Paint}
 import android.view.View.MeasureSpec
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 
 class PageIndicatorView(context: Context, attrs: AttributeSet) extends View(context, attrs) {
   private implicit val DisplayMetrics = new DisplayMetrics(context)

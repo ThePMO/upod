@@ -3,7 +3,7 @@ package mobi.upod.app.gui.podcast
 import android.content.{Context, Intent}
 import mobi.upod.android.app.SimpleAlertDialogFragment
 import mobi.upod.android.content.IntentHelpers._
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.app.data.{Podcast, PodcastListItem}
 import mobi.upod.app.gui.{MainNavigation, PodcastSelection}
 import mobi.upod.app.services.OnlinePodcastService

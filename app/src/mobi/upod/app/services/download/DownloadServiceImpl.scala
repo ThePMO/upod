@@ -5,7 +5,7 @@ import java.io.InterruptedIOException
 import android.app.PendingIntent
 import android.content.Intent
 import android.support.v4.app.NotificationCompat
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.app.{AsyncBoundService, IntegratedNotificationManager, ServiceBinder}
 import mobi.upod.android.logging.Logging
 import mobi.upod.android.media.MediaFileDurationRetriever

@@ -1,7 +1,7 @@
 package mobi.upod.app.storage
 
 import android.app.Application
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.content.preferences.{DefaultPreferences, EnumerationPreference, Setter}
 import mobi.upod.app.AppUpgradeListener
 

@@ -2,7 +2,7 @@ package mobi.upod.app.gui
 
 import android.content.{Context, Intent}
 import android.os.Bundle
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.app.FragmentTransactions._
 import mobi.upod.android.app.{ActionModeTracking, LabeledNavigationDrawerEntry, NavigationItemSelection, StandardUpNavigation}
 import mobi.upod.android.content.IntentHelpers._

@@ -8,7 +8,7 @@ import mobi.upod.android.app.action.ActionState.ActionState
 import mobi.upod.android.app.action.{Action, ActionState}
 import mobi.upod.android.content.Theme._
 import mobi.upod.android.util.CollectionConverters._
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.app.data.EpisodeListItem
 import mobi.upod.app.gui.MainNavigation
 import mobi.upod.app.gui.episode.{EpisodeListItemAdapter, EpisodeListItemViewHolder, EpisodeListItemViewHolderConfiguration, EpisodeOrderControl}

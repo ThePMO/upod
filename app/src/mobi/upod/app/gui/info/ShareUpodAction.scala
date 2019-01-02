@@ -2,7 +2,7 @@ package mobi.upod.app.gui.info
 
 import mobi.upod.android.app.action.ShareAction
 import mobi.upod.android.content.GooglePlay
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 
 class ShareUpodAction extends ShareAction(
   R.string.share_upod_title,

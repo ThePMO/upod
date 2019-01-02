@@ -2,7 +2,7 @@ package mobi.upod.app.gui.episode
 
 import mobi.upod.android.app.action.ShareAction
 import mobi.upod.android.app.action.ShareAction.SharedData
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.app.data.EpisodeBase
 
 final class ShareEpisodeAction(episode: => Option[EpisodeBase])

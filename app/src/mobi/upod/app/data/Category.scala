@@ -2,7 +2,7 @@ package mobi.upod.app.data
 
 import android.content.Context
 import com.google.code.rome.android.repackaged.com.sun.syndication.feed.module.itunes.types.{Category => ITunesCategory}
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.data.Mapping._
 import mobi.upod.data.{Mapping, MappingProvider}
 

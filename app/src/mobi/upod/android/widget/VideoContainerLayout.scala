@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View.MeasureSpec
 import android.widget.FrameLayout
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 
 class VideoContainerLayout(context: Context, attributes: AttributeSet) extends FrameLayout(context, attributes) {
   import VideoContainerLayout._

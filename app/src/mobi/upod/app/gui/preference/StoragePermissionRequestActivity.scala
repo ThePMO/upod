@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.support.v4.app.ActivityCompat
 import com.escalatesoft.subcut.inject.Injectable
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.app.SimpleAlertDialogFragment
 import mobi.upod.android.app.action.Action
 import mobi.upod.app.App

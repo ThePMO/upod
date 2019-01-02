@@ -1,7 +1,7 @@
 package mobi.upod.app.gui.preference
 
 import android.app.Activity
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.view.wizard.{ValueChoice, _}
 import mobi.upod.app.AppInjection
 import mobi.upod.app.gui.MainActivity

@@ -5,7 +5,7 @@ import android.view.{View, ViewGroup, ViewParent}
 import android.widget.CompoundButton
 import mobi.upod.android.app.action.Action
 import mobi.upod.android.os.Runnable
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 
 object Helpers {
 

@@ -5,7 +5,7 @@ import android.content.Loader
 import android.os.Bundle
 import android.view.View
 import android.widget.{AbsListView, AdapterView, ListView}
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.app.{ListenerFragment, NavigationItemSelection}
 import mobi.upod.android.content.AsyncCursorLoader
 import mobi.upod.android.content.IntentHelpers._

@@ -5,7 +5,7 @@ import java.io.File
 import android.content.pm.PackageManager
 import java.util
 import android.net.Uri
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import scala.collection.JavaConverters._
 
 object SupportMail {

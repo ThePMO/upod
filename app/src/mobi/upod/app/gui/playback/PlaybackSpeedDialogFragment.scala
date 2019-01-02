@@ -7,7 +7,7 @@ import android.support.v7.app.AlertDialog
 import android.view.{LayoutInflater, View}
 import android.widget.CompoundButton.OnCheckedChangeListener
 import android.widget.{CompoundButton, SeekBar, TextView}
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.view.DialogClickListener
 import mobi.upod.android.view.Helpers.RichView
 import mobi.upod.app.AppInjection

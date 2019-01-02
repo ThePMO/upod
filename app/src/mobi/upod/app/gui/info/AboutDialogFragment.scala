@@ -9,7 +9,7 @@ import android.text.style.{ClickableSpan, URLSpan}
 import android.text.{Spannable, SpannableStringBuilder}
 import android.view.{Gravity, View}
 import android.widget.{ScrollView, TextView}
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.app.SimpleDialogFragment
 import mobi.upod.android.content.Theme._
 import mobi.upod.android.util.HtmlCompat

@@ -5,7 +5,7 @@ import android.net.Uri
 import android.support.v7.app.AlertDialog
 import mobi.upod.android.app.{SimpleDialogFragment, SimpleDialogFragmentObject}
 import mobi.upod.android.view.DialogClickListener
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 
 class OpmlImportStartDialogFragment extends SimpleDialogFragment[String] {
 

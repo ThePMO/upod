@@ -12,7 +12,7 @@ import android.preference.DialogPreference;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TimePicker;
-import de.wcht.upod.R;
+import tech.olbrich.upod.R;
 
 // Based on http://stackoverflow.com/a/7484289/922168
 

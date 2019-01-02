@@ -5,7 +5,7 @@ import android.net.Uri
 import java.net.{MalformedURLException, URL}
 import mobi.upod.android.app.action.BrowseAction
 import mobi.upod.android.app.{AlertDialogListener, SimpleAlertDialogFragment}
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.app.services.OnlinePodcastService
 import mobi.upod.app.gui.MainNavigation
 import mobi.upod.app.data.Podcast

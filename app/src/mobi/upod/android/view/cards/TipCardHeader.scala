@@ -3,7 +3,7 @@ package mobi.upod.android.view.cards
 import android.content.Context
 import mobi.upod.android.content.preferences.{Setter, BooleanPreference}
 import mobi.upod.android.widget.card.{SingleChoiceCardView, CardButton, TextCardView, CardView}
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 
 class TipCardHeader(val key: String, createCard: Context => CardView) extends CardHeader {
   private val wasShown = new BooleanPreference(s"pref_tip_$key")(TipCardHeader.preferences) with Setter[Boolean]

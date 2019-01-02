@@ -3,7 +3,7 @@ package mobi.upod.android.widget.card
 import android.content.Context
 import android.widget.TextView
 import mobi.upod.android.widget.TextViewWithImages
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 
 class TextCardView(context: Context, title: String, textWithImages: String, buttons: CardButton*)
   extends StandardCardView(context, title, buttons: _*) {

@@ -2,7 +2,7 @@
 
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:upod="http://schemas.android.com/apk/res/de.wcht.upod">
+    xmlns:upod="http://schemas.android.com/apk/res/tech.olbrich.upod">
 
     <PreferenceCategory android:title="@string/pref_category_workflow">
         <CheckBoxPreference

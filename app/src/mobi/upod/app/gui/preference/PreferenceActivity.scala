@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.preference.PreferenceActivity.Header
 import android.support.v4.app.NavUtils
 import android.view.MenuItem
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.app.AppCompatPreferenceActivity
 import mobi.upod.android.app.permission.PermissionRequestingActivity
 import mobi.upod.app.AppInjection

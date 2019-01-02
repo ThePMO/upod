@@ -3,7 +3,7 @@ package mobi.upod.app.gui.opml
 import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.ActionBarActivity
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.app.SimpleAlertDialogFragment
 import mobi.upod.android.app.action.{Action, BrowseAction, FinishActivityAction}
 import mobi.upod.app.AppInjection

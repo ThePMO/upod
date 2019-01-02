@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.support.v7.app.ActionBarActivity
 import android.webkit.WebView
 import android.widget.RelativeLayout
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.app.StandardUpNavigation
 import mobi.upod.android.app.action.{Action, ActivityActions}
 import mobi.upod.android.content.IntentHelpers.RichIntent

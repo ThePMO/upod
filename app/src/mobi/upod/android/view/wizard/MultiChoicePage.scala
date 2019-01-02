@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.widget._
 import mobi.upod.android.view.CompoundButtonCheckedChangeListener
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 
 abstract class MultiChoicePage[A](
     key: String,

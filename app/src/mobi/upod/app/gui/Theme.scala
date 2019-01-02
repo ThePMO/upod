@@ -3,7 +3,7 @@ package mobi.upod.app.gui
 import android.content.Context
 import mobi.upod.android.content.Theme._
 import mobi.upod.android.graphics.Color
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 
 class Theme(context: Context) {
   private implicit val ctx: Context = context

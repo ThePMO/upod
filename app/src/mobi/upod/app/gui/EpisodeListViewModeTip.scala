@@ -2,7 +2,7 @@ package mobi.upod.app.gui
 
 import android.app.Fragment
 import android.os.Bundle
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.app.SupportActionBar
 import mobi.upod.app.AppInjection
 import mobi.upod.app.gui.UsageTips.ShowcaseTip

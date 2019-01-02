@@ -7,7 +7,7 @@ import android.view.{View, Menu, MenuItem, ViewGroup}
 import android.widget.{Button, LinearLayout, PopupMenu}
 import mobi.upod.android.content.Theme.context2Theme
 import mobi.upod.android.view.{Tintable, ChildViews, DisplayMetrics}
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 
 class ActionPanel(context: Context, attributes: AttributeSet)
   extends LinearLayout(context, attributes)

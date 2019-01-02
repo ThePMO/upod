@@ -3,7 +3,7 @@ package mobi.upod.android.view.wizard
 import android.content.Context
 import android.view.LayoutInflater
 import android.widget._
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import android.widget.RadioGroup.OnCheckedChangeListener
 
 abstract class SingleChoicePage[A](

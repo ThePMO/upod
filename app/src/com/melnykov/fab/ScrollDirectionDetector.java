@@ -2,7 +2,7 @@ package com.melnykov.fab;
 
 import android.view.View;
 import android.widget.AbsListView;
-import de.wcht.upod.R;
+import tech.olbrich.upod.R;
 
 /**
  * Detects which direction list view was scrolled.

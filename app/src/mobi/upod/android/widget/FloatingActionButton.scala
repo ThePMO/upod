@@ -11,7 +11,7 @@ import mobi.upod.android.app.action.Action
 import mobi.upod.android.app.{GridFragment, ListFragment}
 import mobi.upod.android.graphics.Color
 import mobi.upod.android.view.Helpers.{RichViewGroup, RichView}
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 
 class FloatingActionButton(protected val context: Context, protected val attrs: AttributeSet)
   extends com.melnykov.fab.FloatingActionButton(context, attrs)

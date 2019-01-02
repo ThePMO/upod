@@ -2,7 +2,7 @@ package mobi.upod.app.services.download
 
 import java.io.IOException
 import mobi.upod.net.{HttpConnectException, HttpStatusException}
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import android.content.Context
 
 object DownloadError {

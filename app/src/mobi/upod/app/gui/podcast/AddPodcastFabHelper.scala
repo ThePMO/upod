@@ -2,7 +2,7 @@ package mobi.upod.app.gui.podcast
 
 import android.widget.AbsListView
 import mobi.upod.android.widget.FloatingActionButton
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 
 private[podcast] object AddPodcastFabHelper {
   

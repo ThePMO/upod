@@ -3,7 +3,7 @@ package mobi.upod.app.gui.episode.download
 import android.view.View
 import com.escalatesoft.subcut.inject.BindingModule
 import mobi.upod.android.app.action.Action
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.app.gui.episode._
 import mobi.upod.app.gui.episode.playlist._
 import mobi.upod.app.gui.episode.library.StarEpisodeAction

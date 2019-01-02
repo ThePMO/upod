@@ -7,7 +7,7 @@ import android.content.{Context, Intent}
 import android.graphics.SurfaceTexture
 import android.media.AudioManager
 import android.media.AudioManager.OnAudioFocusChangeListener
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.app.{BoundService, IntegratedNotificationManager, ServiceBinder}
 import mobi.upod.android.content.preferences.PreferenceChangeListener
 import mobi.upod.android.logging.Logging

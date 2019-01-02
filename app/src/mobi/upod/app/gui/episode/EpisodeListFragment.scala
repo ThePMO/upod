@@ -6,7 +6,7 @@ import android.view._
 import android.widget.AbsListView.MultiChoiceModeListener
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.{AbsListView, AdapterView, ListView}
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.app._
 import mobi.upod.android.app.action.{Action, AsyncActionHook, ContextualActions, ImplicitFragmentContext}
 import mobi.upod.android.content.AsyncCursorLoader

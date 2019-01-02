@@ -7,7 +7,7 @@ import mobi.upod.android.os.Runnable
 import mobi.upod.android.view.HeaderViews
 import mobi.upod.android.view.animation.AnimationHelper
 import mobi.upod.android.widget.card.{CardView, OnCardDismissListener}
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 
 trait CardHeaders extends HeaderViews {
   private lazy val cardContainer = createCardContainer

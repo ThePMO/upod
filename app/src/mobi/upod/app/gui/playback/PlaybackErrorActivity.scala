@@ -5,7 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.ActionBarActivity
 import com.escalatesoft.subcut.inject.BindingModule
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 import mobi.upod.android.app.action.Action
 import mobi.upod.android.app.{AlertDialogListener, SimpleAlertDialogFragment}
 import mobi.upod.android.content.IntentHelpers.RichIntent

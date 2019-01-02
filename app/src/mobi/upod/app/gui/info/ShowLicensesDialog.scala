@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.view.View
 import android.webkit.WebView
-import de.wcht.upod.R
+import tech.olbrich.upod.R
 
 class ShowLicensesDialog extends DialogFragment {
 
