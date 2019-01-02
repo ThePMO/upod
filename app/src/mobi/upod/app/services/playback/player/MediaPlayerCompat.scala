@@ -10,6 +10,7 @@ class MediaPlayerCompat extends AndroidMediaPlayerClass {
   private var volumeLeft: Float = 1f
   private var volumeRight: Float = 1f
   private var gain: Float = 1f
+  private var speed: Float = 1f
 
   def isSetSpeedSupported: Boolean = ApiLevel >= MediaPlayerCompat.MIN_LEVEL
 
@@ -19,9 +20,12 @@ class MediaPlayerCompat extends AndroidMediaPlayerClass {
     volumeRight = rightVolume
   }
 
-  def getSpeed: Float = if (isSetSpeedSupported) getPlaybackParams.getSpeed else 1f
+  def getSpeed: Float = speed
 
-  def setSpeed(multiplier: Float): Unit = ifSupported(() => setPlaybackParams(getPlaybackParams.setSpeed(multiplier)))
+  def setSpeed(multiplier: Float): Unit = ifSupported(() => {
+    speed = multiplier
+    setPlaybackParams(getPlaybackParams.setSpeed(multiplier))
+  })
 
   def getGain: Float = gain
 
