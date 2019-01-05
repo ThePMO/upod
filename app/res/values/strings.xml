@@ -1412,6 +1412,13 @@
       comment="Description of the download notification channel"
       >Notification while download is ongoing</string>
 
+    <string name="download_preparation_channel_name"
+      comment="Name of the download notification channel"
+      >Download preparation notification</string>
+    <string name="download_preparation_channel_description"
+      comment="Description of the download preparation notification channel"
+      >Notification while downloads are prepared</string>
+
     <string name="episode_channel_name"
       comment="Name of the download notification channel"
       >Episode notification</string>

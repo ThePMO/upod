@@ -32,11 +32,13 @@ object UpodNotificationChannels {
 
   case object Download extends UpodNotificationChannel("upod_download", R.string.download_channel_name, R.string.download_channel_description)
 
+  case object DownloadPreparation extends UpodNotificationChannel("upod_download_preparation", R.string.download_preparation_channel_name, R.string.download_preparation_channel_description)
+
   case object Episode extends UpodNotificationChannel("upod_episode", R.string.episode_channel_name, R.string.episode_channel_description)
 
   case object NewEpisode extends UpodNotificationChannel("upod_new_episode", R.string.new_episode_channel_name, R.string.new_episode_channel_description)
 
-  private val ALL_CHANNELS = List(Default, Sync, Download, Episode, NewEpisode)
+  private val ALL_CHANNELS = List(Default, Sync, Download, DownloadPreparation, Episode, NewEpisode)
 
   def initNotificationChannels(app: Application, notificationManager: NotificationManager): Unit = {
     if (ApiLevel < ApiLevel.Oreo) {

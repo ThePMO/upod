@@ -6,7 +6,7 @@ import android.annotation.TargetApi
 import android.app.PendingIntent
 import android.content.Intent
 import de.wcht.upod.R
-import mobi.upod.android.app.{AsyncBoundService, IntegratedNotificationManager, ServiceBinder, UpodNotificationChannels}
+import mobi.upod.android.app._
 import mobi.upod.android.logging.Logging
 import mobi.upod.android.media.MediaFileDurationRetriever
 import mobi.upod.android.os.{AsyncObservable, PowerManager}
@@ -37,21 +37,28 @@ final class DownloadServiceImpl
   private lazy val connectionService = inject[ConnectionStateRetriever]
   private lazy val storagePreferences = inject[StoragePreferences]
   private lazy val storageProvider = storagePreferences.storageProvider
-  private lazy val notificationBuilder = createNotificationBuilder
+  private lazy val notificationBuilder = createNotificationBuilder(UpodNotificationChannels.Episode)
   private lazy val powerManager = new PowerManager(this)
   private var _downloadingEpisode: Option[EpisodeBaseWithDownloadInfo] = None
+  private val notificationIdPreparation = notificationId + 1
 
   addSynchronousListener(this, false)
 
   override def onCreate(): Unit = {
     log.info("download service created")
     super.onCreate()
-    showQueueCheckNotification()
+
+    if (episodeDao.hasDownloadsInQueue) {
+      showQueueCheckNotification()
+    } else {
+      stopForeground(true)
+    }
   }
 
   override def onDestroy(): Unit = {
     log.info("destroying download service")
     cancelNotification()
+    cancelPreparationNotification()
     super.onDestroy()
   }
 
@@ -61,8 +68,8 @@ final class DownloadServiceImpl
     super.onTaskRemoved(rootIntent)
   }
 
-  private def createNotificationBuilder: EpisodeNotificationBuilder = {
-    new EpisodeNotificationBuilder(this).
+  private def createNotificationBuilder(channel: UpodNotificationChannel): EpisodeNotificationBuilder = {
+    new EpisodeNotificationBuilder(this, channel=channel).
       setIcon(R.drawable.ic_stat_download).
       setTargetNavigationItem(MainNavigation.downloads).
       addAction(
@@ -92,9 +99,9 @@ final class DownloadServiceImpl
     }
     if (isSpaceLow) {
       showLowSpaceNotificationAndThrowException()
-    } 
+    }
   }
-  
+
   def showLowSpaceNotificationAndThrowException(): Unit = {
     showErrorNotification(R.string.download_error_not_enough_space, R.string.download_error_not_enough_space_details)
     throw new StorageException(s"too less space on storage ${storageProvider.storageName}")
@@ -202,7 +209,7 @@ final class DownloadServiceImpl
       fireNonIntrusive(_.onDownloadProgress(episode, progress.bytesPerSecond, progress.remainingMillis))
       stopIfNecessary()
     }
-    
+
     def allowNewFileOrFail(expectedLength: Long): Unit = {
       val availableMbAfterDownload = (storageProvider.availableBytes - expectedLength).inMb
       val minimumMb = storagePreferences.minimalFreeMegaBytes.get
@@ -275,12 +282,10 @@ final class DownloadServiceImpl
 
   @TargetApi(ApiLevel.Oreo)
   private def showQueueCheckNotification(): Unit = {
+    // Oreo is not allowed to have services in the background without a notification.
     if (ApiLevel >= ApiLevel.Oreo) {
-      // temporary (smile here!) HACK to avoid exception on startup. Android O only allows Services while showing a
-      // notification this shows a notification to satisfy android. if there are no downloads the service will quite
-      // right away and if there are downloads it will be replaced by a proper notification for the new episode in queue
-      // TODO: only start this service if there are queued downloads
-      startForeground(notificationBuilder.setContentText(getString(R.string.download_queue_check)))
+      val preparationNotificationBuilder = createNotificationBuilder(UpodNotificationChannels.DownloadPreparation)
+      startForeground(notificationIdPreparation, preparationNotificationBuilder.setContentText(getString(R.string.download_queue_check)))
     }
   }
 
@@ -290,7 +295,10 @@ final class DownloadServiceImpl
       setIndeterminateProgress().
       setContentText(getString(R.string.download_preparing))
     startForeground(notification)
+    cancelPreparationNotification()
   }
+
+  private def cancelPreparationNotification(): Unit = notificationManager.cancel(notificationIdPreparation)
 
   private def updateNotificationProgress(episode: EpisodeBaseWithDownloadInfo, bytesPerSecond: Int, remainingMillis: Option[Long]): Unit = if (!isBuffering) {
     def fetchedMbs: java.lang.Double = episode.downloadInfo.fetchedBytes.toDouble.inMb

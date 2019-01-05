@@ -724,6 +724,8 @@ class EpisodeDao(dbHelper: DatabaseHelper)(implicit bindingModule: BindingModule
   // download stuff
   //
 
+  def hasDownloadsInQueue: Boolean = findFirstDownloadEpisode().isDefined
+
   def findFirstDownloadEpisode(ignoredEpisodeIds: Traversable[Long] = Traversable()): Option[EpisodeListItem] =
     findOne(sql"""
       SELECT $listItemColumns
