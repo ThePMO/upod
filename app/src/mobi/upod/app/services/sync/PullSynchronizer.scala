@@ -8,7 +8,7 @@ import de.wcht.upod.R
 import mobi.upod.android.logging.Logging
 import mobi.upod.app.App
 import mobi.upod.app.data._
-import mobi.upod.app.services.EpisodeService
+import mobi.upod.app.services.{AnnouncementWebService, AnnouncementService, EpisodeService}
 import mobi.upod.app.services.download.DownloadService
 import mobi.upod.app.services.playback.PlaybackService
 import mobi.upod.app.storage._
@@ -54,6 +54,7 @@ private[sync] class PullSynchronizer(syncWebService: Syncer)(implicit val bindin
         1 // updating coverart
 
     progressIndicator.initProgress(maxProgress, "")
+    pullAnnouncements()
     sync(progressIndicator, doSyncAllPodcasts(syncOnlyPodcastsWithNewerServerStatus, progressIndicator))
     internalSyncPreferences.isUpgradeSync := false
 
@@ -98,6 +99,22 @@ private[sync] class PullSynchronizer(syncWebService: Syncer)(implicit val bindin
     internalSyncPreferences.lastFullSyncTimestamp := timestamp
     if (internalSyncPreferences.episodeUriState.get == EpisodeUriState.LocalUriUpdateRequired)
       internalSyncPreferences.episodeUriState := EpisodeUriState.UpToDate
+  }
+
+  private def pullAnnouncements(): Unit = {
+    log.info("pulling new announcements")
+    val announcementWebService = inject[AnnouncementWebService]
+    val lastETag = internalSyncPreferences.lastAnnouncementETag.option
+    val (newETag, announcementsCursor) = announcementWebService.getAnnouncements(lastETag)
+    val announcements = announcementsCursor.toSeqAndClose()
+    database.inTransaction {
+      val dao = inject[AnnouncementDao]
+      announcements.foreach(dao.insertOrUpdate)
+      dao.deleteOldAnnouncements()
+    }
+    if (announcements.nonEmpty) {
+      inject[AnnouncementService].onNewAnnouncement()
+    }
   }
 
   /** Fetches subscriptions and their settings and all required podcasts from the server, updates them in the database

@@ -2,6 +2,7 @@ package mobi.upod.app
 
 import android.app.{AlarmManager, NotificationManager}
 import android.content.Context
+import android.content.pm.PackageManager
 import android.media.AudioManager
 import com.escalatesoft.subcut.inject.NewBindingModule
 import com.evernote.android.job.JobManager
@@ -25,6 +26,7 @@ class AppBindingModule(app: App) extends NewBindingModule(
 
     // basic configuration
     bind [App] toSingle app
+    bind [AppMetaData] toSingle new AppMetaData(app.getPackageManager.getApplicationInfo(app.getPackageName, PackageManager.GET_META_DATA).metaData)
     bind [DisplayMetrics] toSingle new DisplayMetrics(app)
 
     // preferences
@@ -44,6 +46,7 @@ class AppBindingModule(app: App) extends NewBindingModule(
     bind [PodcastDao] toProvider databaseHelper.podcastDao
     bind [EpisodeDao] toProvider databaseHelper.episodeDao
     bind [ImportedSubscriptionsDao] toProvider databaseHelper.importedSubscriptionsDao
+    bind [AnnouncementDao] toProvider databaseHelper.announcementDao
     bind [CoverartProvider] toSingle new CoverartProvider(app)
 
     // service layer
@@ -52,6 +55,7 @@ class AppBindingModule(app: App) extends NewBindingModule(
     bind [StorageService] toSingle new StorageService
     bind [PodcastFetchService] toSingle new PodcastFetchService
     bind [PodcastDirectoryWebService] toSingle new PodcastDirectoryWebService
+    bind [AnnouncementWebService] toProvider new AnnouncementWebService
     bind [SubscriptionService] toSingle new SubscriptionService
     bind [EpisodeService] toSingle new EpisodeService
     bind [DownloadService] toSingle new DownloadService
@@ -59,6 +63,7 @@ class AppBindingModule(app: App) extends NewBindingModule(
     bind [NavigationSettings] toSingle new NavigationSettingsService(app)
     bind [OnlinePodcastService] toProvider new OnlinePodcastService
     bind [SyncService] toSingle new SyncService(app)
+    bind [AnnouncementService] toSingle new AnnouncementService
 
     // GUI layer
     bind [CoverartLoader] toSingle new CoverartLoader
@@ -78,6 +83,7 @@ class AppBindingModule(app: App) extends NewBindingModule(
       inject[A](None)
 
     def initServices(): Unit = {
+      initService[AnnouncementService]().init()
       initService[SyncService]()
       initService[DownloadService]()
     }

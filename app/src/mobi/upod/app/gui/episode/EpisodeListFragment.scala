@@ -15,7 +15,7 @@ import mobi.upod.android.view.cards.CardHeaders
 import mobi.upod.app.AppInjection
 import mobi.upod.android.view.{ChildViewsFragment, FragmentViewFinder}
 import mobi.upod.app.data.EpisodeListItem
-import mobi.upod.app.gui.SyncOnPull
+import mobi.upod.app.gui.{AnnouncementCardHeaders, SyncOnPull}
 import mobi.upod.app.services.sync.SyncService
 import mobi.upod.app.storage.{EpisodeDao, InternalAppPreferences}
 import mobi.upod.util.Collections.Index
@@ -25,7 +25,7 @@ import scala.util.Try
 
 abstract class EpisodeListFragment
   extends ListFragment
-  with CardHeaders
+  with CardHeaders with AnnouncementCardHeaders
   with SimpleReloadableFragment[IndexedSeq[EpisodeListItem]]
   with SyncOnPull
   with InitialFragmentCreation

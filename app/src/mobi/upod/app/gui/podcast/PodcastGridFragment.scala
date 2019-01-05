@@ -13,7 +13,7 @@ import mobi.upod.android.view.cards.CardHeaders
 import mobi.upod.app.AppInjection
 import mobi.upod.android.view.{ChildViewsFragment, DisplayMetrics, FragmentViewFinder}
 import mobi.upod.app.data.PodcastListItem
-import mobi.upod.app.gui.{PodcastEpisodesActivity, ReloadOnEpisodeListChangedFragment}
+import mobi.upod.app.gui.{AnnouncementCardHeaders, PodcastEpisodesActivity, ReloadOnEpisodeListChangedFragment}
 import mobi.upod.app.services.sync.SyncService
 import mobi.upod.app.storage.PodcastGridType.PodcastListType
 import mobi.upod.app.storage.{ImageSize, PodcastGridType, UiPreferences}
@@ -22,7 +22,7 @@ private[podcast] abstract class PodcastGridFragment(
     navId: Long,
     emptyTextId: Int)
   extends GridFragment
-  with CardHeaders
+  with CardHeaders with AnnouncementCardHeaders
   with ReloadOnEpisodeListChangedFragment[IndexedSeq[PodcastListItem]]
   with SupportActionBar
   with InitialFragmentCreation

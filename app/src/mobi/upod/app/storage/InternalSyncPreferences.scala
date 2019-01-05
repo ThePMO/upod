@@ -16,17 +16,20 @@ class InternalSyncPreferences(app: Application) extends DevicePreferences(app) w
 
   lazy val isUpgradeSync = new BooleanPreference("isUpgradeSync", false) with Setter[Boolean]
   lazy val episodeUriState = new EnumerationPreference(EpisodeUriState)("episode_uri_state", EpisodeUriState.UpToDate) with Setter[EpisodeUriState.Type]
+  lazy val lastAnnouncementETag = new StringPreference("lastAnnouncementETag", "") with Setter[String]
 
   def preferences = Seq(
     lastPushSyncTimestamp,
     lastFullSyncTimestamp,
     fullSyncRequired,
-    playlistUpdated
+    playlistUpdated,
+    lastAnnouncementETag
   )
 
   def reset() {
     fullSyncRequired := false
     playlistUpdated := false
+    lastAnnouncementETag := ""
   }
 
   def onAppUpgrade(oldVersion: Int, newVersion: Int): Unit = {
