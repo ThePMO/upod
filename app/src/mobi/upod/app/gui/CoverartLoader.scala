@@ -82,17 +82,4 @@ class CoverartLoader(implicit val bindingModule: BindingModule) extends Injectab
         log.error(s"failed to display image $uri due to OutOfMemoryError")
     }
   }
-
-  private class FallbackDrawable(drawable: Drawable) extends ImageLoadingListener {
-    override def onLoadingStarted(imageUri: String, view: View): Unit = {}
-
-    override def onLoadingCancelled(imageUri: String, view: View): Unit = {}
-
-    override def onLoadingFailed(imageUri: String, view: View, failReason: FailReason): Unit = view match {
-      case v: ImageView => v.setImageDrawable(drawable)
-      case _ => // ignore
-    }
-
-    override def onLoadingComplete(imageUri: String, view: View, loadedImage: Bitmap): Unit = {}
-  }
 }
