@@ -110,7 +110,7 @@ val app = project.in(file("app")).
     includeFilter in unmanagedResources := "*.properties",
 
     javacOptions in Compile ++= javacVersionOptions,
-    scalaVersion := "2.11.6",
+    scalaVersion := "2.11.12",
 
     resConfigs in Android := Seq("en", "de"),
 
