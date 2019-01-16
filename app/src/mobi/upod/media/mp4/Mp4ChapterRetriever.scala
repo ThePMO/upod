@@ -2,8 +2,8 @@ package mobi.upod.media.mp4
 
 import java.io.{File, RandomAccessFile}
 
-import com.coremedia.iso.IsoFile
-import mobi.upod.media.{MediaChapterTable, ChapterWebLink, ChapterImageReference, MediaChapter}
+import mobi.upod.media.{ChapterImageReference, ChapterWebLink, MediaChapter, MediaChapterTable}
+import org.mp4parser.IsoFile
 
 private[media] object Mp4ChapterRetriever {
   private val SampleStartTolerance = 500l

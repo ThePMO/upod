@@ -9,7 +9,7 @@ private[player] final class AndroidMediaPlayer extends MediaPlayerImplementation
 
   import MediaPlayer._
 
-  private val player = new VPlayer
+  private val player = new MediaPlayerCompat
   private var _surface: Option[SurfaceTexture] = None
   private var careForSurface: Boolean = false
 
@@ -51,8 +51,10 @@ private[player] final class AndroidMediaPlayer extends MediaPlayerImplementation
   protected def doSetCareForSurface(care: Boolean): Unit =
     careForSurface = care
 
-  protected def getAudioFxAvailability = {
-    if (!SonicMediaPlayer.isAvailable)
+  protected def getAudioFxAvailability: AudioFxAvailability.Value = {
+    if (player.isSetSpeedSupported)
+      AudioFxAvailability.Available
+    else if (!SonicMediaPlayer.isAvailable)
       AudioFxAvailability.NotSupported
     else if (mimeType.exists(_.isAudio))
       AudioFxAvailability.NotForCurrentPlayer
@@ -60,18 +62,16 @@ private[player] final class AndroidMediaPlayer extends MediaPlayerImplementation
       AudioFxAvailability.NotForCurrentDataSource
   }
 
-  protected def doSetPlaybackSpeedMultiplier(multiplier: Float) =
-    throw new UnsupportedOperationException
+  protected def doSetPlaybackSpeedMultiplier(multiplier: Float): Unit = player.setSpeed(multiplier)
 
-  protected def getPlaybackSpeedMultiplier = 1f
+  protected def getPlaybackSpeedMultiplier: Float = player.getSpeed
 
   override protected def doSetRelativeVolume(volume: Float): Unit =
     player.setVolume(volume, volume)
 
-  override protected def doSetVolumeGain(gain: Float): Unit =
-    throw new UnsupportedOperationException
+  override protected def doSetVolumeGain(gain: Float): Unit = player.setGain(gain)
 
-  override protected def getVolumeGain = 1f
+  override protected def getVolumeGain: Float = player.getGain
 
   protected def doRelease(): Unit = {
     player.release()
