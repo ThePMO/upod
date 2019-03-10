@@ -3,29 +3,26 @@ package mobi.upod.app.gui
 import java.io.File
 import java.net.URL
 
-import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
-import android.view.View
 import android.widget.ImageView
 import com.escalatesoft.subcut.inject.{BindingModule, Injectable}
 import com.nostra13.universalimageloader.cache.disc.impl.ext.LruDiskCache
 import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache
-import com.nostra13.universalimageloader.core.assist.FailReason
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener
 import com.nostra13.universalimageloader.core.{DisplayImageOptions, ImageLoader, ImageLoaderConfiguration}
 import com.nostra13.universalimageloader.utils.StorageUtils
 import mobi.upod.android.logging.Logging
 import mobi.upod.android.view.DisplayMetrics
 import mobi.upod.app.App
-import mobi.upod.app.storage.{CoverartProvider, ImageSize}
-import mobi.upod.net.UrlEncodableString
+import mobi.upod.app.services.net.ConnectionStateRetriever
+import mobi.upod.app.storage.{CoverartProvider, DownloadPreferences, ImageSize}
 import mobi.upod.util.StorageSize.IntStorageSize
 
 class CoverartLoader(implicit val bindingModule: BindingModule) extends Injectable with Logging {
   private lazy val coverartProvider = inject[CoverartProvider]
   private lazy val imageLoader = initImageLoader()
+  private lazy val connectionService = inject[ConnectionStateRetriever]
+  private lazy val downloadPreferences = inject[DownloadPreferences]
   private implicit lazy val displayMetrics = DisplayMetrics(inject[App])
 
   private lazy val baseDisplayImageOptionsBuilder = new DisplayImageOptions.Builder()
@@ -57,29 +54,38 @@ class CoverartLoader(implicit val bindingModule: BindingModule) extends Injectab
 
   def displayImage(view: ImageView, size: ImageSize, url: URL, fallback: Option[CoverartLoaderFallbackDrawable]): Unit = {
 
-    def scaledImageUrl(url: URL): String = {
-      val encodedUrl = url.toExternalForm.urlEncoded
-      val width = size.size.toPx
-      s"https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&url=$encodedUrl&resize_w=$width"
-    }
-
-    val (uri, local) =
-      coverartProvider.getExistingImageFile(url, size).map("file://" + _.getAbsolutePath -> true).getOrElse(scaledImageUrl(url) -> false)
+    val (uri, showFallback) = getImageUrl(size, url)
 
     try {
-      val displayOptions = (local, size) match {
-        case (true, ImageSize.list) => localListDisplayImageOptions
-        case (true, _) => localDefaultDisplayImageOptions
-        case (false, _) => onlineDisplayImageOptions
+      val displayOptions = (showFallback, size) match {
+        case (false, ImageSize.list) => localListDisplayImageOptions
+        case (false, _) => localDefaultDisplayImageOptions
+        case (true, _) => onlineDisplayImageOptions
       }
-      if (!local) {
+      if (showFallback) {
         // we're going to load an online image which may take a while, so draw a placeholder if available
         fallback.foreach(view.setImageDrawable)
       }
-      imageLoader.displayImage(uri, view, displayOptions, fallback.orNull)
+      uri.foreach(imageLoader.displayImage(_, view, displayOptions, fallback.orNull))
     } catch {
       case _: OutOfMemoryError =>
         log.error(s"failed to display image $uri due to OutOfMemoryError")
+    }
+  }
+
+  private def getImageUrl(size: ImageSize, url: URL): (Option[String], Boolean) = {
+    val existingImageFile = coverartProvider.getExistingImageFile(url, size)
+    existingImageFile match {
+      case Some(file) => Some("file://" + file.getAbsolutePath) -> false
+      case None => chooseLiveOrFallbackUri(url)
+    }
+  }
+
+  private def chooseLiveOrFallbackUri(url: URL): (Option[String], Boolean) = {
+    if (connectionService.isUnmeteredConnection || downloadPreferences.allowDownloadOnAnyConnection()) {
+      Some(url.toExternalForm) -> true
+    } else {
+      None -> true
     }
   }
 }

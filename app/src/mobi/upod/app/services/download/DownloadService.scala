@@ -61,7 +61,7 @@ class DownloadService(implicit val bindingModule: BindingModule)
     ConnectedJobRequestBuilder.scheduleImmediate(
       app,
       JobTagQueueDownload,
-      downloadPreferences.autoStartDownloadStrategy.get == AutoDownloadStrategy.NonMeteredConnection,
+      downloadPreferences.allowDownloadOnNonMetered(),
       true
     )
   }
@@ -306,7 +306,7 @@ class DownloadService(implicit val bindingModule: BindingModule)
     connectionService.getConnectionState match {
       case ConnectionState.Unconnected =>
         scheduleAutomaticDownload()
-      case ConnectionState.Metered if downloadPreferences.autoStartDownloadStrategy.get == AutoDownloadStrategy.NonMeteredConnection =>
+      case ConnectionState.Metered if downloadPreferences.allowDownloadOnNonMetered() =>
         scheduleAutomaticDownload()
       case _ =>
     }
@@ -341,7 +341,7 @@ class DownloadService(implicit val bindingModule: BindingModule)
     case JobTagQueueDownload => SimpleJob withResult {
       val storageAvailable = storagePreferences.storageProvider.writable
       val unmeteredConnectionAvailable = connectionService.isUnmeteredConnection
-      val allowAnyConnection = downloadPreferences.autoStartDownloadStrategy.get == AutoDownloadStrategy.AnyConnection
+      val allowAnyConnection = downloadPreferences.allowDownloadOnAnyConnection()
       val connectionAvailable = connectionService.isInternetAvailable && (unmeteredConnectionAvailable || allowAnyConnection)
       if (storageAvailable && connectionAvailable) {
         callService(_.downloadQueue(unmeteredConnectionAvailable))

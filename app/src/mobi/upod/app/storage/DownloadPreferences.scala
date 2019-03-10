@@ -8,7 +8,7 @@ import mobi.upod.app.AppUpgradeListener
 class DownloadPreferences(app: Application) extends DefaultPreferences(app, R.xml.pref_download) with AppUpgradeListener {
 
   lazy val autoAddDownloadStrategy = new EnumerationPreference(AutoAddDownloadStrategy)("pref_download_auto_add", AutoAddDownloadStrategy.Playlist) with Setter[AutoAddDownloadStrategy.AutoAddDownloadStrategy]
-  lazy val autoStartDownloadStrategy = new EnumerationPreference(AutoDownloadStrategy)("pref_download_auto_start", AutoDownloadStrategy.NonMeteredConnection)
+  private lazy val autoStartDownloadStrategy = new EnumerationPreference(AutoDownloadStrategy)("pref_download_auto_start", AutoDownloadStrategy.NonMeteredConnection)
 
   def preferences = Seq(
     autoAddDownloadStrategy,
@@ -35,4 +35,8 @@ class DownloadPreferences(app: Application) extends DefaultPreferences(app, R.xm
       editor.commit()
     }
   }
+
+  def allowDownloadOnNonMetered(): Boolean = autoStartDownloadStrategy.get == AutoDownloadStrategy.NonMeteredConnection
+
+  def allowDownloadOnAnyConnection(): Boolean = autoStartDownloadStrategy.get == AutoDownloadStrategy.AnyConnection
 }
