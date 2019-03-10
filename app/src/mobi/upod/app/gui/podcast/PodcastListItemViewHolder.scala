@@ -13,7 +13,7 @@ import mobi.upod.app.data.PodcastListItem
 import mobi.upod.app.gui.{CoverartLoaderFallbackDrawable, CoverartPlaceholderDrawable, CoverartLoader, Theme}
 import mobi.upod.app.storage.{UiPreferences, ImageSize}
 
-private[podcast] class PodcastListItemViewHolder(view: View, imageSize: ImageSize, grid: Boolean, slowLoadingImages: Boolean)(implicit val bindingModule: BindingModule)
+private[podcast] class PodcastListItemViewHolder(view: View, imageSize: ImageSize, grid: Boolean, slowLoadingImages: Boolean, smallImageExpected: Boolean)(implicit val bindingModule: BindingModule)
   extends ViewHolder[PodcastListItem] with Injectable {
 
   private val uiPreferences = inject[UiPreferences]
@@ -47,7 +47,7 @@ private[podcast] class PodcastListItemViewHolder(view: View, imageSize: ImageSiz
       imageView.setImageDrawable(coverartPlaceholderDrawable)
     else
       imageView.setImageDrawable(null)
-    coverartLoader.displayImage(imageView, imageSize, item.imageUrl, coverartPlaceholderDrawable)
+    coverartLoader.displayImage(imageView, imageSize, item.imageUrl, coverartPlaceholderDrawable, smallImageExpected)
   }
 
   private def updateCounter(item: PodcastListItem): Unit = counterView foreach { view =>

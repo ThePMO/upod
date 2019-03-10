@@ -11,7 +11,8 @@ class PodcastListItemAdapter(
     itemLayoutId: Int,
     imageSize: ImageSize,
     grid: Boolean,
-    slowLoadingImages: Boolean = false)(
+    slowLoadingImages: Boolean = false,
+    smallImageExpected: Boolean = false)(
     implicit val bindingModule: BindingModule)
   extends MutableItemAdapter[PodcastListItem](itemLayoutId, initialItems)
   with StableIds
@@ -19,7 +20,7 @@ class PodcastListItemAdapter(
 
   protected type ItemViewHolder = PodcastListItemViewHolder
 
-  protected def createViewHolder(view: View) = new PodcastListItemViewHolder(view, imageSize, grid, slowLoadingImages)
+  protected def createViewHolder(view: View) = new PodcastListItemViewHolder(view, imageSize, grid, slowLoadingImages, smallImageExpected)
 
   protected def itemId(item: PodcastListItem): Long = item.id
 

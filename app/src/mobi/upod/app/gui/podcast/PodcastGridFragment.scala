@@ -152,6 +152,9 @@ private[podcast] abstract class PodcastGridFragment(
 
   protected def slowLoadingImages: Boolean = false
 
+  /** Expect images in grid to have "small" file size (as in "can easily be downloaded on metered connection") */
+  protected def smallImageExpected: Boolean = false
+
   protected def isGridDisplay = true
 
   protected def setAdapter(data: IndexedSeq[PodcastListItem], forceNewAdapter: Boolean = false) {
@@ -163,7 +166,7 @@ private[podcast] abstract class PodcastGridFragment(
       case Some(a) if !forceNewAdapter =>
         a.setItems(data)
       case _ =>
-        setGridAdapter(new PodcastListItemAdapter(data, itemLayoutResource, itemImageSize, isGridDisplay, slowLoadingImages))
+        setGridAdapter(new PodcastListItemAdapter(data, itemLayoutResource, itemImageSize, isGridDisplay, slowLoadingImages, smallImageExpected))
     }
   }
 

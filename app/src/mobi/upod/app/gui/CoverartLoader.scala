@@ -47,14 +47,14 @@ class CoverartLoader(implicit val bindingModule: BindingModule) extends Injectab
     imageLoader
   }
 
-  def displayImage(view: ImageView, size: ImageSize, url: Option[URL], fallback: CoverartLoaderFallbackDrawable): Unit = url match {
-    case Some(u) if u.toString.nonEmpty => displayImage(view, size, u, fallback)
+  def displayImage(view: ImageView, size: ImageSize, url: Option[URL], fallback: CoverartLoaderFallbackDrawable, smallImageExpected: Boolean = false): Unit = url match {
+    case Some(u) if u.toString.nonEmpty => displayImage(view, size, u, fallback, smallImageExpected)
     case _ => view.setImageDrawable(fallback)
   }
 
-  private def displayImage(view: ImageView, size: ImageSize, url: URL, fallback: CoverartLoaderFallbackDrawable): Unit = {
+  private def displayImage(view: ImageView, size: ImageSize, url: URL, fallback: CoverartLoaderFallbackDrawable, smallImageExpected: Boolean): Unit = {
 
-    val (uri, showFallback) = getImageUrl(size, url)
+    val (uri, showFallback) = getImageUrl(size, url, smallImageExpected)
 
     try {
       val displayOptions = (showFallback, size) match {
@@ -73,16 +73,16 @@ class CoverartLoader(implicit val bindingModule: BindingModule) extends Injectab
     }
   }
 
-  private def getImageUrl(size: ImageSize, url: URL): (Option[String], Boolean) = {
+  private def getImageUrl(size: ImageSize, url: URL, smallImageExpected: Boolean): (Option[String], Boolean) = {
     val existingImageFile = coverartProvider.getExistingImageFile(url, size)
     existingImageFile match {
       case Some(file) => Some("file://" + file.getAbsolutePath) -> false
-      case None => chooseLiveOrFallbackUri(url)
+      case None => chooseLiveOrFallbackUri(url, smallImageExpected)
     }
   }
 
-  private def chooseLiveOrFallbackUri(url: URL): (Option[String], Boolean) = {
-    if (connectionService.isUnmeteredConnection || downloadPreferences.allowDownloadOnAnyConnection()) {
+  private def chooseLiveOrFallbackUri(url: URL, smallImageExpected: Boolean): (Option[String], Boolean) = {
+    if (smallImageExpected || connectionService.isUnmeteredConnection || downloadPreferences.allowDownloadOnAnyConnection()) {
       Some(url.toExternalForm) -> true
     } else {
       None -> true

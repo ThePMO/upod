@@ -129,7 +129,11 @@ sealed private[podcast] abstract class WebServicePodcastGridFragment(
   override protected def itemImageSize: ImageSize =
     if (isLargeScreen) ImageSize.hugeList else ImageSize.largeList
 
+  // images always have to be loaded from the network when searching for podcasts
   override protected def slowLoadingImages: Boolean = true
+
+  // images from the webservice are scaled and expected to be small enough to download even on metered connections
+  override protected def smallImageExpected: Boolean = true
 
   override protected def isGridDisplay: Boolean = false
 
