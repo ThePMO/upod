@@ -1,7 +1,7 @@
 package mobi.upod.media.mp4
 
-import org.mp4parser.IsoFile
-import org.mp4parser.boxes.iso14496.part12.TrackBox
+import com.coremedia.iso.IsoFile
+import com.coremedia.iso.boxes.TrackBox
 
 import scala.collection.JavaConverters._
 

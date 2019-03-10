@@ -118,7 +118,7 @@ dependencies {
     compile 'com.google.http-client:google-http-client-android:1.27.0'
     compile 'com.google.code.gson:gson:2.8.5'
 
-    compile 'org.mp4parser:isoparser:1.9.37'
+    compile 'com.googlecode.mp4parser:isoparser:1.1.17'
     compile 'com.github.nscala-time:nscala-time_2.11:2.20.0'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 

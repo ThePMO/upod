@@ -2,7 +2,7 @@ package mobi.upod.media.mp4
 
 import java.io.RandomAccessFile
 
-import org.mp4parser.boxes.iso14496.part12.SampleTableBox
+import com.coremedia.iso.boxes.SampleTableBox
 
 import scala.collection.JavaConverters._
 

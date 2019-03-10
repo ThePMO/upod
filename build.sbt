@@ -133,7 +133,7 @@ val app = project.in(file("app")).
       "com.evernote" % "android-job" % "1.1.12",
       "com.google.http-client" % "google-http-client-android" % "1.27.0",
       "com.google.code.gson" % "gson" % "2.8.5",
-      "org.mp4parser" % "isoparser" % "1.9.37",
+      "com.googlecode.mp4parser" % "isoparser" % "1.1.17", // later versions are compiled with jdk9 and use ByteBuffer methods that don't exist on android
       "com.github.nscala-time" % "nscala-time_2.11" % "2.20.0",
       "com.nostra13.universalimageloader" % "universal-image-loader" % "1.9.5",
 
