@@ -91,6 +91,13 @@
 # See https://groups.google.com/forum/#!topic/guava-discuss/YCZzeCiIVoI
 -dontwarn com.google.common.collect.MinMaxPriorityQueue
 
+# annotations not needed at runtime
+-dontwarn com.google.errorprone.annotations.**
+-dontwarn org.codehaus.mojo.animal_sniffer.**
+
+# https://github.com/google/guava/issues/2926#issuecomment-325377266
+-dontwarn java.lang.ClassValue
+
 # Needed by logback
 -keep class ch.qos.** { *; }
 -keep class org.slf4j.** { *; }
@@ -117,6 +124,9 @@
 -keep public class com.evernote.android.job.v14.PlatformAlarmService
 -keep public class com.evernote.android.job.v14.PlatformAlarmReceiver
 -keep public class com.evernote.android.job.JobBootReceiver
+
+# android-http (is "provided")
+-dontwarn org.apache.commons.codec.binary.**
 
 # other stuff
 -keep class org.joda.time.DateTimeZone { *; }
