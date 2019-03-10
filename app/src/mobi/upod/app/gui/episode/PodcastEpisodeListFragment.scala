@@ -302,7 +302,7 @@ trait PodcastEpisodeListFragment
 
       def updateImage(): Unit = {
         coverartPlaceholderDrawable.set(title, colors)
-        coverartLoader.displayImage(podcastImageView, ImageSize.full, imageUrl, Some(coverartPlaceholderDrawable))
+        coverartLoader.displayImage(podcastImageView, ImageSize.full, imageUrl, coverartPlaceholderDrawable)
       }
 
       def updateTexts(): Unit = {

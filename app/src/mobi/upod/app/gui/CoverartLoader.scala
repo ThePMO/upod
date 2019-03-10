@@ -47,12 +47,12 @@ class CoverartLoader(implicit val bindingModule: BindingModule) extends Injectab
     imageLoader
   }
 
-  def displayImage(view: ImageView, size: ImageSize, url: Option[URL], fallback: Option[CoverartLoaderFallbackDrawable] = None): Unit = url match {
+  def displayImage(view: ImageView, size: ImageSize, url: Option[URL], fallback: CoverartLoaderFallbackDrawable): Unit = url match {
     case Some(u) if u.toString.nonEmpty => displayImage(view, size, u, fallback)
-    case _ => fallback.foreach(view.setImageDrawable)
+    case _ => view.setImageDrawable(fallback)
   }
 
-  def displayImage(view: ImageView, size: ImageSize, url: URL, fallback: Option[CoverartLoaderFallbackDrawable]): Unit = {
+  private def displayImage(view: ImageView, size: ImageSize, url: URL, fallback: CoverartLoaderFallbackDrawable): Unit = {
 
     val (uri, showFallback) = getImageUrl(size, url)
 
@@ -64,9 +64,9 @@ class CoverartLoader(implicit val bindingModule: BindingModule) extends Injectab
       }
       if (showFallback) {
         // we're going to load an online image which may take a while, so draw a placeholder if available
-        fallback.foreach(view.setImageDrawable)
+        view.setImageDrawable(fallback)
       }
-      uri.foreach(imageLoader.displayImage(_, view, displayOptions, fallback.orNull))
+      uri.foreach(imageLoader.displayImage(_, view, displayOptions, fallback))
     } catch {
       case _: OutOfMemoryError =>
         log.error(s"failed to display image $uri due to OutOfMemoryError")

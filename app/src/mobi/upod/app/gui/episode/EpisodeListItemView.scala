@@ -93,7 +93,7 @@ private[episode] trait EpisodeListItemView
   private def updateImage(item: EpisodeListItem) {
     if (imageUrl == None || item.podcastInfo.imageUrl != imageUrl) { // prevent flickering
       coverartPlaceholderDrawable.set(item.podcastInfo.title, item.extractedOrGeneratedColors)
-      coverartLoader.displayImage(imageView, ImageSize.list, item.podcastInfo.imageUrl, Some(coverartPlaceholderDrawable))
+      coverartLoader.displayImage(imageView, ImageSize.list, item.podcastInfo.imageUrl, coverartPlaceholderDrawable)
       imageUrl = item.podcastInfo.imageUrl
     }
   }

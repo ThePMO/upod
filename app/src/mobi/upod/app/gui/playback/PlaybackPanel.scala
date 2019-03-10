@@ -173,7 +173,7 @@ trait PlaybackPanel
     podcastTitleView.foreach(v => v.setText(episode.podcastInfo.title))
     episodeTitleView.foreach(_.setText(episode.title))
     coverartPlaceholderDrawable.set(episode.podcastInfo.title, episode.extractedOrGeneratedColors)
-    podcastImageView.foreach(coverartLoader.displayImage(_, podcastImageSize, episode.podcastInfo.imageUrl, Some(coverartPlaceholderDrawable)))
+    podcastImageView.foreach(coverartLoader.displayImage(_, podcastImageSize, episode.podcastInfo.imageUrl, coverartPlaceholderDrawable))
     tintViews(episode)
     onPlaybackPositionChanged(episode)
     onDownloadProgressChanged(episode)

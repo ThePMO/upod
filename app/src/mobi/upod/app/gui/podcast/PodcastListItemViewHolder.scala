@@ -47,7 +47,7 @@ private[podcast] class PodcastListItemViewHolder(view: View, imageSize: ImageSiz
       imageView.setImageDrawable(coverartPlaceholderDrawable)
     else
       imageView.setImageDrawable(null)
-    coverartLoader.displayImage(imageView, imageSize, item.imageUrl, Some(coverartPlaceholderDrawable))
+    coverartLoader.displayImage(imageView, imageSize, item.imageUrl, coverartPlaceholderDrawable)
   }
 
   private def updateCounter(item: PodcastListItem): Unit = counterView foreach { view =>
