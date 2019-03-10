@@ -9,6 +9,7 @@ import mobi.upod.android.app.action.{Action, ActionState}
 import mobi.upod.android.content.Theme._
 import mobi.upod.android.util.CollectionConverters._
 import de.wcht.upod.R
+import mobi.upod.android.widget.{MutableItemAdapter, Toast}
 import mobi.upod.app.data.EpisodeListItem
 import mobi.upod.app.gui.MainNavigation
 import mobi.upod.app.gui.episode.{EpisodeListItemAdapter, EpisodeListItemViewHolder, EpisodeListItemViewHolderConfiguration, EpisodeOrderControl}
@@ -47,8 +48,7 @@ private[episode] abstract class SortableLibraryEpisodeListFragment(
     def config = ViewHolderConfiguration(true, false, true, Some(OrderControl))
     new EpisodeListItemAdapter(data, createViewHolder(_, config)) with DragSortListView.DropListener {
       def drop(from: Int, to: Int) {
-        move(from, to)
-        onEpisodeMoved(from, to, true)
+        tryMoveEpisode(this, from, to, commit=true)
       }
     }
   }
@@ -87,6 +87,14 @@ private[episode] abstract class SortableLibraryEpisodeListFragment(
     }
   }
 
+  private def tryMoveEpisode(listItemAdapter: EpisodeListItemAdapter, from: Int, to: Int, commit: Boolean): Unit = {
+    if (listItemAdapter.move(from, to)) {
+      onEpisodeMoved(from, to, commit)
+    } else {
+      Toast.show(context, R.string.concurrent_list_modification)
+    }
+  }
+
   private object OrderControl extends EpisodeOrderControl {
 
     override protected def pinnedCount: Int = pinnedEpisodeCount
@@ -95,8 +103,7 @@ private[episode] abstract class SortableLibraryEpisodeListFragment(
       adapter.getCount
 
     override protected def move(from: Int, to: Int, commit: Boolean): Unit = {
-      adapter.asInstanceOf[EpisodeListItemAdapter].move(from, to)
-      onEpisodeMoved(from, to, commit)
+      tryMoveEpisode(adapter.asInstanceOf[EpisodeListItemAdapter], from, to, commit)
     }
   }
 

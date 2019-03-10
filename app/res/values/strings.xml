@@ -1380,6 +1380,8 @@
     <string name="subscription_settings_volume_gain">Volume gain</string>
     <string name="subscription_settings_volume_gain_summary">Episodes audio level is amplified by %1.1f dB</string>
 
+    <string name="concurrent_list_modification">Sorry, the list changed during drag&amp;drop, please try again</string>
+
     <!-- about uPod -->
     <string name="about"
             comment="title of the dialog showing basic information about uPod"

@@ -34,10 +34,14 @@ abstract class MutableItemAdapter[A <: AnyRef](itemLayout: Int, initialItems: In
     notifyDataSetChanged()
   }
 
-  def move(from: Int, to: Int) {
+  def move(from: Int, to: Int): Boolean = {
+    if (from > _items.length || to > _items.length) {
+      return false
+    }
     val item = _items.remove(from)
     _items.insert(to, item)
     notifyDataSetChanged()
+    true
   }
 
   def setItems(items: IndexedSeq[A]) {

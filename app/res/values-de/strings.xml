@@ -648,4 +648,5 @@ Erfahre mehr auf der <a href="http://upod.uservoice.com/knowledgebase/articles/2
           leider kenne ich keinen anderen Weg.</p>
       ]]></string>
 
+    <string name="concurrent_list_modification">Sorry, die Liste hat sich beim verschieben verändert, bitte versuche es erneut</string>
 </resources>
