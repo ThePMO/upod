@@ -1,10 +1,10 @@
 package mobi.upod.app.gui.episode
 
 import android.content.Intent
-import android.support.v7.app.ActionBarActivity
+import android.support.v7.app.AppCompatActivity
 import mobi.upod.app.data.EpisodeListItem
 
-trait FullFeaturedEpisodeListHolderActivity extends ActionBarActivity with EpisodeListHolder {
+trait FullFeaturedEpisodeListHolderActivity extends AppCompatActivity with EpisodeListHolder {
 
   def enableEpisodeActions = true
 

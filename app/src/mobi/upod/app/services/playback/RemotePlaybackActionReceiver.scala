@@ -18,4 +18,4 @@ class RemotePlaybackActionReceiver extends RemoteActionReceiver with AppInjectio
   )
 }
 
-object RemotePlaybackActionReceiver extends RemoteActionIntent("REMOTE_PLAYBACK_ACTION")
+object RemotePlaybackActionReceiver extends RemoteActionIntent("REMOTE_PLAYBACK_ACTION", classOf[RemotePlaybackActionReceiver])

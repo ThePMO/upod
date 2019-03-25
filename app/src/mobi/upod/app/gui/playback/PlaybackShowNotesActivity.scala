@@ -4,22 +4,22 @@ import android.app.Activity
 import android.content.{Context, Intent}
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.support.v7.app.ActionBarActivity
+import android.support.v7.app.AppCompatActivity
 import android.webkit.WebView
 import android.widget.RelativeLayout
 import de.wcht.upod.R
 import mobi.upod.android.app.StandardUpNavigation
 import mobi.upod.android.app.action.{Action, ActivityActions}
 import mobi.upod.android.content.IntentHelpers.RichIntent
-import mobi.upod.android.view.{ChildViews, WindowCompat}
+import mobi.upod.android.view.{ChildViewsActivity, WindowCompat}
 import mobi.upod.android.widget.FloatingActionButton
 import mobi.upod.app.AppInjection
 import mobi.upod.app.data.{EpisodeBaseWithPlaybackInfo, EpisodeListItem}
 import mobi.upod.app.gui.episode.{BrowseEpisodeAction, EpisodeDescriptionViewController, PlayingEpisodeExtra}
 
 class PlaybackShowNotesActivity
-  extends ActionBarActivity
-  with ChildViews
+  extends AppCompatActivity
+  with ChildViewsActivity
   with EpisodeDescriptionViewController
   with ActivityActions
   with PlaybackPanelWithSeekBar

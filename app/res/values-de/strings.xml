@@ -118,7 +118,7 @@
 
     <!-- synchronization -->
     <string name="sync_started">Synchronisierung gestartet</string>
-    <string name="syncing">die Synchronisierung läuft\ndas kann einen Moment dauern&#8230;</string>
+    <string name="syncing">die Synchronisierung läuft\ndas kann einen Moment dauern…</string>
     <string name="sync_notification_sync">Synchronisiere Google Drive</string>
     <string name="sync_notification_title">uPod Synchronisierung</string>
     <string name="sync_notification_push">Sende Änderungen zu Google Drive</string>
@@ -172,7 +172,8 @@ Erfahre mehr auf der <a href="http://upod.uservoice.com/knowledgebase/articles/2
     <string name="opml_parse_error">Deine OPML Datei ist fehlerhaft: %s</string>
     <string name="generic_opml_error">Unerwarteter Fehler: %s</string>
 
-    <string name="download_preparing">Download wird vorbereitet&#8230;</string>
+    <string name="download_queue_check">Suche ausstehende Downloads…</string>
+    <string name="download_preparing">Download wird vorbereitet…</string>
     <string name="download_progress">%4$s verbleibend — %1$,.1f von %2$,.1f MB bei %3$,.2f kB/s</string>
     <string name="download_progress_indeterminate">%1$,.1f MB bei %2$,.2f kB/s</string>
     <string name="download_error_title">Download fehlgeschlagen</string>
@@ -185,7 +186,7 @@ Erfahre mehr auf der <a href="http://upod.uservoice.com/knowledgebase/articles/2
     <string name="action_media_play">Wiedergeben</string>
     <string name="action_media_pause">Anhalten</string>
     <string name="action_media_skip">Überspringen</string>
-    <string name="buffering">Pufferung&#8230;</string>
+    <string name="buffering">Pufferung…</string>
     <string name="playing">%1$s — Wiedergabe </string>
     <string name="paused">%1$s —  Pause</string>
 
@@ -196,7 +197,7 @@ Erfahre mehr auf der <a href="http://upod.uservoice.com/knowledgebase/articles/2
     <string name="playback_error_unsupported_format">Anscheinend unterstützen wir das Medien-Format dieser Episode nicht. Du kannst die Wiedergabe mit einer anderen App versuchen.</string>
     <string name="playback_error_remote">Die Wiedergabe auf dem verbundenen Gerät ist fehlgeschlagen. Versuche es später noch einmal.</string>
     <string name="playback_error_unknown">Ein unbekannter Wiedergabefehler ist aufgetreten. Du kannst die Wiedergabe mit einer anderen App versuchen.</string>
-    <string name="play_with">Wiedergabe mit&#8230;</string>
+    <string name="play_with">Wiedergabe mit…</string>
     <string name="playlist_next">Nächste Episode</string>
     <string name="playlist_next_empty">Keine weiteren Episoden in der Wiedergabeliste</string>
 
@@ -231,7 +232,7 @@ Erfahre mehr auf der <a href="http://upod.uservoice.com/knowledgebase/articles/2
     <string name="sleep_timer_mode_episode">Episode</string>
 
     <!-- support -->
-    <string name="collecting_diagnostics">Sammle Diagnosedaten&#8230;</string>
+    <string name="collecting_diagnostics">Sammle Diagnosedaten…</string>
     <string name="send_email">E-Mail senden</string>
     <string name="storage_internal">Interner Speicher</string>
     <string name="storage_external">Externer Speicher</string>
@@ -310,9 +311,9 @@ Erfahre mehr auf der <a href="http://upod.uservoice.com/knowledgebase/articles/2
     <!-- ================================================================== -->
     <!-- generic messages -->
 
-    <string name="loading">Wird geladen&#8230;</string>
-    <string name="saving">Änderungen werden gespeichert&#8230;</string>
-    <string name="wait_please">Einen Augenblick bitte&#8230;</string>
+    <string name="loading">Wird geladen…</string>
+    <string name="saving">Änderungen werden gespeichert…</string>
+    <string name="wait_please">Einen Augenblick bitte…</string>
     <string name="no_items">keine Elemente</string>
     <string name="contact_support">Support kontaktieren</string>
     <string name="not_applicable">nicht zutreffend</string>
@@ -596,6 +597,7 @@ Erfahre mehr auf der <a href="http://upod.uservoice.com/knowledgebase/articles/2
 
     <!-- about uPod -->
     <string name="about">Über uPod</string>
+
     <string name="wizard_welcome_option_opml">Ich habe eine OPML-Datei</string>
     <string name="wizard_welcome_option_migrating">Ich möchte vom alten uPod migrieren</string>
     <string name="wizard_migration">Migration</string>
@@ -649,4 +651,19 @@ Erfahre mehr auf der <a href="http://upod.uservoice.com/knowledgebase/articles/2
       ]]></string>
 
     <string name="concurrent_list_modification">Sorry, die Liste hat sich beim verschieben verändert, bitte versuche es erneut</string>
+
+    <!-- notification channels-->
+    <string name="default_channel_name">Allgemein</string>
+    <string name="default_channel_description">Allgemeine Benachrichtungen, z.B. Fehler</string>
+    <string name="sync_channel_description">Benachrichtungen über laufende Synchronisierung</string>
+    <string name="sync_channel_name">Sync</string>
+    <string name="download_channel_description">Benachrichtungen über laufenden Download</string>
+    <string name="download_channel_name">Download</string>
+    <string name="download_preparation_channel_name">Download Vorbereitung</string>
+    <string name="download_preparation_channel_description">Benachrichtung über vorbereitung für Downloads</string>
+    <string name="episode_channel_name">Episoden</string>
+    <string name="episode_channel_description">Dauerhafte Benachrichtigung zur aktuellen Episode</string>
+    <string name="new_episode_channel_name">Neue Episoden</string>
+    <string name="new_episode_channel_description">Benachrichtungen über neue Episoden</string>
+
 </resources>

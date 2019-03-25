@@ -4,7 +4,7 @@ import android.app.{NotificationManager, PendingIntent}
 import android.content.{Context, Intent}
 import android.support.multidex.MultiDexApplication
 import de.wcht.upod.R
-import mobi.upod.android.app.{AppException, AppNotificationBuilder}
+import mobi.upod.android.app.{AppException, AppNotificationBuilder, UpodNotificationChannels}
 import mobi.upod.android.logging.{LogConfiguration, Logging}
 import mobi.upod.app.storage._
 import org.joda.time.DateTime
@@ -25,6 +25,8 @@ final class App extends MultiDexApplication with Logging {
     Thread.currentThread().setContextClassLoader(getClass.getClassLoader) // initialize properties loading for ROME RSS
 
     super.onCreate()
+
+    UpodNotificationChannels.initNotificationChannels(this, notificationManager)
 
     App.app = Some(this)
     UncaughtExceptionHandler.install(this)
@@ -49,18 +51,17 @@ final class App extends MultiDexApplication with Logging {
   }
 
   def notifyError(tag: String, title: CharSequence, content: CharSequence, intent: Option[PendingIntent] = None): Unit = {
-    val builder = new AppNotificationBuilder(this)
+    val builder = new AppNotificationBuilder(this, UpodNotificationChannels.Default)
     builder.
       setSmallIcon(R.drawable.ic_stat_error).
       setContentTitle(title).
       setContentText(content)
     intent.foreach(builder.setContentIntent)
-    getSystemService(Context.NOTIFICATION_SERVICE).asInstanceOf[NotificationManager].
-      notify(tag, 1, builder.build)
+    notificationManager.notify(tag, 1, builder.build)
   }
 
   def cancelErrorNotification(tag: String): Unit =
-    getSystemService(Context.NOTIFICATION_SERVICE).asInstanceOf[NotificationManager].cancel(tag, 1)
+    notificationManager.cancel(tag, 1)
 
   private def checkForUpgrade(): Unit = {
     val appVersionPreference = bindingModule.inject[InternalAppPreferences](None).appVersion
@@ -78,6 +79,8 @@ final class App extends MultiDexApplication with Logging {
     log.crashLogInfo(s"app upgraded from $oldVersion to $newVersion")
     bindingModule.onUpgrade(oldVersion, newVersion)
   }
+
+  private def notificationManager = getSystemService(Context.NOTIFICATION_SERVICE).asInstanceOf[NotificationManager]
 }
 
 object App {

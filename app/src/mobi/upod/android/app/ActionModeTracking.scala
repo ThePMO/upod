@@ -1,9 +1,9 @@
 package mobi.upod.android.app
 
-import android.support.v7.app.ActionBarActivity
+import android.support.v7.app.AppCompatActivity
 import android.view.ActionMode
 
-trait ActionModeTracking extends ActionBarActivity {
+trait ActionModeTracking extends AppCompatActivity {
   private var actionMode: Option[ActionMode] = None
 
   override def onActionModeStarted(mode: ActionMode) {

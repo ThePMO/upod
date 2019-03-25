@@ -3,15 +3,15 @@ package mobi.upod.android.widget
 import android.content.Context
 import android.util.AttributeSet
 import android.view.ViewGroup.LayoutParams
-import android.view.{View, Menu, MenuItem, ViewGroup}
+import android.view.{Menu, MenuItem, View, ViewGroup}
 import android.widget.{Button, LinearLayout, PopupMenu}
 import mobi.upod.android.content.Theme.context2Theme
-import mobi.upod.android.view.{Tintable, ChildViews, DisplayMetrics}
 import de.wcht.upod.R
+import mobi.upod.android.view.{ChildViewsView, DisplayMetrics, Tintable}
 
 class ActionPanel(context: Context, attributes: AttributeSet)
   extends LinearLayout(context, attributes)
-  with ChildViews {
+  with ChildViewsView {
 
   private val menu: Menu = new PopupMenu(context, null).getMenu
   private val primaryActionButtonId = findPrimaryActionButtonId

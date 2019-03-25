@@ -12,8 +12,8 @@ import mobi.upod.android.app.action.{Action, AsyncActionHook, ContextualActions,
 import mobi.upod.android.content.AsyncCursorLoader
 import mobi.upod.android.content.Theme._
 import mobi.upod.android.view.cards.CardHeaders
-import mobi.upod.android.view.{ChildViews, FragmentViewFinder}
 import mobi.upod.app.AppInjection
+import mobi.upod.android.view.{ChildViewsFragment, FragmentViewFinder}
 import mobi.upod.app.data.EpisodeListItem
 import mobi.upod.app.gui.SyncOnPull
 import mobi.upod.app.services.sync.SyncService
@@ -32,7 +32,7 @@ abstract class EpisodeListFragment
   with FragmentStateHolder
   with ContextualActions
   with ImplicitFragmentContext
-  with ChildViews
+  with ChildViewsFragment
   with FragmentViewFinder
   with MultiChoiceModeListener
   with OnItemClickListener

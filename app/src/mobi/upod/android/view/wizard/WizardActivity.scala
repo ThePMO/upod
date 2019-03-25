@@ -4,15 +4,15 @@ import android.app.{Activity, Fragment}
 import android.content.{Context, Intent}
 import android.os.Bundle
 import android.support.v13.app.FragmentPagerAdapter
-import android.support.v4.view.{PagerAdapter, ViewPager}
 import android.support.v4.view.ViewPager.OnPageChangeListener
-import android.support.v7.app.ActionBarActivity
+import android.support.v4.view.{PagerAdapter, ViewPager}
+import android.support.v7.app.AppCompatActivity
 import android.widget.TextView
 import mobi.upod.android.app.SimpleAlertDialogFragment
-import mobi.upod.android.view.ChildViews
 import de.wcht.upod.R
+import mobi.upod.android.view.ChildViewsActivity
 
-abstract class WizardActivity extends ActionBarActivity with OnPageChangeListener with ChildViews {
+abstract class WizardActivity extends AppCompatActivity with OnPageChangeListener with ChildViewsActivity {
   private lazy val pageHeader = childAs[TextView](R.id.header)
   private lazy val pager = childAs[ViewPager](R.id.pager)
   private lazy val backButton = childView(R.id.backButton)

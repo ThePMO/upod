@@ -4,7 +4,7 @@ import android.content.pm.ActivityInfo
 import android.graphics.drawable.{ColorDrawable, BitmapDrawable}
 import android.graphics.{Bitmap, SurfaceTexture}
 import android.os.Bundle
-import android.support.v7.app.ActionBarActivity
+import android.support.v7.app.AppCompatActivity
 import android.view.TextureView.SurfaceTextureListener
 import android.view._
 import android.widget.FrameLayout.LayoutParams
@@ -337,9 +337,9 @@ final class VideoPlaybackFragment extends PlaybackFragment with FragmentStateHol
     def showOverlays(show: Boolean): Unit = {
       partScreenControlsVisible = show
       if (show)
-        getActivity.asInstanceOf[ActionBarActivity].getSupportActionBar.show()
+        getActivity.asInstanceOf[AppCompatActivity].getSupportActionBar.show()
       else
-        getActivity.asInstanceOf[ActionBarActivity].getSupportActionBar.hide()
+        getActivity.asInstanceOf[AppCompatActivity].getSupportActionBar.hide()
     }
 
     override def updatePlaybackControlBackground(color: Int): Unit =

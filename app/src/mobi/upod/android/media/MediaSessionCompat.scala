@@ -1,7 +1,7 @@
 package mobi.upod.android.media
 
 import android.app.PendingIntent
-import android.content.{Context, Intent}
+import android.content.{Context, Intent, IntentFilter}
 import android.graphics.Bitmap
 import android.media.MediaMetadataRetriever._
 import android.media.RemoteControlClient._
@@ -12,7 +12,7 @@ import mobi.upod.android.media.PlaybackState._
 import mobi.upod.android.util.ApiLevel
 import mobi.upod.app
 import mobi.upod.app.AppInjection
-import mobi.upod.app.services.playback.MediaButtonProcessor
+import mobi.upod.app.services.playback.{MediaButtonProcessor, MediaControlEventReceiver}
 
 trait MediaSessionCompat {
 
@@ -41,7 +41,9 @@ trait MediaSessionCompat {
 object MediaSessionCompat {
 
   def apply(context: Context, sessionActivity: PendingIntent, mediaButtonIntent: PendingIntent): MediaSessionCompat = {
-    if (ApiLevel >= ApiLevel.Lollipop)
+    if (ApiLevel >= ApiLevel.Oreo)
+      new MediaSessionOreo(context, sessionActivity, mediaButtonIntent)
+    else if (ApiLevel >= ApiLevel.Lollipop)
       new MediaSessionLollipop(context, sessionActivity, mediaButtonIntent)
     else if (ApiLevel >= ApiLevel.JellyBeanM2)
       new MediaSessionJellyBeanM2(context, mediaButtonIntent)
@@ -83,6 +85,32 @@ object MediaSessionCompat {
     def onSeekTo(pos: Long): Unit
 
     def onSkip(): Unit
+  }
+
+  //
+  // Oreo
+  //
+
+  private class MediaSessionOreo(context: Context, sessionActivity: PendingIntent, mediaButtonIntent: PendingIntent)
+    extends MediaSessionLollipop(context, sessionActivity, mediaButtonIntent) {
+    private val mediaControlEventReceiver = new MediaControlEventReceiver
+
+    override def register(): Unit = {
+      super.register()
+      context.registerReceiver(mediaControlEventReceiver, initIntentFilter)
+    }
+
+    override def release(): Unit = {
+      super.release()
+      context.unregisterReceiver(mediaControlEventReceiver)
+    }
+
+    private def initIntentFilter = {
+      val intentFilter = new IntentFilter()
+      intentFilter.addAction(AudioManager.ACTION_AUDIO_BECOMING_NOISY)
+      intentFilter.addAction(Intent.ACTION_MEDIA_BUTTON)
+      intentFilter
+    }
   }
 
   //

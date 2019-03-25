@@ -31,7 +31,7 @@ private[playback] abstract class PlaybackFragment
   with FragmentStateHolder
   with ObservableFragmentLifecycle
   with SimpleFragmentActions
-  with ChildViews
+  with ChildViewsFragment
   with FragmentViewFinder
   with SupportActionBar
   with AppInjection {

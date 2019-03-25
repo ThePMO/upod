@@ -57,13 +57,15 @@ class DownloadService(implicit val bindingModule: BindingModule)
   }
 
   def scheduleAutomaticDownload(): Unit = {
-    log.info("scheduling automatic download for as soon as required connection is available")
-    ConnectedJobRequestBuilder.scheduleImmediate(
-      app,
-      JobTagQueueDownload,
-      downloadPreferences.allowDownloadOnNonMetered(),
-      true
-    )
+    if (episodeDao.hasDownloadsInQueue) {
+      log.info("scheduling automatic download for as soon as required connection is available")
+      ConnectedJobRequestBuilder.scheduleImmediate(
+        app,
+        JobTagQueueDownload,
+        downloadPreferences.allowDownloadOnNonMetered(),
+        true
+      )
+    }
   }
 
 

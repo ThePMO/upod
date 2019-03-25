@@ -4,10 +4,10 @@ import android.content.Context
 import android.view.View
 import android.widget.{Button, FrameLayout}
 import mobi.upod.android.app.action.Action
-import mobi.upod.android.view.ChildViews
 import de.wcht.upod.R
+import mobi.upod.android.view.ChildViewsView
 
-class CardView(context: Context) extends FrameLayout(context: Context) with ChildViews {
+class CardView(context: Context) extends FrameLayout(context: Context) with ChildViewsView {
   private var dismissListener: Option[OnCardDismissListener] = None
   private lazy val titleView = childTextView(R.id.cardTitle)
   protected lazy val contentContainer = childViewGroup(R.id.cardContent)

@@ -49,7 +49,7 @@
     </attr>
 
     <declare-styleable name="TintableImageView">
-        <attr name="tint" format="reference|color" />
+        <attr name="viewTint" format="reference|color" />
     </declare-styleable>
 
     <declare-styleable name="VideoContainerLayout">

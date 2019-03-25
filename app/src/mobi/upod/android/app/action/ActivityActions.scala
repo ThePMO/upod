@@ -1,9 +1,9 @@
 package mobi.upod.android.app.action
 
-import android.support.v7.app.ActionBarActivity
+import android.support.v7.app.AppCompatActivity
 import android.view.{Menu, MenuItem}
 
-trait ActivityActions extends ActionBarActivity with MenuActions with ImplicitActivityContext {
+trait ActivityActions extends AppCompatActivity with MenuActions with ImplicitActivityContext {
   protected val optionsMenuResourceId: Int
 
   override def onCreateOptionsMenu(menu: Menu) = {
