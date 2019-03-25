@@ -5,6 +5,7 @@ import java.net.URL
 import java.util.concurrent.TimeUnit
 
 import android.content.{Context, SharedPreferences}
+import android.database.SQLException
 import android.database.sqlite.SQLiteDatabase
 import android.preference.PreferenceManager
 import de.wcht.upod.R
@@ -109,9 +110,9 @@ class DiagnosticsImport(pageKey: String) extends StartActionWizardPage(pageKey, 
     val importDatabase = SQLiteDatabase.openDatabase(databaseFile.getAbsolutePath, null, 0)
     val importDatabaseHelper = DatabaseHelper(context, Some(importDatabase))
 
-    importTable[Episode, EpisodeDao](importDatabaseHelper, new EpisodeDao(_))
-    importTable[Podcast, PodcastDao](importDatabaseHelper, new PodcastDao(_))
-    importTable[URL, ImportedSubscriptionsDao](importDatabaseHelper, new ImportedSubscriptionsDao(_))
+    importTable[Episode, EpisodeDao](importDatabaseHelper, new EpisodeDao(_), it => s"${it.id}: ${it.title} - ${it.link}")
+    importTable[Podcast, PodcastDao](importDatabaseHelper, new PodcastDao(_), it => s"${it.id}: ${it.title} - ${it.link}")
+    importTable[URL, ImportedSubscriptionsDao](importDatabaseHelper, new ImportedSubscriptionsDao(_), _.toString)
   }
 
   private def addPlaylistItemsToDownloadQueue(): Unit = {
@@ -124,7 +125,7 @@ class DiagnosticsImport(pageKey: String) extends StartActionWizardPage(pageKey, 
     inject[DownloadService].downloadQueue()
   }
 
-  private def importTable[T, D<:Dao[T]](databaseHelper: DatabaseHelper, daoConstructor: DatabaseHelper => D)(implicit m: scala.reflect.Manifest[D]): Unit = {
+  private def importTable[T, D<:Dao[T]](databaseHelper: DatabaseHelper, daoConstructor: DatabaseHelper => D, idGetter: T => String)(implicit m: scala.reflect.Manifest[D]): Unit = {
     val newAppDao = inject[D]
     val importAppDao = daoConstructor(databaseHelper)
 
@@ -132,7 +133,11 @@ class DiagnosticsImport(pageKey: String) extends StartActionWizardPage(pageKey, 
     val cursor = importAppDao.all()
     newAppDao.newTransactionWithoutTriggers {
       cursor.foreachAndClose { it =>
-        newAppDao.insertOrFail(it)
+        try {
+          newAppDao.insertOrFail(it)
+        } catch {
+          case e: SQLException => throw new SQLException(s"Import from ${newAppDao.tableName} failed: ${e.getMessage}")
+        }
       }
     }
   }
