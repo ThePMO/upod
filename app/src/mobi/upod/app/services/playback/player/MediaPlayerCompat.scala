@@ -22,10 +22,24 @@ class MediaPlayerCompat extends AndroidMediaPlayerClass {
 
   def getSpeed: Float = speed
 
+  override def start(): Unit = {
+    if (isSetSpeedSupported) {
+      applySpeed()
+      // no need to call start(), because setPlaybackParams starts
+      // "After the object is prepared, calling it with non-zero speed is equivalent to calling start()"
+    } else {
+      super.start()
+    }
+  }
+
+  private def applySpeed(): Unit = {
+    setPlaybackParams(getPlaybackParams.setSpeed(speed))
+  }
+
   def setSpeed(multiplier: Float): Unit = ifSupported(() => {
     speed = multiplier
     if (isPlaying) {
-      setPlaybackParams(getPlaybackParams.setSpeed(multiplier))
+      applySpeed()
     }
   })
 
@@ -33,9 +47,7 @@ class MediaPlayerCompat extends AndroidMediaPlayerClass {
 
   def setGain(value: Float): Unit = ifSupported(() => {
     gain = value
-    if (isPlaying) {
-      setVolume(volumeLeft + value, volumeRight + value)
-    }
+    setVolume(volumeLeft + value, volumeRight + value)
   })
 
   private def ifSupported(block: () => Unit): Unit = {
