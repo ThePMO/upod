@@ -10,10 +10,14 @@ private[player] final class AndroidMediaPlayer extends MediaPlayerImplementation
   import MediaPlayer._
 
   private val player = new MediaPlayerCompat
+  private var audioFxListener: Option[OnAudioFxListener] = None
   private var _surface: Option[SurfaceTexture] = None
   private var careForSurface: Boolean = false
 
-  protected def doReset() = player.reset()
+  protected def doReset() = {
+    player.reset()
+    setAudioFxAvailable(false)
+  }
 
   protected def doSetDataSource(path: String) = player.setDataSource(path)
 
@@ -36,7 +40,10 @@ private[player] final class AndroidMediaPlayer extends MediaPlayerImplementation
     }
   }
 
-  protected def doStop() = player.stop()
+  protected def doStop() = {
+    player.stop()
+    setAudioFxAvailable(false)
+  }
 
   protected def surface = _surface
 
@@ -62,14 +69,20 @@ private[player] final class AndroidMediaPlayer extends MediaPlayerImplementation
       AudioFxAvailability.NotForCurrentDataSource
   }
 
-  protected def doSetPlaybackSpeedMultiplier(multiplier: Float): Unit = player.setSpeed(multiplier)
+  protected def doSetPlaybackSpeedMultiplier(multiplier: Float): Unit = {
+    player.setSpeed(multiplier)
+    audioFxListener.foreach(_.onPlaybackSpeedChange(multiplier))
+  }
 
   protected def getPlaybackSpeedMultiplier: Float = player.getSpeed
 
   override protected def doSetRelativeVolume(volume: Float): Unit =
     player.setVolume(volume, volume)
 
-  override protected def doSetVolumeGain(gain: Float): Unit = player.setGain(gain)
+  override protected def doSetVolumeGain(gain: Float): Unit = {
+    player.setGain(gain)
+    audioFxListener.foreach(_.onVolumeGainChange(gain))
+  }
 
   override protected def getVolumeGain: Float = player.getGain
 
@@ -117,5 +130,12 @@ private[player] final class AndroidMediaPlayer extends MediaPlayerImplementation
   protected def setSeekCompleteListener(wrappedListener: AndroidMediaPlayer#SeekCompleteListener) =
     player.setOnSeekCompleteListener(wrappedListener)
 
-  def setOnPlaybackSpeedAdjustmentListener(listener: OnAudioFxListener): Unit = ()
+  def setOnPlaybackSpeedAdjustmentListener(listener: OnAudioFxListener): Unit = {
+    audioFxListener = Option(listener)
+    setAudioFxAvailable(true)
+  }
+
+  private def setAudioFxAvailable(available: Boolean): Unit = {
+    audioFxListener.foreach(_.onAudioFxAvailable(available))
+  }
 }
