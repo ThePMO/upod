@@ -585,6 +585,10 @@ Erfahre mehr auf der <a href="http://upod.uservoice.com/knowledgebase/articles/2
 
     <string name="subscription_settings_volume_gain">Signal-Verstärkung</string>
     <string name="subscription_settings_volume_gain_summary">Das Audio-Signal der Episoden wird um %1.1f dB angehoben</string>
+    <string name="subscription_settings_playlist_privilege">Wiedergabelistenprivileg</string>
+    <string name="subscription_settings_playlist_privilege_summary">Füge neue Episoden dieses Podcasts am Anfang der Wiedergabeliste ein</string>
+    <string name="subscription_settings_privilege_priority">Privileg Priorität</string>
+    <string name="subscription_settings_privilege_priority_summary">Füge neue Episoden am Anfang der Wiedergabeliste entsprechend der Priorität ein</string>
 
     <!-- about uPod -->
     <string name="about">Über uPod</string>

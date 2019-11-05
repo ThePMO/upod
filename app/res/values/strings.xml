@@ -1372,6 +1372,12 @@
     <string name="subscription_settings_volume_gain">Volume gain</string>
     <string name="subscription_settings_volume_gain_summary">Episodes audio level is amplified by %1.1f dB</string>
 
+
+    <string name="subscription_settings_playlist_privilege">Playlist privilege</string>
+    <string name="subscription_settings_playlist_privilege_summary">Add new episodes to the top of the playlist</string>
+    <string name="subscription_settings_privilege_priority">Privilege priority</string>
+    <string name="subscription_settings_privilege_priority_summary">Add new episodes to the top of the playlist according to this priority</string>
+
     <!-- about uPod -->
     <string name="about"
             comment="title of the dialog showing basic information about uPod"

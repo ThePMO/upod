@@ -24,7 +24,8 @@ final case class Podcast(
   subscribed: Boolean = false,
   settings: SubscriptionSettings = SubscriptionSettings.default,
   syncError: Option[String] = None,
-  rowId: Option[Long] = None)
+  rowId: Option[Long] = None,
+  privilegePriority: Option[Long] = None)
   extends PodcastBase {
 
   override def id: Long =
@@ -60,7 +61,8 @@ object Podcast extends MappingProvider[Podcast] {
     "subscribed" -> boolean,
     "settings" -> SubscriptionSettings.mapping,
     "syncError" -> optional(string),
-    "id" -> optional(long)
+    "id" -> optional(long),
+    "priority" -> optional(long)
   )(apply)(unapply)
 }
 

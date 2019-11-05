@@ -13,6 +13,8 @@ private[podcast] class SubscriptionSettingsPreferences(app: Application) extends
   lazy val autoDownload = new BooleanPreference("subscription_settings_auto_download") with Setter[Boolean]
   lazy val playbackSpeed = new FloatPreference("subscription_settings_playback_speed", 1f) with Setter[Float]
   lazy val volumeGain = new FloatPreference("subscription_settings_volume_gain", 0f) with Setter[Float]
+  lazy val hasPlaylistPrivilege = new BooleanPreference("subscription_settings_playlist_privilege") with Setter[Boolean]
+  lazy val privilegePriority = new IntPreference("subscription_settings_privilege_priority", 0) with Setter[Int]
 
   def preferences: Seq[Preference[_]] = Seq(
     autoAddToPlaylist,
@@ -21,6 +23,7 @@ private[podcast] class SubscriptionSettingsPreferences(app: Application) extends
     maxKeptEpisodes,
     autoDownload,
     playbackSpeed,
-    volumeGain
+    volumeGain,
+    privilegePriority
   )
 }
